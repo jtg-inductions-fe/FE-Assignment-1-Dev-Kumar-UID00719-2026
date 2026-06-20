@@ -8,8 +8,12 @@ hamburger.addEventListener('click', () => {
     if (popupOpen === false) {
         popup.style.display = 'flex';
         popupOpen = true;
+        hamburger.style.transform = 'rotate(90deg)';
+        hamburger.style.transition = 'transform 0.3s ease';
     } else {
         popup.style.display = 'none';
         popupOpen = false;
+        hamburger.style.transform = 'rotate(0deg)';
+        hamburger.style.transition = 'transform 0.3s ease';
     }
 });
