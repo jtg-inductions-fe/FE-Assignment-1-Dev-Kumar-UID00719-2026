@@ -1,0 +1,113 @@
+@font-face {
+    font-family: 'icomoon';
+    src: url('fonts/icomoon.eot?mkwudg');
+    src:
+        url('fonts/icomoon.eot?mkwudg#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?mkwudg') format('truetype'),
+        url('fonts/icomoon.woff?mkwudg') format('woff'),
+        url('fonts/icomoon.svg?mkwudg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^='icon-'],
+[class*=' icon-'] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-circle-down9-1:before {
+    content: '\e900';
+}
+.icon-arrow-left-1:before {
+    content: '\e901';
+}
+.icon-arrow-left-2:before {
+    content: '\e902';
+    color: #fff;
+}
+.icon-Ellipse-21:before {
+    content: '\e903';
+    color: #f85e9f;
+}
+.icon-Ellipse-22:before {
+    content: '\e904';
+}
+.icon-Frame-16 .path1:before {
+    content: '\e905';
+    color: rgb(248, 94, 159);
+}
+.icon-Frame-16 .path2:before {
+    content: '\e906';
+    margin-left: -0.73046875em;
+    color: rgb(255, 255, 255);
+}
+.icon-Frame-17 .path1:before {
+    content: '\e907';
+    color: rgb(255, 87, 34);
+}
+.icon-Frame-17 .path2:before {
+    content: '\e908';
+    margin-left: -0.73046875em;
+    color: rgb(255, 255, 255);
+}
+.icon-Group:before {
+    content: '\e909';
+    color: #5d50c6;
+}
+.icon-Group-8 .path1:before {
+    content: '\e90a';
+    color: rgb(93, 80, 198);
+}
+.icon-Group-8 .path2:before {
+    content: '\e90b';
+    margin-left: -1em;
+    color: rgb(255, 255, 255);
+}
+.icon-Group-1 .path1:before {
+    content: '\e90c';
+    color: rgb(93, 80, 198);
+}
+.icon-Group-1 .path2:before {
+    content: '\e90d';
+    margin-left: -1em;
+    color: rgb(241, 242, 242);
+}
+.icon-OBJECTS:before {
+    content: '\e90e';
+    color: #ff5722;
+}
+.icon-star-5:before {
+    content: '\e90f';
+    color: #facd49;
+}
+.icon-Vector:before {
+    content: '\e910';
+    color: #facd49;
+}
+.icon-Vector-1:before {
+    content: '\e911';
+    color: #f85e9f;
+}
+.icon-Vector-2:before {
+    content: '\e912';
+    color: #5d50c6;
+}
+.icon-Vector-4:before {
+    content: '\e913';
+    color: #5d50c6;
+}
+.icon-Vector-5:before {
+    content: '\e914';
+}

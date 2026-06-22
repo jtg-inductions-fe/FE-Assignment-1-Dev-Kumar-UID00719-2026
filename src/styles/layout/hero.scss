@@ -1,0 +1,226 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+@use '../abstracts/functions';
+
+main {
+    width: 100vw;
+    // background-color: red;
+}
+.hero {
+    width: 100vw;
+
+    display: flex;
+    justify-content: center;
+    margin-top: 17%;
+    // position: relative;
+    // background-color: red;
+
+    &__top {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__image {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 92%;
+        // height: 366px;
+        max-width: 772px;
+        aspect-ratio: 772/713;
+    }
+
+    &__layer1 {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        overflow: hidden;
+    }
+
+    &__layer1 img {
+        object-fit: cover;
+        width: 100%;
+    }
+
+    &__layer2 {
+        height: 100%;
+        width: 80%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        position: absolute;
+        top: 5.5%;
+        left: 9%;
+    }
+
+    &__layer2-left {
+        height: 96%;
+        width: 44%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    &__layer2-image1 {
+        height: 45%;
+        width: 100%;
+    }
+
+    &__layer2-image2 {
+        height: 45%;
+        width: 100%;
+    }
+
+    &__layer2-right {
+        height: 55%;
+        width: 45%;
+    }
+
+    &__collage-image {
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    &__collage-image img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    &__layer3 {
+        height: 100%;
+        width: 100%;
+    }
+
+    &__icon1 {
+        position: absolute;
+        top: 48.5%;
+        left: 3.5%;
+        width: 16%;
+        overflow: hidden;
+    }
+
+    &__icon2 {
+        position: absolute;
+        top: 92%;
+        left: 57.5%;
+        width: 16%;
+        height: 20%;
+        overflow: hidden;
+    }
+
+    &__icon {
+        width: 100%;
+        // height: 100%;
+        object-fit: cover;
+    }
+
+    &__layer3-btn {
+        position: absolute;
+        background-color: white;
+        height: 10%;
+        width: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6%;
+        font-size: 62%;
+        padding: 0.1% 0.1%;
+        border-radius: 50px;
+        top: 67%;
+        left: 76%;
+        box-shadow: 0 90px 150px black;
+    }
+
+    &__top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5%;
+    }
+
+    &__top-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 7%;
+    }
+
+    &__explore-btn {
+        height: 56px;
+        width: 224px;
+        border-radius: 100px;
+        font-family: CircularStd;
+        font-size: 14px;
+        border: none;
+        background-color: white;
+        box-shadow: 0 12px 70px rgb(0, 0, 0, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        padding: 16px 32px;
+    }
+
+    &__top-heading {
+        width: 90%;
+        font-family: CircularStd;
+        font-size: 40px;
+        font-weight: 700;
+        text-align: center;
+
+        span {
+            color: v.$pink-text;
+        }
+    }
+
+    &__top-para {
+        text-align: center;
+        width: 92%;
+        font-family: inter;
+        font-size: 16px;
+        color: v.$gray-text;
+        line-height: 22px;
+    }
+
+    &__top-button-container {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 17%;
+        margin-top: 1.5%;
+    }
+
+    &__btn {
+        width: 93%;
+        height: 64px;
+        border-radius: 100px;
+        padding: 24px 32px;
+        border: none;
+        font-family: CircularStd;
+        font-size: 14px;
+        font-weight: 700;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4%;
+
+        span {
+            font-size: 23px;
+        }
+    }
+
+    #hero__btn1 {
+        background-color: v.$blue-button;
+        color: white;
+    }
+}
