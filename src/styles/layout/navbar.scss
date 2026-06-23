@@ -1,50 +1,56 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
 @use '../abstracts/functions';
+@use '../base/typography' as t;
 
 .navbar {
-    @include m.column-flex;
+    @include m.flex-layout(center, center, column);
     width: 100vw;
     align-items: center;
+    position: relative;
+    font-family: t.$font-primary;
 
     &__container {
         width: 93%;
-        @include m.row-flex-btwn;
+        @include m.flex-layout(space-between, center, row-reverse);
         flex-direction: row-reverse;
         align-items: center;
         padding: 35px 10px 0;
     }
 
-    &__circle {
+    &__gradient-layer {
         width: 272px;
         height: 348px;
-        background-color: v.$orange-text;
+        background-color: v.$color-accent;
         position: absolute;
         opacity: 50%;
         border-radius: 50%;
         filter: blur(150px);
         left: -153px;
         top: -150px;
-        z-index: -100;
+        z-index: 20;
     }
 
     &__hamburger:hover {
         cursor: pointer;
     }
 
+    &__hamburger {
+        font-size: 40px;
+        z-index: 25;
+    }
+
     &__link-container {
-        display: flex;
         list-style: none;
         justify-content: space-around;
-        width: 428px;
         display: none;
-        font-size: v.$small-link;
+        font-size: t.$small-link;
         font-weight: 700;
     }
 
     &__links {
         text-decoration: none;
-        color: v.$gray-text;
+        color: v.$text-muted;
         text-align: center;
     }
 
@@ -53,11 +59,11 @@
     }
 
     &__homeLink {
-        color: v.$dark-text;
+        color: v.$color-text-primary;
     }
 
     &__auth-button {
-        @include m.auth-btn;
+        @include m.btn;
         font-weight: 500;
     }
 
@@ -66,47 +72,52 @@
     }
 
     &__login {
-        background-color: v.$white-button;
+        background-color: white;
         width: 105px;
     }
 
     &__signup {
-        background-color: v.$blue-button;
-        color: v.$light-text;
+        background-color: v.$color-primary;
+        color: v.$text-light;
         width: 115px;
     }
 
     &__popup {
-        @include m.column-flex;
-        display: none;
-        align-items: center;
-        justify-content: space-evenly;
+        @include m.flex-layout(space-evenly, center, column);
         width: 100%;
         height: 400px;
-        // position: fixed;
-        // left: -250px;
-        // display: none;
-        // top: 113px;
+        position: absolute;
+        top: -500px;
         left: 0;
         border: 1px solid rgb(233, 233, 233);
-        z-index: -150;
+        z-index: 10;
+        font-family: t.$font-primary;
+        transition: all 0.3s ease;
+        visibility: hidden;
+    }
+
+    .active {
+        top: 110px;
+        visibility: visible;
     }
 
     &__popup-link-container {
-        @include m.column-flex;
+        @include m.flex-layout(center, center, column);
         list-style: none;
         gap: 25px;
 
-        // height: 100%;
         font-size: 18px;
         font-weight: 600;
         background-color: white;
-        // width: 428px;
         z-index: -50;
+
+        li {
+            text-align: center;
+        }
     }
 
     &__popup-auth {
-        @include m.column-flex;
+        @include m.flex-layout(center, center, column);
     }
 }
 
@@ -122,7 +133,7 @@
     .navbar {
         &__container {
             flex-direction: row;
-            width: 88%;
+            width: 94%;
             padding: 31px;
         }
 
@@ -132,15 +143,25 @@
 
         &__popup {
             width: 50%;
-            position: fixed;
-            left: 0px;
+            position: absolute;
+            left: -500px;
             // display: none;
-            top: 113px;
-            justify-content: flex-start;
+            top: 164px;
+            justify-content: center;
+            transition: all 0.3s ease;
         }
 
         &__popup-link-container {
             padding: 20px;
+
+            li {
+                text-align: start;
+            }
+        }
+
+        .active {
+            top: 164px;
+            left: 0px;
         }
     }
 }
@@ -156,7 +177,7 @@
     .navbar {
         &__container {
             padding: 67px;
-            width: 84%;
+            width: 93%;
         }
 
         &__link-container {

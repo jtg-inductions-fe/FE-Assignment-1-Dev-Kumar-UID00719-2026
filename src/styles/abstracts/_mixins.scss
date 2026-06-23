@@ -1,3 +1,6 @@
+@use '../abstracts/variables' as v;
+@use '../base/typography' as t;
+
 @mixin flex-layout($justify: center, $align: center, $direction: row) {
     display: flex;
     flex-direction: $direction;
@@ -7,25 +10,7 @@
 
 @mixin btn($left-right: 32px, $top-down: 16px) {
     border-radius: 100px;
-    padding: $top-down $left-right;
-}
-
-@use '../abstracts/variables' as v;
-
-@mixin auth-btn {
-    font-size: v.$small-link;
-    padding: 16px 32px;
-    border-radius: 100px;
-    height: 49px;
     border: none;
-}
-
-@mixin column-flex {
-    display: flex;
-    flex-direction: column;
-}
-
-@mixin row-flex-btwn {
-    display: flex;
-    justify-content: space-between;
+    padding: $top-down $left-right;
+    font-size: t.$small-link;
 }

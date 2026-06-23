@@ -5,13 +5,18 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="src/styles/main.scss" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/@vetixy/circular-std@1.0.0/dist/index.min.css"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="/assets/icomoon/style.css" />
     </head>
     <body>
         <nav class="navbar">
-            <div class="navbar__circle" id="yellow-circle"></div>
+            <div class="navbar__gradient-layer" id="yellow-circle"></div>
             <div class="navbar__container">
-                <div class="navbar__hamburger">
-                    <img src="assets/icons/menu.11 1.png" alt="" />
+                <div class="navbar__hamburger" id="navbar__hamburger">
+                    <span class="icon-Vector-2"></span>
                 </div>
 
                 <div class="navbar__logo">
@@ -20,42 +25,54 @@
 
                 <ul class="navbar__link-container">
                     <li>
-                        <a class="navbar__links navbar__homeLink" href=""
+                        <a class="navbar__links navbar__homeLink" href="#"
                             >Home</a
                         >
                     </li>
-                    <li><a class="navbar__links" href="">Discover</a></li>
-                    <li><a class="navbar__links" href="">Special Deals</a></li>
-                    <li><a class="navbar__links" href="">Contact</a></li>
+                    <li><a class="navbar__links" href="#">Discover</a></li>
+                    <li><a class="navbar__links" href="#">Special Deals</a></li>
+                    <li><a class="navbar__links" href="#">Contact</a></li>
                 </ul>
 
                 <div class="navbar__auth">
-                    <button class="navbar__auth-button navbar__login">
+                    <button
+                        type="button"
+                        class="navbar__auth-button navbar__login"
+                    >
                         Log In
                     </button>
-                    <button class="navbar__auth-button navbar__signup">
+                    <button
+                        type="button"
+                        class="navbar__auth-button navbar__signup"
+                    >
                         Sign Up
                     </button>
                 </div>
             </div>
 
-            <div class="navbar__popup">
+            <div class="navbar__popup" id="navbar__popup">
                 <ul class="navbar__popup-link-container">
                     <li>
-                        <a class="navbar__links navbar__homeLink" href=""
+                        <a class="navbar__links navbar__homeLink" href="#"
                             >Home</a
                         >
                     </li>
-                    <li><a class="navbar__links" href="">Discover</a></li>
-                    <li><a class="navbar__links" href="">Special Deals</a></li>
-                    <li><a class="navbar__links" href="">Contact</a></li>
+                    <li><a class="navbar__links" href="#">Discover</a></li>
+                    <li><a class="navbar__links" href="#">Special Deals</a></li>
+                    <li><a class="navbar__links" href="#">Contact</a></li>
                 </ul>
 
                 <div class="navbar__popup-auth">
-                    <button class="navbar__auth-button navbar__login">
+                    <button
+                        type="button"
+                        class="navbar__auth-button navbar__login"
+                    >
                         Log In
                     </button>
-                    <button class="navbar__auth-button navbar__signup">
+                    <button
+                        type="button"
+                        class="navbar__auth-button navbar__signup"
+                    >
                         Sign Up
                     </button>
                 </div>
