@@ -4,7 +4,7 @@
 @use '../base/typography' as t;
 
 main {
-    width: 100vw;
+    width: 100%;
     margin-top: 0;
 }
 .hero {
@@ -14,12 +14,12 @@ main {
 
     &__top {
         width: 100%;
-        @include m.flex-layout(center, center, row);
+        @include m.flex-layout();
     }
 
     &__image {
         position: relative;
-        @include m.flex-layout(center, center, row);
+        @include m.flex-layout();
         width: 92%;
         // height: 366px;
         max-width: 772px;
@@ -27,7 +27,7 @@ main {
     }
 
     &__layer1 {
-        @include m.flex-layout(center, center, row);
+        @include m.flex-layout();
         width: 100%;
         position: absolute;
         z-index: -1;
@@ -122,7 +122,7 @@ main {
         width: 20%;
         @include m.flex-layout(center, center, row);
         gap: 6%;
-        font-size: 62%;
+        font-size: 7.19px;
         padding: 8px 16px;
         border-radius: 50px;
         border: none;
@@ -242,6 +242,10 @@ main {
             // gap: 25px;
             margin-top: 5.5%;
             max-width: 338px;
+        }
+
+        &__layer3-btn {
+            font-size: 14px;
         }
 
         &__top-left {
