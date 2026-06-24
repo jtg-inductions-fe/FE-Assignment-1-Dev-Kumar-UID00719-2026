@@ -4,10 +4,19 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px;
+}
+
 a {
     text-decoration: none;
 }
 
 li {
     list-style: none;
+}
+
+button {
+    border: 0;
+    cursor: pointer;
 }
