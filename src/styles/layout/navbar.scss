@@ -11,11 +11,11 @@
     font-family: t.$font-primary;
 
     &__container {
-        width: 93%;
+        width: 100%;
         @include m.flex-layout(space-between, center, row-reverse);
         flex-direction: row-reverse;
         align-items: center;
-        padding: 35px 10px 0;
+        padding: 35px 16px;
     }
 
     &__gradient-layer {
@@ -28,34 +28,25 @@
         filter: blur(150px);
         left: -153px;
         top: -150px;
-        z-index: 20;
-    }
-
-    &__hamburger:hover {
-        cursor: pointer;
+        z-index: v.$gradient;
     }
 
     &__hamburger {
-        font-size: 40px;
-        z-index: 25;
+        font-size: t.$font-3xl;
+        z-index: v.$component;
+        background: transparent;
     }
 
     &__link-container {
-        list-style: none;
         justify-content: space-around;
         display: none;
-        font-size: t.$small-link;
+        font-size: t.$font-sm;
         font-weight: 700;
     }
 
     &__links {
-        text-decoration: none;
         color: v.$text-muted;
         text-align: center;
-    }
-
-    &__links:hover {
-        cursor: pointer;
     }
 
     &__homeLink {
@@ -65,10 +56,6 @@
     &__auth-button {
         @include m.btn;
         font-weight: 500;
-    }
-
-    &__auth-button:hover {
-        cursor: pointer;
     }
 
     &__login {
@@ -90,7 +77,7 @@
         top: -500px;
         left: 0;
         border: 1px solid rgb(233, 233, 233);
-        z-index: 10;
+        z-index: v.$popup;
         font-family: t.$font-primary;
         transition: all 0.3s ease;
         visibility: hidden;
@@ -106,10 +93,9 @@
         list-style: none;
         gap: 25px;
 
-        font-size: 18px;
+        font-size: t.$font-lg;
         font-weight: 600;
         background-color: white;
-        z-index: -50;
 
         li {
             text-align: center;
@@ -133,8 +119,8 @@
     .navbar {
         &__container {
             flex-direction: row;
-            width: 94%;
-            padding: 31px;
+            width: 100%;
+            padding: 32px 63px;
         }
 
         &__popup-auth {
@@ -145,7 +131,6 @@
             width: 50%;
             position: absolute;
             left: -500px;
-            // display: none;
             top: 100px;
             justify-content: center;
             transition: all 0.3s ease;
@@ -176,13 +161,14 @@
 @media screen and (min-width: 1025px) {
     .navbar {
         &__container {
-            padding: 67px;
-            width: 93%;
+            padding: 65px 117px;
+            width: 100%;
         }
 
         &__link-container {
+            width: 40%;
             display: flex;
-            gap: 71px;
+            justify-content: space-between;
         }
 
         &__hamburger {
