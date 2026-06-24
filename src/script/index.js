@@ -13,3 +13,9 @@ hamburger.addEventListener('click', () => {
         popupOpen = false;
     }
 });
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 1024) {
+        popup.classList.remove('active');
+    }
+});
