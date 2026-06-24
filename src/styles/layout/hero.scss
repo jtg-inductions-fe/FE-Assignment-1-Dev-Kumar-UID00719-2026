@@ -1,31 +1,25 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
 @use '../abstracts/functions';
+@use '../base/typography' as t;
 
 main {
     width: 100vw;
-    // background-color: red;
+    margin-top: 0;
 }
 .hero {
     width: 100vw;
-
-    display: flex;
-    justify-content: center;
-    margin-top: 17%;
-    // position: relative;
-    // background-color: red;
+    @include m.flex-layout(center, center, column);
+    margin-top: 15%;
 
     &__top {
         width: 100%;
-        display: flex;
-        justify-content: center;
+        @include m.flex-layout(center, center, row);
     }
 
     &__image {
         position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include m.flex-layout(center, center, row);
         width: 92%;
         // height: 366px;
         max-width: 772px;
@@ -33,8 +27,7 @@ main {
     }
 
     &__layer1 {
-        display: flex;
-        justify-content: center;
+        @include m.flex-layout(center, center, row);
         width: 100%;
         position: absolute;
         z-index: -1;
@@ -50,9 +43,7 @@ main {
     &__layer2 {
         height: 100%;
         width: 80%;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
+        @include m.flex-layout(space-evenly, center, row);
         position: absolute;
         top: 5.5%;
         left: 9%;
@@ -61,10 +52,7 @@ main {
     &__layer2-left {
         height: 96%;
         width: 44%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
+        @include m.flex-layout(space-evenly, center, column);
     }
 
     &__layer2-image1 {
@@ -98,12 +86,20 @@ main {
         width: 100%;
     }
 
+    &__icon {
+        font-size: 40px;
+    }
+
     &__icon1 {
         position: absolute;
         top: 48.5%;
         left: 3.5%;
         width: 16%;
         overflow: hidden;
+
+        img {
+            width: 100%;
+        }
     }
 
     &__icon2 {
@@ -113,12 +109,10 @@ main {
         width: 16%;
         height: 20%;
         overflow: hidden;
-    }
 
-    &__icon {
-        width: 100%;
-        // height: 100%;
-        object-fit: cover;
+        img {
+            width: 100%;
+        }
     }
 
     &__layer3-btn {
@@ -126,92 +120,81 @@ main {
         background-color: white;
         height: 10%;
         width: 20%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include m.flex-layout(center, center, row);
         gap: 6%;
         font-size: 62%;
-        padding: 0.1% 0.1%;
+        padding: 8px 16px;
         border-radius: 50px;
+        border: none;
         top: 67%;
         left: 76%;
         box-shadow: 0 90px 150px black;
     }
 
     &__top {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @include m.flex-layout(space-evenly, center, column);
         gap: 5%;
     }
 
     &__top-left {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-        gap: 7%;
+        @include m.flex-layout(space-evenly, center, column);
+        gap: 0.9rem;
+        margin-top: 8%;
     }
 
     &__explore-btn {
         height: 56px;
         width: 224px;
-        border-radius: 100px;
-        font-family: CircularStd;
-        font-size: 14px;
-        border: none;
+        @include m.btn();
+        font-family: t.$font-primary;
+        color: v.$color-secondary;
+        font-weight: t.$sub-heading-weight;
+        font-size: t.$small-link;
         background-color: white;
         box-shadow: 0 12px 70px rgb(0, 0, 0, 0.12);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include m.flex-layout(center, center, row);
         gap: 16px;
-        padding: 16px 32px;
+
+        span {
+            font-size: 20px;
+        }
     }
 
     &__top-heading {
         width: 90%;
-        font-family: CircularStd;
+        font-family: t.$font-primary;
         font-size: 40px;
         font-weight: 700;
         text-align: center;
 
         span {
-            color: v.$pink-text;
+            color: v.$color-secondary;
         }
     }
 
     &__top-para {
         text-align: center;
         width: 92%;
-        font-family: inter;
+        font-family: t.$font-secondary;
         font-size: 16px;
-        color: v.$gray-text;
+        color: v.$text-muted;
         line-height: 22px;
     }
 
     &__top-button-container {
-        display: flex;
         width: 100%;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        gap: 17%;
-        margin-top: 1.5%;
+        @include m.flex-layout(space-between, center, column);
+        gap: 25px;
+        margin-top: 5.5%;
     }
 
     &__btn {
         width: 93%;
         height: 64px;
-        border-radius: 100px;
-        padding: 24px 32px;
-        border: none;
-        font-family: CircularStd;
-        font-size: 14px;
+        @include m.btn(32px, 24px);
+        font-family: t.$font-primary;
         font-weight: 700;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include m.flex-layout(center, center, row);
         gap: 4%;
 
         span {
@@ -220,7 +203,127 @@ main {
     }
 
     #hero__btn1 {
-        background-color: v.$blue-button;
+        background-color: v.$color-primary;
         color: white;
+        box-shadow: 0 27px 38px rgba(0, 0, 0, 0.2);
+    }
+
+    #hero__btn2 {
+        background-color: white;
+        color: v.$color-text-primary;
+        border: 1px solid rgb(217, 216, 216);
+    }
+
+    &__bottom {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 21px;
+        padding: 64px 0 64px 0;
+        flex-wrap: wrap;
+    }
+
+    &__logo {
+        width: 27%;
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+@media screen and (min-width: 431px) {
+    .hero {
+        margin-top: 6.5%;
+        &__top-button-container {
+            @include m.flex-layout(space-between, center, row);
+            // gap: 25px;
+            margin-top: 5.5%;
+            max-width: 338px;
+        }
+
+        &__top-left {
+            width: 68%;
+            gap: 30px;
+        }
+
+        &__top-para {
+            width: 65%;
+            font-size: 18px;
+        }
+
+        &__top-heading {
+            font-size: 56px;
+        }
+
+        &__btn {
+            @include m.btn(32px, 16px);
+            height: 49px;
+        }
+
+        #hero__btn1 {
+            width: 141px;
+            white-space: nowrap;
+        }
+        #hero__btn2 {
+            width: 181px;
+            white-space: nowrap;
+        }
+
+        &__bottom {
+            justify-content: center;
+            gap: 7%;
+            flex-wrap: wrap;
+            width: 57%;
+            margin-top: 6.5%;
+        }
+
+        &__logo {
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .hero {
+        margin-top: 1.5%;
+        &__top {
+            flex-direction: row-reverse;
+            width: 86%;
+            gap: 0px;
+        }
+
+        &__top-left {
+            width: 36%;
+            margin-top: 0;
+            align-items: baseline;
+            gap: 38px;
+        }
+
+        &__top-heading {
+            font-size: 69px;
+            text-align: start;
+        }
+
+        &__top-para {
+            text-align: start;
+            line-height: 26px;
+        }
+
+        &__layer3-btn {
+            padding: 16px 32px;
+        }
+
+        &__bottom {
+            width: 86%;
+            margin-top: 3.5%;
+        }
+
+        &__logo {
+            width: 14%;
+        }
     }
 }
