@@ -203,18 +203,11 @@ main {
 
     &__logo {
         width: 27%;
-<<<<<<< HEAD
     }
 
     &__logo-img {
         width: 100%;
         object-fit: cover;
-=======
-        img {
-            width: 100%;
-            object-fit: cover;
-        }
->>>>>>> e8e3e3d ([DS_A1_02/hero-section] : completed hero section)
     }
 }
 
@@ -266,23 +259,8 @@ main {
             font-size: t.$font-4xl;
         }
 
-<<<<<<< HEAD
         &__top-button {
             padding: rem(16) rem(32);
-=======
-        &__btn {
-            @include m.btn(32px, 16px);
-            height: 49px;
-        }
-
-        #hero__btn1 {
-            width: 141px;
-            white-space: nowrap;
-        }
-        #hero__btn2 {
-            width: 181px;
-            white-space: nowrap;
->>>>>>> e8e3e3d ([DS_A1_02/hero-section] : completed hero section)
         }
 
         &__bottom {
