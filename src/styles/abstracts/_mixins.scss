@@ -14,3 +14,8 @@
     padding: $top-down $left-right;
     font-size: t.$font-sm;
 }
+
+@mixin section-layout($padding-top-bottom: 35px, $padding-left-right: 16px) {
+    padding: $padding-top-bottom $padding-left-right;
+    width: 100%;
+}
