@@ -7,6 +7,7 @@ main {
     width: 100%;
     margin-top: 0;
 }
+
 .hero {
     @include m.flex-layout(center, center, column);
     @include m.section-layout(rem(37), rem(16));
@@ -240,7 +241,7 @@ main {
         }
 
         &__layer3-btn {
-            font-size: 14px;
+            font-size: t.$font-sm;
         }
 
         &__top-left {
