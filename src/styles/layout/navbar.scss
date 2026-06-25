@@ -11,11 +11,10 @@
     font-family: t.$font-primary;
 
     &__container {
-        width: 100%;
         @include m.flex-layout(space-between, center, row-reverse);
+        @include m.section-layout(32px, 16px);
         flex-direction: row-reverse;
         align-items: center;
-        padding: 35px 16px;
     }
 
     &__gradient-layer {
@@ -51,22 +50,6 @@
 
     &__homeLink {
         color: v.$color-text-primary;
-    }
-
-    &__auth-button {
-        @include m.btn;
-        font-weight: 500;
-    }
-
-    &__login {
-        background-color: white;
-        width: 105px;
-    }
-
-    &__signup {
-        background-color: v.$color-primary;
-        color: v.$text-light;
-        width: 115px;
     }
 
     &__popup {
@@ -119,8 +102,7 @@
     .navbar {
         &__container {
             flex-direction: row;
-            width: 100%;
-            padding: 32px 63px;
+            @include m.section-layout(32px, 63px);
         }
 
         &__popup-auth {
@@ -161,8 +143,7 @@
 @media screen and (min-width: 1025px) {
     .navbar {
         &__container {
-            padding: 65px 117px;
-            width: 100%;
+            @include m.section-layout(65px, 117px);
         }
 
         &__link-container {
