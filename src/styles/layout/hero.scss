@@ -120,7 +120,7 @@ main {
         }
     }
 
-    &__layer3-btn {
+    &__layer3-overlay {
         position: absolute;
         background-color: white;
         height: 10%;
@@ -134,6 +134,7 @@ main {
         top: 67%;
         left: 76%;
         box-shadow: 0 90px 150px black;
+        white-space: nowrap;
     }
 
     &__top {
@@ -147,9 +148,9 @@ main {
         padding-top: 32px;
     }
 
-    &__explore-btn {
-        height: 56px;
-        width: 224px;
+    &__explore {
+        // height: 56px;
+        // width: 224px;
         @include m.btn();
         font-family: t.$font-primary;
         color: v.$color-secondary;
@@ -262,8 +263,8 @@ main {
             max-width: 338px;
         }
 
-        &__layer3-btn {
-            font-size: t.$font-sm;
+        &__layer3-overlay {
+            font-size: 0.6rem;
         }
 
         &__top-left {
@@ -318,6 +319,10 @@ main {
             font-size: t.$font-4xl;
         }
 
+        &__layer3-overlay {
+            font-size: t.$font-sm;
+        }
+
         &__top-para {
             width: 50%;
             font-size: t.$font-lg;
@@ -361,7 +366,7 @@ main {
             line-height: 26px;
         }
 
-        &__layer3-btn {
+        &__layer3-overlay {
             padding: 16px 32px;
         }
 
