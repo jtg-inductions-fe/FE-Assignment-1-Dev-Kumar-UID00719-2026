@@ -9,9 +9,8 @@ main {
 }
 
 .hero {
-    width: 100%;
     @include m.flex-layout(center, center, column);
-    padding: 32px 16px;
+    @include m.section-layout(32px, 16px);
 
     &__top {
         width: 100%;
@@ -243,7 +242,7 @@ main {
 
 @media screen and (min-width: 431px) {
     .hero {
-        padding: 64px 64px;
+        @include m.section-layout(64px, 64px);
 
         &__top {
             gap: 32px;
@@ -332,8 +331,7 @@ main {
 
 @media screen and (min-width: 1025px) {
     .hero {
-        padding: 32px 117px;
-        width: 100%;
+        @include m.section-layout(27px, 117px);
 
         &__overlay-clipart {
             position: absolute;
@@ -352,6 +350,7 @@ main {
             margin-top: 0;
             align-items: baseline;
             gap: 38px;
+            padding-top: 0;
         }
 
         &__top-heading {
