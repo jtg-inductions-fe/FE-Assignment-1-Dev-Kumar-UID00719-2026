@@ -4,3 +4,51 @@ $font-secondary: Inter;
 $heading-weight: 700;
 $sub-heading-weight: 700;
 $paragraph-weight: 400;
+
+@font-face {
+    font-family: 'Inter';
+    src: url(../../../assets/fonts/Inter-Regular.woff2);
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url(../../../assets/fonts/Inter-Medium.woff2);
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url(../../../assets/fonts/Inter-Bold.woff2);
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Circular Std';
+    src: url(../../../assets/fonts/CircularStd-Book.woff2);
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Circular Std';
+    src: url(../../../assets/fonts/CircularStd-Medium.woff2);
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Circular Std';
+    src: url(../../../assets/fonts/CircularStd-Bold.woff2);
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
