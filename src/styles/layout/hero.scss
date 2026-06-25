@@ -7,21 +7,26 @@ main {
     width: 100%;
     margin-top: 0;
 }
+
 .hero {
-    width: 100vw;
+    width: 100%;
     @include m.flex-layout(center, center, column);
-    margin-top: 15%;
+    padding: 32px 16px;
 
     &__top {
         width: 100%;
         @include m.flex-layout();
     }
 
+    &__overlay-clipart {
+        position: absolute;
+        display: none;
+    }
+
     &__image {
         position: relative;
         @include m.flex-layout();
-        width: 92%;
-        // height: 366px;
+        width: 100%;
         max-width: 772px;
         aspect-ratio: 772/713;
     }
@@ -87,7 +92,7 @@ main {
     }
 
     &__icon {
-        font-size: 40px;
+        font-size: t.$font-3xl;
     }
 
     &__icon1 {
@@ -122,7 +127,7 @@ main {
         width: 20%;
         @include m.flex-layout(center, center, row);
         gap: 6%;
-        font-size: 7.19px;
+        font-size: 0.5rem;
         padding: 8px 16px;
         border-radius: 50px;
         border: none;
@@ -138,8 +143,8 @@ main {
 
     &__top-left {
         @include m.flex-layout(space-evenly, center, column);
-        gap: 0.9rem;
-        margin-top: 8%;
+        gap: 1.2rem;
+        padding-top: 32px;
     }
 
     &__explore-btn {
@@ -149,21 +154,21 @@ main {
         font-family: t.$font-primary;
         color: v.$color-secondary;
         font-weight: t.$sub-heading-weight;
-        font-size: t.$small-link;
+        font-size: t.$font-sm;
         background-color: white;
         box-shadow: 0 12px 70px rgb(0, 0, 0, 0.12);
         @include m.flex-layout(center, center, row);
         gap: 16px;
 
         span {
-            font-size: 20px;
+            font-size: 1.25rem;
         }
     }
 
     &__top-heading {
-        width: 90%;
+        width: 100%;
         font-family: t.$font-primary;
-        font-size: 40px;
+        font-size: t.$font-3xl;
         font-weight: 700;
         text-align: center;
 
@@ -174,9 +179,9 @@ main {
 
     &__top-para {
         text-align: center;
-        width: 92%;
+        width: 100%;
         font-family: t.$font-secondary;
-        font-size: 16px;
+        font-size: t.$font-md;
         color: v.$text-muted;
         line-height: 22px;
     }
@@ -189,7 +194,7 @@ main {
     }
 
     &__btn {
-        width: 93%;
+        width: 100%;
         height: 64px;
         @include m.btn(32px, 24px);
         font-family: t.$font-primary;
@@ -198,7 +203,7 @@ main {
         gap: 4%;
 
         span {
-            font-size: 23px;
+            font-size: t.$font-xl;
         }
     }
 
@@ -227,6 +232,7 @@ main {
 
     &__logo {
         width: 27%;
+
         img {
             width: 100%;
             object-fit: cover;
@@ -236,30 +242,43 @@ main {
 
 @media screen and (min-width: 431px) {
     .hero {
-        margin-top: 6.5%;
+        padding: 64px 64px;
+
+        &__top {
+            gap: 32px;
+        }
+
+        &__overlay-clipart {
+            position: absolute;
+            display: block;
+
+            left: 3.5%;
+            top: 127.5%;
+        }
+
         &__top-button-container {
             @include m.flex-layout(space-between, center, row);
-            // gap: 25px;
             margin-top: 5.5%;
             max-width: 338px;
         }
 
         &__layer3-btn {
-            font-size: 14px;
+            font-size: t.$font-sm;
         }
 
         &__top-left {
-            width: 68%;
-            gap: 30px;
+            width: 100%;
+            gap: 32px;
         }
 
         &__top-para {
-            width: 65%;
-            font-size: 18px;
+            width: 100%;
+            font-size: t.$font-lg;
         }
 
         &__top-heading {
-            font-size: 56px;
+            width: 100%;
+            font-size: t.$font-4xl;
         }
 
         &__btn {
@@ -271,6 +290,7 @@ main {
             width: 141px;
             white-space: nowrap;
         }
+
         #hero__btn2 {
             width: 181px;
             white-space: nowrap;
@@ -291,12 +311,34 @@ main {
     }
 }
 
+@media screen and (min-width: 600px) {
+    .hero {
+        &__top-heading {
+            width: 70%;
+            font-size: t.$font-4xl;
+        }
+
+        &__top-para {
+            width: 50%;
+            font-size: t.$font-lg;
+        }
+    }
+}
+
 @media screen and (min-width: 1025px) {
     .hero {
-        margin-top: 1.5%;
+        padding: 32px 117px;
+        width: 100%;
+
+        &__overlay-clipart {
+            position: absolute;
+            left: 2.5%;
+            top: 65.5%;
+        }
+
         &__top {
             flex-direction: row-reverse;
-            width: 86%;
+            width: 100%;
             gap: 0px;
         }
 
@@ -308,11 +350,13 @@ main {
         }
 
         &__top-heading {
-            font-size: 69px;
+            width: 100%;
+            font-size: t.$font-5xl;
             text-align: start;
         }
 
         &__top-para {
+            width: 100%;
             text-align: start;
             line-height: 26px;
         }
@@ -322,7 +366,7 @@ main {
         }
 
         &__bottom {
-            width: 86%;
+            width: 100%;
             margin-top: 3.5%;
         }
 
