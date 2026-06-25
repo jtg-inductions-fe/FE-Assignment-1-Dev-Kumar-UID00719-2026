@@ -6,23 +6,10 @@
 
 .travel {
     width: 100%;
-    margin-top: 10%;
-
-    // &__gradient-layer{
-    //     background-color: #FACD49;
-    //     width: 406px;
-    //     height: 406px;
-    //     opacity: 50%;
-    //     position: absolute;
-    //     border-radius: 100%;
-    //     filter: blur(150px);
-    //     top: -12%;
-    //     left: 82%;
-    // }
+    margin-top: 24px;
 
     &__image {
         width: 100%;
-        // overflow: hidden;
 
         img {
             width: 100%;
@@ -99,9 +86,8 @@
 
 @media screen and (min-width: 431px) {
     .travel {
-        margin-top: 2%;
+        margin-top: 0;
         position: relative;
-        // overflow-x: hidden;
 
         &__gradient-layer {
             background-color: #facd49;
@@ -147,6 +133,7 @@
         margin-top: 0;
         @include m.flex-layout(start, center, row);
         position: relative;
+        padding-right: 117px;
 
         &__gradient-layer {
             background-color: #facd49;
@@ -160,29 +147,32 @@
         }
 
         &__image {
-            margin-top: 3%;
-            width: 120%;
+            width: 156%;
             max-width: 866px;
+            margin-top: 42px;
         }
 
         &__text {
-            margin-top: 2.5%;
             align-items: flex-start;
+            padding-top: 20px;
+            margin-top: 32px;
         }
 
         &__heading {
             text-align: start;
-            width: 80%;
+            width: 100%;
             font-size: 44px;
         }
 
         &__para {
             text-align: start;
+            width: 100%;
         }
 
         &__grid {
-            grid-template-columns: 43% 43%;
+            grid-template-columns: 46% 46%;
             margin-top: 8%;
+            width: 100%;
         }
     }
 }
