@@ -7,6 +7,14 @@ $heading-weight: 700;
 $sub-heading-weight: 700;
 $paragraph-weight: 400;
 
+// font size variables
+$font-sm: 0.875rem; //14px
+$font-md: 1rem; //16px
+$font-lg: 1.125rem; //18px
+$font-xl: 1.5rem; //24px
+$font-2xl: 2rem; //32px
+$font-3xl: 2.5rem; //40px
+
 @font-face {
     font-family: 'Inter';
     src: url(../../../assets/fonts/Inter-Regular.woff2);
