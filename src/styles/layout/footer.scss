@@ -1,0 +1,177 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+@use '../abstracts/functions';
+@use '../base/typography' as t;
+
+.footer {
+    @include m.flex-layout(space-between, flex-start, column);
+    @include m.section-layout(32px, 16px);
+    gap: 64px;
+    margin-top: 90px;
+
+    &__top {
+        @include m.flex-layout(space-between, flex-start, column);
+        gap: 32px;
+    }
+
+    &__heading {
+        @include m.flex-layout(space-between, center, row);
+        gap: 16px;
+        h2 {
+            font-size: t.$font-xl;
+            font-family: t.$font-primary;
+        }
+    }
+
+    &__para {
+        font-size: t.$font-md;
+        font-family: t.$font-primary;
+        color: v.$color-text-secondary;
+        line-height: 160%;
+    }
+
+    &__socials {
+        font-size: t.$font-2xl;
+        @include m.flex-layout(flex-start, center, row);
+        gap: 32px;
+    }
+
+    &__bottom {
+        @include m.flex-layout(space-between, flex-start, column);
+        width: 100%;
+        gap: 80px;
+        margin-top: 16px;
+    }
+
+    &__company {
+        @include m.flex-layout(space-between, flex-start, column);
+        width: 100%;
+        h3 {
+            font-size: t.$font-xl;
+            font-family: t.$font-primary;
+            width: 100%;
+            @include m.flex-layout(space-between, center, row);
+        }
+    }
+
+    &__contact {
+        @include m.flex-layout(space-between, flex-start, column);
+        width: 100%;
+        h3 {
+            font-size: t.$font-xl;
+            font-family: t.$font-primary;
+            width: 100%;
+            @include m.flex-layout(space-between, center, row);
+        }
+    }
+
+    &__meet {
+        @include m.flex-layout(space-between, flex-start, column);
+        width: 100%;
+        h3 {
+            font-size: t.$font-xl;
+            font-family: t.$font-primary;
+            width: 100%;
+            @include m.flex-layout(space-between, center, row);
+        }
+    }
+
+    &__link-container {
+        @include m.flex-layout(space-between, flex-start, column);
+        gap: 24px;
+        transition: max-height 0.3s ease;
+        max-height: 0;
+        overflow: hidden;
+        padding-top: 16px;
+    }
+
+    &__link {
+        font-size: t.$font-lg;
+        font-family: t.$font-secondary;
+        color: v.$color-text-secondary;
+        font-weight: 400;
+    }
+}
+
+.dropdown {
+    transition: all 0.3s ease;
+}
+
+.accordion {
+    max-height: 250px;
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
+
+@media screen and (min-width: 431px) {
+    .footer {
+        @include m.section-layout(64px, 64px);
+        margin-top: 152px;
+
+        &__para {
+            font-size: t.$font-xl;
+        }
+
+        &__bottom {
+            display: grid;
+            gap: 30px;
+            grid-template-columns: 1fr 1fr 1fr;
+            margin-top: 0;
+        }
+
+        &__company {
+            @include m.flex-layout(flex-start, flex-start, column);
+            gap: 32px;
+            h3 {
+                font-size: t.$font-xl;
+                font-family: t.$font-primary;
+            }
+        }
+
+        &__contact {
+            @include m.flex-layout(flex-start, flex-start, column);
+            gap: 32px;
+            h3 {
+                font-size: t.$font-xl;
+                font-family: t.$font-primary;
+            }
+        }
+
+        &__meet {
+            @include m.flex-layout(flex-start, flex-start, column);
+            gap: 32px;
+            h3 {
+                font-size: t.$font-xl;
+                font-family: t.$font-primary;
+            }
+        }
+
+        &__link-container {
+            @include m.flex-layout(space-between, flex-start, column);
+            gap: 40px;
+            max-height: 300px;
+            padding-top: 0;
+        }
+
+        &__link {
+            font-size: t.$font-lg;
+            font-family: t.$font-secondary;
+            color: v.$color-text-secondary;
+            font-weight: 400;
+        }
+    }
+
+    .dropdown {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .footer {
+        flex-direction: row;
+        gap: 32px;
+        @include m.section-layout(32px, 117px);
+    }
+}
