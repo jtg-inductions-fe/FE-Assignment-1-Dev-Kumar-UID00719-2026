@@ -1,7 +1,6 @@
 import '../styles/main.scss';
 import '@splidejs/splide/css';
 import Splide from '@splidejs/splide';
-
 let popupOpen = false;
 
 let hamburger = document.querySelector('#navbar-hamburger');
