@@ -1,0 +1,11 @@
+@mixin flex-layout($justify: center, $align: center, $direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin btn($left-right: 32px, $top-down: 16px) {
+    border-radius: 100px;
+    padding: $top-down $left-right;
+}
