@@ -1,4 +1,7 @@
 import '../styles/main.scss';
+import '@splidejs/splide/css';
+import Splide from '@splidejs/splide';
+// import interFont from 'https://cdn.jsdelivr.net/npm/inter-font@3.19.0/+esm';
 let popupOpen = false;
 
 let hamburger = document.querySelector('#navbar-hamburger');
@@ -24,3 +27,9 @@ window.addEventListener('resize', () => {
         popup.classList.remove('active');
     }
 });
+
+new Splide('.splide', {
+    type: 'loop',
+    perPage: 1,
+    arrows: true,
+}).mount();
