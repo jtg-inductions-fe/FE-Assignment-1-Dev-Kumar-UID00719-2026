@@ -1,11 +1,11 @@
+@use './abstracts/functions';
 @use './abstracts/variables';
 @use './abstracts/mixins';
-@use './abstracts/functions';
 
 @use './base/reset';
 @use './base/typography';
 
+@use './components/buttons';
+
 @use './layout/navbar';
 @use './layout/hero';
-
-@use './components/buttons';

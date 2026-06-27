@@ -1,19 +1,13 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
-@use '../abstracts/functions';
+@use '../abstracts/functions' as *;
 @use '../base/typography' as t;
-
-main {
-    width: 100%;
-    margin-top: 0;
-}
 
 .hero {
     @include m.flex-layout(center, center, column);
-    @include m.section-layout(32px, 16px);
+    @include m.section-layout(rem(37), rem(16));
 
     &__top {
-        width: 100%;
         @include m.flex-layout();
     }
 
@@ -23,10 +17,10 @@ main {
     }
 
     &__image {
-        position: relative;
         @include m.flex-layout();
+        position: relative;
         width: 100%;
-        max-width: 772px;
+        max-width: rem(772);
         aspect-ratio: 772/713;
     }
 
@@ -39,24 +33,24 @@ main {
         overflow: hidden;
     }
 
-    &__layer1 img {
+    &__layer1-image {
         object-fit: cover;
         width: 100%;
     }
 
     &__layer2 {
+        @include m.flex-layout(space-evenly, center, row);
         height: 100%;
         width: 80%;
-        @include m.flex-layout(space-evenly, center, row);
         position: absolute;
         top: 5.5%;
         left: 9%;
     }
 
     &__layer2-left {
+        @include m.flex-layout(space-evenly, center, column);
         height: 96%;
         width: 44%;
-        @include m.flex-layout(space-evenly, center, column);
     }
 
     &__layer2-image1 {
@@ -75,11 +69,11 @@ main {
     }
 
     &__collage-image {
-        border-radius: 16px;
+        border-radius: rem(16);
         overflow: hidden;
     }
 
-    &__collage-image img {
+    &__collage-img {
         height: 100%;
         width: 100%;
         object-fit: cover;
@@ -100,10 +94,6 @@ main {
         left: 3.5%;
         width: 16%;
         overflow: hidden;
-
-        img {
-            width: 100%;
-        }
     }
 
     &__icon2 {
@@ -113,26 +103,26 @@ main {
         width: 16%;
         height: 20%;
         overflow: hidden;
+    }
 
-        img {
-            width: 100%;
-        }
+    &__icon-img {
+        width: 100%;
     }
 
     &__layer3-overlay {
+        @include m.flex-layout(center, center, row);
         position: absolute;
         background-color: white;
         height: 10%;
         width: 20%;
-        @include m.flex-layout(center, center, row);
         gap: 6%;
         font-size: 0.5rem;
-        padding: 8px 16px;
-        border-radius: 50px;
+        padding: rem(8) rem(16);
+        border-radius: rem(50);
         border: none;
         top: 67%;
         left: 76%;
-        box-shadow: 0 90px 150px black;
+        box-shadow: 0 rem(90) rem(150) black;
         white-space: nowrap;
     }
 
@@ -144,79 +134,55 @@ main {
     &__top-left {
         @include m.flex-layout(space-evenly, center, column);
         gap: 1.2rem;
-        padding-top: 32px;
+        padding-top: rem(32);
     }
 
     &__explore {
-        // height: 56px;
-        // width: 224px;
-        @include m.btn();
+        @include m.flex-layout(center, center, row);
+        padding: rem(16) rem(32);
+        border-radius: rem(100);
         font-family: t.$font-primary;
         color: v.$color-secondary;
-        font-weight: t.$sub-heading-weight;
+        font-weight: t.$weight-500;
         font-size: t.$font-sm;
         background-color: white;
-        box-shadow: 0 12px 70px rgb(0, 0, 0, 0.12);
-        @include m.flex-layout(center, center, row);
-        gap: 16px;
+        box-shadow: 0 rem(12) rem(70) rgb(0, 0, 0, 0.12);
+        gap: rem(16);
+    }
 
-        span {
-            font-size: 1.25rem;
-        }
+    .icon-Vector-1 {
+        font-size: 1.25rem;
     }
 
     &__top-heading {
         width: 100%;
-        font-family: t.$font-primary;
-        font-size: t.$font-3xl;
-        font-weight: 700;
-        text-align: center;
+    }
 
-        span {
-            color: v.$color-secondary;
-        }
+    &__top-heading-pink {
+        color: v.$color-secondary;
     }
 
     &__top-para {
-        text-align: center;
         width: 100%;
-        font-family: t.$font-secondary;
-        font-size: t.$font-md;
-        color: v.$text-muted;
-        line-height: 22px;
     }
 
     &__top-button-container {
-        width: 100%;
         @include m.flex-layout(space-between, center, column);
-        gap: 25px;
-        margin-top: 5.5%;
-    }
-
-    &__btn {
         width: 100%;
-        height: 64px;
-        @include m.btn(32px, 24px);
-        font-family: t.$font-primary;
-        font-weight: 700;
+        gap: rem(25);
+        margin-top: rem(18);
+    }
+
+    &__top-button {
         @include m.flex-layout(center, center, row);
+        width: 100%;
         gap: 4%;
-
-        span {
-            font-size: t.$font-xl;
-        }
+        font-weight: 700;
+        padding: rem(24) rem(32);
     }
 
-    #hero__btn1 {
-        background-color: v.$color-primary;
-        color: white;
-        box-shadow: 0 27px 38px rgba(0, 0, 0, 0.2);
-    }
-
-    #hero__btn2 {
-        background-color: white;
-        color: v.$color-text-primary;
-        border: 1px solid rgb(217, 216, 216);
+    .icon-Vector-4 {
+        font-size: t.$font-xl;
     }
 
     &__bottom {
@@ -225,27 +191,27 @@ main {
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        gap: 21px;
-        padding: 64px 0 64px 0;
+        gap: rem(21);
+        padding: rem(52) 0 rem(52) 0;
         flex-wrap: wrap;
     }
 
     &__logo {
         width: 27%;
+    }
 
-        img {
-            width: 100%;
-            object-fit: cover;
-        }
+    .logo-img {
+        width: 100%;
+        object-fit: cover;
     }
 }
 
-@media screen and (min-width: 431px) {
+@media screen and (min-width: rem(431)) {
     .hero {
-        @include m.section-layout(64px, 64px);
+        @include m.section-layout(rem(64), rem(64));
 
         &__top {
-            gap: 32px;
+            gap: rem(32);
         }
 
         &__overlay-clipart {
@@ -253,13 +219,17 @@ main {
             display: block;
 
             left: 3.5%;
-            top: 127.5%;
+            top: 100%;
         }
 
         &__top-button-container {
             @include m.flex-layout(space-between, center, row);
-            margin-top: 5.5%;
-            max-width: 338px;
+            margin-top: 0;
+            max-width: rem(338);
+        }
+
+        &__collage-image {
+            border-radius: rem(32);
         }
 
         &__layer3-overlay {
@@ -268,7 +238,7 @@ main {
 
         &__top-left {
             width: 100%;
-            gap: 32px;
+            gap: rem(43);
         }
 
         &__top-para {
@@ -281,19 +251,8 @@ main {
             font-size: t.$font-4xl;
         }
 
-        &__btn {
-            @include m.btn(32px, 16px);
-            height: 49px;
-        }
-
-        #hero__btn1 {
-            width: 141px;
-            white-space: nowrap;
-        }
-
-        #hero__btn2 {
-            width: 181px;
-            white-space: nowrap;
+        &__top-button {
+            padding: rem(16) rem(32);
         }
 
         &__bottom {
@@ -301,17 +260,18 @@ main {
             gap: 7%;
             flex-wrap: wrap;
             width: 57%;
-            margin-top: 6.5%;
+            margin-top: rem(60);
+            padding: rem(64) 0 rem(64) 0;
         }
 
         &__logo {
-            padding-top: 8px;
-            padding-bottom: 8px;
+            padding-top: rem(8);
+            padding-bottom: rem(8);
         }
     }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: rem(600)) {
     .hero {
         &__top-heading {
             width: 70%;
@@ -329,27 +289,27 @@ main {
     }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: rem(1025)) {
     .hero {
-        @include m.section-layout(27px, 117px);
+        @include m.section-layout(rem(27), rem(117));
 
         &__overlay-clipart {
             position: absolute;
             left: 2.5%;
-            top: 65.5%;
+            top: 70.5%;
         }
 
         &__top {
             flex-direction: row-reverse;
             width: 100%;
-            gap: 0px;
+            gap: 0;
         }
 
         &__top-left {
             width: 36%;
             margin-top: 0;
             align-items: baseline;
-            gap: 38px;
+            gap: rem(52);
             padding-top: 0;
         }
 
@@ -362,16 +322,16 @@ main {
         &__top-para {
             width: 100%;
             text-align: start;
-            line-height: 26px;
+            line-height: rem(26);
         }
 
         &__layer3-overlay {
-            padding: 16px 32px;
+            padding: rem(16) rem(32);
         }
 
         &__bottom {
             width: 100%;
-            margin-top: 3.5%;
+            margin-top: rem(40);
         }
 
         &__logo {

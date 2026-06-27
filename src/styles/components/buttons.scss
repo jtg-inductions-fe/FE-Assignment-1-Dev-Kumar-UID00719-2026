@@ -1,12 +1,22 @@
 @use '../abstracts/variables' as v;
 @use '../base/typography' as t;
+@use '../abstracts/functions' as *;
 
 .button {
-    border-radius: 100px;
-    padding: 16px 32px;
+    border-radius: rem(100);
+    padding: rem(16) rem(32);
     font-size: t.$font-sm;
     font-weight: 500;
     font-family: t.$font-primary;
+    white-space: nowrap;
+}
+
+.button-shadowed {
+    box-shadow: 0 27px 38px rgba(0, 0, 0, 0.2);
+}
+
+.button-outlined {
+    border: 1px solid v.$text-light;
 }
 
 .button--primary {
@@ -17,8 +27,4 @@
 .button--secondary {
     background-color: v.$color-light;
     color: v.$color-text-primary;
-}
-
-.button--secondary-outlined {
-    border: 1px solid v.$text-light;
 }
