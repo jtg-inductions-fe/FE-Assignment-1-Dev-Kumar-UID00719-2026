@@ -153,9 +153,9 @@
     }
 }
 
-@media screen and (min-width: rem(431)) {
+@media screen and (min-width: 431px) {
     .slider {
-        margin-top: rem(8);
+        margin-top: 0;
         padding-top: rem(24);
 
         &__background {
@@ -200,7 +200,7 @@
     }
 }
 
-@media screen and (min-width: rem(1025)) {
+@media screen and (min-width: 1025px) {
     .slider {
         margin-top: rem(88);
 
