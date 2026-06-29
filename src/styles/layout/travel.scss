@@ -8,7 +8,7 @@
     width: 100%;
     margin-top: rem(24);
 
-    .coupon-icon {
+    &__coupon-icon {
         position: absolute;
         display: none;
     }
@@ -17,7 +17,7 @@
         width: 100%;
     }
 
-    .travel-img {
+    &__img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -30,7 +30,8 @@
     }
 
     &__para {
-        width: 90%;
+        width: 100%;
+        padding: 0 rem(24);
     }
 
     &__grid {
@@ -38,7 +39,8 @@
         grid-template-columns: 100%;
         gap: rem(16);
         margin-top: rem(18);
-        width: 80%;
+        padding: 0 rem(43);
+        width: 100%;
     }
 
     &__cell {
@@ -50,14 +52,14 @@
         gap: rem(10);
     }
 
-    .cell-head {
+    &__cell-head {
         color: v.$color-accent;
         font-size: rem(35);
         font-family: t.$font-primary;
         font-weight: t.$weight-700;
     }
 
-    .cell-text {
+    &__cell-text {
         font-family: t.$font-secondary;
         font-weight: t.$weight-400;
         font-size: rem(18);
@@ -66,13 +68,14 @@
     }
 }
 
-@media screen and (min-width: rem(431)) {
+@media screen and (min-width: 431px) {
     .travel {
         margin-top: 0;
         position: relative;
 
         &__text {
             margin-top: rem(60);
+            gap: rem(22);
         }
 
         &__gradient-layer {
@@ -97,15 +100,16 @@
 
         &__para {
             font-size: rem(18);
-            width: 84%;
+            width: 100%;
+            padding: 0 66px;
             margin-top: rem(2);
         }
 
         &__grid {
-            grid-template-columns: 48% 48%;
+            grid-template-columns: 1fr 1fr;
             gap: rem(34);
-            width: 88%;
             margin-top: rem(42);
+            padding: 0 rem(64);
         }
 
         &__cell {
@@ -114,17 +118,17 @@
     }
 }
 
-@media screen and (min-width: rem(1025)) {
+@media screen and (min-width: 1025px) {
     .travel {
         @include m.flex-layout(start, center, row);
         margin-top: 0;
         position: relative;
         padding-right: rem(117);
 
-        .coupon-icon {
+        &__coupon-icon {
             display: block;
-            top: 307px;
-            right: 0px;
+            top: rem(307);
+            right: 0;
         }
 
         &__gradient-layer {
@@ -158,12 +162,18 @@
         &__para {
             text-align: start;
             width: 100%;
+            padding: 0 0;
         }
 
         &__grid {
-            grid-template-columns: 46% 46%;
-            margin-top: rem(38);
+            grid-template-columns: 1fr 1fr;
+            margin-top: 2.375rem;
             width: 100%;
+            padding: 0 0;
+        }
+
+        &__cell-text {
+            white-space: nowrap;
         }
     }
 }
