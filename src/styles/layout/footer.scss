@@ -1,22 +1,28 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
-@use '../abstracts/functions';
+@use '../abstracts/functions' as *;
 @use '../base/typography' as t;
 
 .footer {
     @include m.flex-layout(space-between, flex-start, column);
-    @include m.section-layout(32px, 16px);
-    gap: 64px;
-    margin-top: 90px;
+    @include m.section-layout(rem(32), rem(16));
+    gap: rem(64);
+    margin-top: rem(86);
+    position: relative;
+
+    &__background {
+        position: absolute;
+        display: none;
+    }
 
     &__top {
         @include m.flex-layout(space-between, flex-start, column);
-        gap: 32px;
+        gap: rem(32);
     }
 
     &__heading {
         @include m.flex-layout(space-between, center, row);
-        gap: 16px;
+        gap: rem(16);
         h2 {
             font-size: t.$font-xl;
             font-family: t.$font-primary;
@@ -33,14 +39,14 @@
     &__socials {
         font-size: t.$font-2xl;
         @include m.flex-layout(flex-start, center, row);
-        gap: 32px;
+        gap: rem(32);
     }
 
     &__bottom {
         @include m.flex-layout(space-between, flex-start, column);
         width: 100%;
-        gap: 80px;
-        margin-top: 16px;
+        gap: rem(80);
+        margin-top: rem(16);
     }
 
     &__company {
@@ -78,11 +84,11 @@
 
     &__link-container {
         @include m.flex-layout(space-between, flex-start, column);
-        gap: 24px;
+        gap: rem(24);
         transition: max-height 0.3s ease;
         max-height: 0;
         overflow: hidden;
-        padding-top: 16px;
+        padding-top: rem(16);
     }
 
     &__link {
@@ -98,17 +104,23 @@
 }
 
 .accordion {
-    max-height: 250px;
+    max-height: rem(250);
 }
 
 .rotate {
     transform: rotate(180deg);
 }
 
-@media screen and (min-width: 431px) {
+@media screen and (min-width: rem(431)) {
     .footer {
-        @include m.section-layout(64px, 64px);
-        margin-top: 152px;
+        @include m.section-layout(rem(64), rem(64));
+        margin-top: rem(152);
+
+        &__background {
+            display: block;
+            right: 0;
+            top: rem(213);
+        }
 
         &__para {
             font-size: t.$font-xl;
@@ -116,14 +128,14 @@
 
         &__bottom {
             display: grid;
-            gap: 30px;
+            gap: rem(30);
             grid-template-columns: 1fr 1fr 1fr;
             margin-top: 0;
         }
 
         &__company {
             @include m.flex-layout(flex-start, flex-start, column);
-            gap: 32px;
+            gap: rem(32);
             h3 {
                 font-size: t.$font-xl;
                 font-family: t.$font-primary;
@@ -132,7 +144,7 @@
 
         &__contact {
             @include m.flex-layout(flex-start, flex-start, column);
-            gap: 32px;
+            gap: rem(32);
             h3 {
                 font-size: t.$font-xl;
                 font-family: t.$font-primary;
@@ -141,7 +153,7 @@
 
         &__meet {
             @include m.flex-layout(flex-start, flex-start, column);
-            gap: 32px;
+            gap: rem(32);
             h3 {
                 font-size: t.$font-xl;
                 font-family: t.$font-primary;
@@ -150,8 +162,8 @@
 
         &__link-container {
             @include m.flex-layout(space-between, flex-start, column);
-            gap: 40px;
-            max-height: 300px;
+            gap: rem(40);
+            max-height: rem(300);
             padding-top: 0;
         }
 
@@ -168,10 +180,15 @@
     }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: rem(1025)) {
     .footer {
+        @include m.section-layout(rem(32), rem(117));
         flex-direction: row;
-        gap: 32px;
-        @include m.section-layout(32px, 117px);
+        gap: 0;
+        margin-top: rem(228);
+
+        &__background {
+            top: rem(23);
+        }
     }
 }
