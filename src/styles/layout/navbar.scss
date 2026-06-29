@@ -57,7 +57,7 @@
         width: 100%;
         height: rem(400);
         position: absolute;
-        top: -rem(500);
+        top: -500px;
         left: 0;
         border: 1px solid rgb(233, 233, 233);
         z-index: v.$z-index_10;
@@ -68,7 +68,7 @@
     }
 
     .active {
-        top: rem(110);
+        top: 110px;
         visibility: visible;
     }
 
@@ -87,7 +87,7 @@
     }
 }
 
-@media screen and (max-width: rem(431)) {
+@media screen and (max-width: 430px) {
     .navbar {
         &__auth {
             display: none;
@@ -95,7 +95,7 @@
     }
 }
 
-@media screen and (min-width: rem(431)) {
+@media screen and (min-width: 431px) {
     .navbar {
         &__container {
             flex-direction: row;
@@ -109,8 +109,8 @@
         &__popup {
             width: 50%;
             position: absolute;
-            left: -rem(500);
-            top: rem(100);
+            left: -500px;
+            top: 100px;
             justify-content: center;
             transition: all 0.3s ease;
         }
@@ -120,13 +120,13 @@
         }
 
         .active {
-            top: rem(100);
-            left: 0;
+            top: 100px;
+            left: 0px;
         }
     }
 }
 
-@media screen and (min-width: rem(1025)) {
+@media screen and (min-width: 1025px) {
     .navbar {
         &__container {
             @include m.section-layout(rem(65), rem(117));
