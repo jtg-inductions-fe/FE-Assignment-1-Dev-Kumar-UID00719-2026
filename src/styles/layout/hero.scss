@@ -24,7 +24,7 @@
         aspect-ratio: 772/713;
     }
 
-    &__layer1 {
+    &__bottom-layer {
         @include m.flex-layout();
         width: 100%;
         position: absolute;
@@ -33,12 +33,12 @@
         overflow: hidden;
     }
 
-    &__layer1-image {
+    &__bottom-layer-image {
         object-fit: cover;
         width: 100%;
     }
 
-    &__layer2 {
+    &__middle-layer {
         @include m.flex-layout(space-evenly, center, row);
         height: 100%;
         width: 80%;
@@ -47,23 +47,23 @@
         left: 9%;
     }
 
-    &__layer2-left {
+    &__middle-layer-left {
         @include m.flex-layout(space-evenly, center, column);
         height: 96%;
         width: 44%;
     }
 
-    &__layer2-image1 {
+    &__middle-layer-image1 {
         height: 45%;
         width: 100%;
     }
 
-    &__layer2-image2 {
+    &__middle-layer-image2 {
         height: 45%;
         width: 100%;
     }
 
-    &__layer2-right {
+    &__middle-layer-right {
         height: 55%;
         width: 45%;
     }
@@ -79,7 +79,7 @@
         object-fit: cover;
     }
 
-    &__layer3 {
+    &__upper-layer {
         height: 100%;
         width: 100%;
     }
@@ -88,7 +88,7 @@
         font-size: t.$font-3xl;
     }
 
-    &__icon1 {
+    &__send-icon {
         position: absolute;
         top: 48.5%;
         left: 3.5%;
@@ -96,7 +96,7 @@
         overflow: hidden;
     }
 
-    &__icon2 {
+    &__connect-icon {
         position: absolute;
         top: 92%;
         left: 57.5%;
@@ -109,13 +109,13 @@
         width: 100%;
     }
 
-    &__layer3-overlay {
+    &__upper-layer-overlay {
         @include m.flex-layout(center, center, row);
         position: absolute;
         background-color: white;
         height: 10%;
         width: 20%;
-        gap: 6%;
+        gap: 6px;
         font-size: 0.5rem;
         padding: rem(8) rem(16);
         border-radius: rem(50);
@@ -128,12 +128,11 @@
 
     &__top {
         @include m.flex-layout(space-evenly, center, column);
-        gap: 5%;
     }
 
     &__top-left {
         @include m.flex-layout(space-evenly, center, column);
-        gap: 1.2rem;
+        gap: rem(19);
         padding-top: rem(32);
     }
 
@@ -176,7 +175,7 @@
     &__top-button {
         @include m.flex-layout(center, center, row);
         width: 100%;
-        gap: 4%;
+        gap: rem(8);
         font-weight: 700;
         padding: rem(24) rem(32);
     }
@@ -206,7 +205,7 @@
     }
 }
 
-@media screen and (min-width: rem(431)) {
+@media screen and (min-width: 431px) {
     .hero {
         @include m.section-layout(rem(64), rem(64));
 
@@ -232,7 +231,7 @@
             border-radius: rem(32);
         }
 
-        &__layer3-overlay {
+        &__upper-layer-overlay {
             font-size: 0.6rem;
         }
 
@@ -257,7 +256,7 @@
 
         &__bottom {
             justify-content: center;
-            gap: 7%;
+            gap: rem(3) rem(22);
             flex-wrap: wrap;
             width: 57%;
             margin-top: rem(60);
@@ -271,14 +270,14 @@
     }
 }
 
-@media screen and (min-width: rem(600)) {
+@media screen and (min-width: 600px) {
     .hero {
         &__top-heading {
             width: 70%;
             font-size: t.$font-4xl;
         }
 
-        &__layer3-overlay {
+        &__upper-layer-overlay {
             font-size: t.$font-sm;
         }
 
@@ -289,7 +288,7 @@
     }
 }
 
-@media screen and (min-width: rem(1025)) {
+@media screen and (min-width: 1025px) {
     .hero {
         @include m.section-layout(rem(27), rem(117));
 
@@ -325,13 +324,14 @@
             line-height: rem(26);
         }
 
-        &__layer3-overlay {
+        &__upper-layer-overlay {
             padding: rem(16) rem(32);
         }
 
         &__bottom {
             width: 100%;
             margin-top: rem(40);
+            gap: rem(3) rem(90);
         }
 
         &__logo {

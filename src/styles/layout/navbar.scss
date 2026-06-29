@@ -25,8 +25,8 @@
         opacity: 50%;
         border-radius: 50%;
         filter: blur(150px);
-        left: -rem(153);
-        top: -rem(150);
+        left: -153px;
+        top: -150px;
         z-index: v.$z-index_20;
     }
 
@@ -87,7 +87,7 @@
     }
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 431px) {
     .navbar {
         &__auth {
             display: none;
@@ -130,6 +130,11 @@
     .navbar {
         &__container {
             @include m.section-layout(rem(65), rem(117));
+        }
+
+        &__gradient-layer {
+            left: 0;
+            top: 19px;
         }
 
         &__link-container {
