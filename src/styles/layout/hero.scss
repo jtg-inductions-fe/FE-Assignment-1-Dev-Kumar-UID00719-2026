@@ -214,6 +214,7 @@ main {
 @media screen and (min-width: 431px) {
     .hero {
         @include m.section-layout(rem(64), rem(64));
+        padding-bottom: rem(44);
 
         &__top {
             gap: rem(32);
