@@ -11,11 +11,11 @@
     white-space: nowrap;
 }
 
-.button-shadowed {
-    box-shadow: 0 27px 38px rgba(0, 0, 0, 0.2);
+.button--shadowed {
+    box-shadow: v.$button-shadow;
 }
 
-.button-outlined {
+.button--outlined {
     border: 1px solid v.$text-light;
 }
 

@@ -116,7 +116,8 @@
         height: 10%;
         width: 20%;
         gap: 6px;
-        font-size: 0.5rem;
+        font-size: rem(8);
+        font-family: t.$font-primary;
         padding: rem(8) rem(16);
         border-radius: rem(50);
         border: none;
@@ -149,8 +150,8 @@
         gap: rem(16);
     }
 
-    .icon-Vector-1 {
-        font-size: 1.25rem;
+    &__explore-bag-icon {
+        font-size: rem(20);
     }
 
     &__top-heading {
@@ -180,7 +181,7 @@
         padding: rem(24) rem(32);
     }
 
-    .icon-Vector-4 {
+    &__play-icon {
         font-size: t.$font-xl;
     }
 
@@ -199,7 +200,7 @@
         width: 27%;
     }
 
-    .logo-img {
+    &__logo-img {
         width: 100%;
         object-fit: cover;
     }
@@ -216,7 +217,6 @@
         &__overlay-clipart {
             position: absolute;
             display: block;
-
             left: 3.5%;
             top: 100%;
         }
@@ -232,7 +232,7 @@
         }
 
         &__upper-layer-overlay {
-            font-size: 0.6rem;
+            font-size: rem(10);
         }
 
         &__top-left {
@@ -332,10 +332,7 @@
             width: 100%;
             margin-top: rem(40);
             gap: rem(3) rem(90);
-        }
-
-        &__logo {
-            width: 14%;
+            flex-wrap: nowrap;
         }
     }
 }
