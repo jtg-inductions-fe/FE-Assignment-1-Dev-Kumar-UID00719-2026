@@ -8,6 +8,13 @@
     @include m.flex-layout(space-between, center, column);
     margin-top: rem(100);
     gap: rem(16);
+    position: relative;
+
+    &__background {
+        position: absolute;
+        width: 100vw;
+        display: none;
+    }
 }
 
 .review {
@@ -151,6 +158,11 @@
         margin-top: rem(8);
         padding-top: rem(24);
 
+        &__background {
+            display: block;
+            top: rem(-116);
+        }
+
         &__subheading {
             font-size: 1.5rem;
         }
@@ -193,7 +205,12 @@
         margin-top: rem(88);
 
         &__heading {
-            font-size: 44px;
+            font-size: rem(44);
+        }
+
+        &__background {
+            display: block;
+            top: rem(-242);
         }
     }
 
