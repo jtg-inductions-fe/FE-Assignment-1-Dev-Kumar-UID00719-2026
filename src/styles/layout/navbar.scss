@@ -80,10 +80,6 @@
         font-size: t.$font-lg;
         font-weight: t.$weight-700;
         background-color: white;
-
-        li {
-            text-align: center;
-        }
     }
 
     &__popup-auth {
@@ -121,10 +117,6 @@
 
         &__popup-link-container {
             padding: rem(20);
-
-            li {
-                text-align: start;
-            }
         }
 
         .active {
