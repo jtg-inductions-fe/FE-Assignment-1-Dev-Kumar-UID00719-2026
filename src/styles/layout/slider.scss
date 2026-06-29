@@ -31,7 +31,7 @@
         overflow: hidden;
     }
 
-    .profile-img {
+    &__profile-img {
         object-fit: cover;
         width: 100%;
         height: 100%;
@@ -67,7 +67,7 @@
         gap: rem(16);
     }
 
-    .star {
+    &__star {
         font-size: t.$font-2xl;
     }
 }
@@ -155,7 +155,7 @@
 
 @media screen and (min-width: 431px) {
     .slider {
-        margin-top: 0;
+        margin-top: rem(8);
         padding-top: rem(24);
 
         &__background {
