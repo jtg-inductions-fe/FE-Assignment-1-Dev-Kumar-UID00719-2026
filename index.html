@@ -1,13 +1,75 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Title</title>
+        <title>JTG Travels | Assignment 1</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="src/styles/main.scss" />
+
+        <link rel="stylesheet" href="assets/icomoon/style.css" />
     </head>
     <body>
-        <div>Hello World</div>
+        <nav class="navbar">
+            <div class="navbar__gradient-layer" id="yellow-circle"></div>
+            <div class="navbar__container">
+                <button
+                    type="button"
+                    class="navbar__hamburger"
+                    id="navbar-hamburger"
+                    aria-label="Navigation menu"
+                    tabindex="1"
+                >
+                    <span class="icon-Vector-2"></span>
+                </button>
+
+                <div class="navbar__logo">
+                    <img src="assets/logos/mainlogo.png" alt="" />
+                </div>
+
+                <ul class="navbar__link-container">
+                    <li>
+                        <a class="navbar__links navbar__links--active" href="#">
+                            Home
+                        </a>
+                    </li>
+                    <li><a class="navbar__links" href="#">Discover</a></li>
+                    <li><a class="navbar__links" href="#">Special Deals</a></li>
+                    <li><a class="navbar__links" href="#">Contact</a></li>
+                </ul>
+
+                <div class="navbar__auth">
+                    <button type="button" class="button button--secondary">
+                        Log In
+                    </button>
+                    <button type="button" class="button button--primary">
+                        Sign Up
+                    </button>
+                </div>
+            </div>
+
+            <div class="navbar__popup" id="navbar-popup">
+                <ul class="navbar__popup-link-container">
+                    <li>
+                        <a class="navbar__links navbar__links--active" href="#">
+                            Home
+                        </a>
+                    </li>
+                    <li><a class="navbar__links" href="#">Discover</a></li>
+                    <li><a class="navbar__links" href="#">Special Deals</a></li>
+                    <li><a class="navbar__links" href="#">Contact</a></li>
+                </ul>
+
+                <div class="navbar__popup-auth">
+                    <button type="button" class="button button--secondary">
+                        Log In
+                    </button>
+                    <button type="button" class="button button--primary">
+                        Sign Up
+                    </button>
+                </div>
+            </div>
+        </nav>
+
         <script type="module" src="./src/script/index.js"></script>
     </body>
 </html>

@@ -1,0 +1,24 @@
+@use '../abstracts/variables' as v;
+@use '../base/typography' as t;
+
+.button {
+    border-radius: 100px;
+    padding: 16px 32px;
+    font-size: t.$font-sm;
+    font-weight: 500;
+    font-family: t.$font-primary;
+}
+
+.button--primary {
+    background-color: v.$color-primary;
+    color: v.$text-light;
+}
+
+.button--secondary {
+    background-color: v.$color-light;
+    color: v.$color-text-primary;
+}
+
+.button--secondary-outlined {
+    border: 1px solid v.$text-light;
+}
