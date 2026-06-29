@@ -1,3 +1,6 @@
+@use '../abstracts/variables' as v;
+@use '../base/typography' as t;
+
 @mixin flex-layout($justify: center, $align: center, $direction: row) {
     display: flex;
     flex-direction: $direction;
@@ -5,7 +8,7 @@
     align-items: $align;
 }
 
-@mixin btn($left-right: 32px, $top-down: 16px) {
-    border-radius: 100px;
-    padding: $top-down $left-right;
+@mixin section-layout($padding-top-bottom: 35px, $padding-left-right: 16px) {
+    padding: $padding-top-bottom $padding-left-right;
+    width: 100%;
 }
