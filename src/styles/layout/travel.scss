@@ -68,7 +68,7 @@
     }
 }
 
-@media screen and (min-width: 431px) {
+@media screen and (min-width: rem(431)) {
     .travel {
         margin-top: 0;
         position: relative;
@@ -118,7 +118,7 @@
     }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: rem(1025)) {
     .travel {
         display: grid;
         grid-template-columns: 2fr 1fr;
