@@ -87,10 +87,10 @@
         color: v.$color-text-secondary;
         font-weight: 400;
     }
-}
 
-.dropdown {
-    transition: all 0.3s ease;
+    &__dropdown-icon {
+        transition: all 0.3s ease;
+    }
 }
 
 .accordion {
@@ -101,7 +101,7 @@
     transform: rotate(180deg);
 }
 
-@media screen and (min-width: rem(431)) {
+@media screen and (min-width: 431px) {
     .footer {
         @include m.section-layout(rem(64), rem(64));
         margin-top: rem(152);
@@ -126,28 +126,21 @@
         &__company {
             @include m.flex-layout(flex-start, flex-start, column);
             gap: rem(32);
-            h3 {
-                font-size: t.$font-xl;
-                font-family: t.$font-primary;
-            }
         }
 
         &__contact {
             @include m.flex-layout(flex-start, flex-start, column);
             gap: rem(32);
-            h3 {
-                font-size: t.$font-xl;
-                font-family: t.$font-primary;
-            }
         }
 
         &__meet {
             @include m.flex-layout(flex-start, flex-start, column);
             gap: rem(32);
-            h3 {
-                font-size: t.$font-xl;
-                font-family: t.$font-primary;
-            }
+        }
+
+        &__dropdown-heading {
+            font-size: t.$font-xl;
+            font-family: t.$font-primary;
         }
 
         &__link-container {
@@ -163,14 +156,14 @@
             color: v.$color-text-secondary;
             font-weight: 400;
         }
-    }
 
-    .dropdown {
-        display: none;
+        &__dropdown-icon {
+            display: none;
+        }
     }
 }
 
-@media screen and (min-width: rem(1025)) {
+@media screen and (min-width: 1025px) {
     .footer {
         @include m.section-layout(rem(32), rem(117));
         flex-direction: row;
