@@ -23,10 +23,11 @@
     &__heading {
         @include m.flex-layout(space-between, center, row);
         gap: rem(16);
-        h2 {
-            font-size: t.$font-xl;
-            font-family: t.$font-primary;
-        }
+    }
+
+    &__heading-text {
+        font-size: t.$font-xl;
+        font-family: t.$font-primary;
     }
 
     &__para {
@@ -37,8 +38,8 @@
     }
 
     &__socials {
-        font-size: t.$font-2xl;
         @include m.flex-layout(flex-start, center, row);
+        font-size: t.$font-2xl;
         gap: rem(32);
     }
 
@@ -52,34 +53,23 @@
     &__company {
         @include m.flex-layout(space-between, flex-start, column);
         width: 100%;
-        h3 {
-            font-size: t.$font-xl;
-            font-family: t.$font-primary;
-            width: 100%;
-            @include m.flex-layout(space-between, center, row);
-        }
     }
 
     &__contact {
         @include m.flex-layout(space-between, flex-start, column);
         width: 100%;
-        h3 {
-            font-size: t.$font-xl;
-            font-family: t.$font-primary;
-            width: 100%;
-            @include m.flex-layout(space-between, center, row);
-        }
     }
 
     &__meet {
         @include m.flex-layout(space-between, flex-start, column);
         width: 100%;
-        h3 {
-            font-size: t.$font-xl;
-            font-family: t.$font-primary;
-            width: 100%;
-            @include m.flex-layout(space-between, center, row);
-        }
+    }
+
+    &__dropdown-heading {
+        @include m.flex-layout(space-between, center, row);
+        font-size: t.$font-xl;
+        font-family: t.$font-primary;
+        width: 100%;
     }
 
     &__link-container {
