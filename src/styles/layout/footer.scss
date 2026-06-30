@@ -34,7 +34,7 @@
         font-size: t.$font-md;
         font-family: t.$font-primary;
         color: v.$color-text-secondary;
-        line-height: 160%;
+        line-height: 1.6;
     }
 
     &__socials {
@@ -50,17 +50,7 @@
         margin-top: rem(16);
     }
 
-    &__company {
-        @include m.flex-layout(space-between, flex-start, column);
-        width: 100%;
-    }
-
-    &__contact {
-        @include m.flex-layout(space-between, flex-start, column);
-        width: 100%;
-    }
-
-    &__meet {
+    &__section {
         @include m.flex-layout(space-between, flex-start, column);
         width: 100%;
     }
@@ -123,17 +113,7 @@
             margin-top: 0;
         }
 
-        &__company {
-            @include m.flex-layout(flex-start, flex-start, column);
-            gap: rem(32);
-        }
-
-        &__contact {
-            @include m.flex-layout(flex-start, flex-start, column);
-            gap: rem(32);
-        }
-
-        &__meet {
+        &__section {
             @include m.flex-layout(flex-start, flex-start, column);
             gap: rem(32);
         }
