@@ -58,7 +58,7 @@
         text-align: center;
         font-size: t.$font-lg;
         font-weight: t.$weight-450;
-        line-height: 160%;
+        line-height: 1.6;
         color: v.$color-text-secondary;
     }
 
@@ -83,34 +83,34 @@
     &__arrows {
         position: absolute;
         width: 100%;
-        top: 20%;
+        top: rem(108);
     }
 
     .splide__arrow:hover:not(:disabled) {
         background-color: v.$color-primary;
-        color: white;
+        color: v.$color-light;
     }
 
     .splide__arrow:focus-within:not(:disabled) {
         background-color: v.$color-primary;
-        color: white;
+        color: v.$color-light;
     }
 
-    .left-arrow {
+    .splide__left-arrow {
         width: rem(64);
         height: rem(64);
-        background-color: white;
-        border: 1px solid rgba(25, 24, 37, 0.1);
+        background-color: v.$color-light;
+        border: v.$border;
     }
 
-    .right-arrow {
+    .splide__right-arrow {
         width: rem(64);
         height: rem(64);
-        background-color: white;
-        border: 1px solid rgba(25, 24, 37, 0.1);
+        background-color: v.$color-light;
+        border: v.$border;
     }
 
-    .right-arrow-span {
+    .splide__right-arrow-span {
         transform: rotate(180deg);
     }
 
@@ -121,7 +121,7 @@
     }
 
     &__pagination {
-        top: 100%;
+        bottom: 0;
         height: rem(24);
         display: flex;
         justify-content: center;
@@ -156,7 +156,7 @@
 @media screen and (min-width: 431px) {
     .slider {
         margin-top: rem(8);
-        padding-top: rem(24);
+        padding-top: rem(16);
 
         &__background {
             display: block;
@@ -164,28 +164,33 @@
         }
 
         &__subheading {
-            font-size: 1.5rem;
+            font-size: t.$font-xl;
         }
 
         &__heading {
-            font-size: 2.5rem;
+            font-size: t.$font-3xl;
         }
     }
 
-    .splide .left-arrow {
-        width: rem(100);
-        height: rem(100);
-    }
+    .splide {
+        &__arrows {
+            width: 100%;
+            top: rem(228);
+        }
 
-    .splide .right-arrow {
-        width: rem(100);
-        height: rem(100);
-    }
+        .splide__left-arrow {
+            position: absolute;
+            left: rem(64);
+            width: rem(100);
+            height: rem(100);
+        }
 
-    .splide__arrows {
-        width: 91%;
-        top: 42%;
-        left: 4.5%;
+        .splide__right-arrow {
+            position: absolute;
+            right: rem(64);
+            width: rem(100);
+            height: rem(100);
+        }
     }
 
     .review {
@@ -195,7 +200,7 @@
         margin-bottom: rem(48);
 
         &__description {
-            font-size: 1.5rem;
+            font-size: rem(20);
         }
     }
 }
@@ -214,8 +219,15 @@
         }
     }
 
-    .splide__arrows {
-        width: 85%;
-        left: 8%;
+    .splide {
+        .splide__left-arrow {
+            position: absolute;
+            left: rem(52);
+        }
+
+        .splide__right-arrow {
+            position: absolute;
+            right: rem(52);
+        }
     }
 }

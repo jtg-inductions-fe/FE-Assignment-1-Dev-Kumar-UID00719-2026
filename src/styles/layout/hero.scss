@@ -233,15 +233,7 @@
         }
 
         &__upper-layer-overlay {
-            font-size: rem(10);
-        }
-
-        &__layer3-overlay {
-            font-size: 0.6rem;
-        }
-
-        &__layer3-overlay {
-            font-size: 0.6rem;
+            font-size: t.$font-xsm;
         }
 
         &__top-left {
