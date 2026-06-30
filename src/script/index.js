@@ -5,7 +5,7 @@ let popupOpen = false;
 
 let hamburger = document.querySelector('#navbar-hamburger');
 let popup = document.querySelector('#navbar-popup');
-const headings = document.querySelectorAll('.footer__subheading');
+const headings = document.querySelectorAll('.footer__dropdown-button');
 
 hamburger.addEventListener('click', () => {
     if (popupOpen === false) {
@@ -31,11 +31,12 @@ new Splide('.splide', {
 
 headings.forEach((heading) => {
     heading.addEventListener('click', () => {
-        const link = heading.nextElementSibling;
-
-        const span = heading.querySelector('span');
+        if (window.innerWidth > 430) return;
+        const parent = heading.closest('.footer__section');
+        const linkContainer = parent.querySelector('.footer__link-container');
+        const span = heading.querySelector('.footer__dropdown-icon');
         span.classList.toggle('rotate');
 
-        link.classList.toggle('accordion');
+        linkContainer.classList.toggle('accordion');
     });
 });

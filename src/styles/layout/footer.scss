@@ -55,27 +55,23 @@
         width: 100%;
     }
 
-    &__dropdown-heading {
+    &__dropdown-button {
         @include m.flex-layout(space-between, center, row);
         font-size: t.$font-xl;
         font-family: t.$font-primary;
         width: 100%;
+        background: transparent;
     }
 
     &__link-container {
         @include m.flex-layout(space-between, flex-start, column);
         gap: rem(24);
-        transition: max-height 0.3s ease;
-        max-height: 0;
-        overflow: hidden;
+        display: none;
         padding-top: rem(16);
     }
 
     &__link {
-        font-size: t.$font-lg;
-        font-family: t.$font-secondary;
-        color: v.$color-text-secondary;
-        font-weight: 400;
+        word-break: break-word;
     }
 
     &__dropdown-icon {
@@ -84,7 +80,7 @@
 }
 
 .accordion {
-    max-height: rem(250);
+    display: flex;
 }
 
 .rotate {
@@ -126,15 +122,7 @@
         &__link-container {
             @include m.flex-layout(space-between, flex-start, column);
             gap: rem(40);
-            max-height: rem(300);
             padding-top: 0;
-        }
-
-        &__link {
-            font-size: t.$font-lg;
-            font-family: t.$font-secondary;
-            color: v.$color-text-secondary;
-            font-weight: 400;
         }
 
         &__dropdown-icon {
@@ -147,7 +135,7 @@
     .footer {
         @include m.section-layout(rem(32), rem(117));
         flex-direction: row;
-        gap: 0;
+        gap: rem(16);
         margin-top: rem(228);
 
         &__background {
