@@ -1,10 +1,14 @@
+@use '../abstracts/variables' as v;
+
 // font families
-$font-primary: 'Circular Std';
-$font-secondary: 'Inter';
+$font-primary: 'Circular Std', Helvetica, Arial, sans-serif;
+$font-secondary: 'Inter', Helvetica, Arial, sans-serif;
 
 // font weights
-$weight-700: 700;
 $weight-400: 400;
+$weight-450: 450;
+$weight-500: 500;
+$weight-700: 700;
 
 // font size variables
 $font-sm: 0.875rem; //14px
@@ -13,6 +17,8 @@ $font-lg: 1.125rem; //18px
 $font-xl: 1.5rem; //24px
 $font-2xl: 2rem; //32px
 $font-3xl: 2.5rem; //40px
+$font-4xl: 3.5rem; //56px
+$font-5xl: 4.375rem; //70px
 
 @font-face {
     font-family: 'Inter';
@@ -60,4 +66,49 @@ $font-3xl: 2.5rem; //40px
     font-weight: 700;
     font-style: normal;
     font-display: swap;
+}
+
+.heading {
+    font-family: $font-primary;
+    font-weight: $weight-700;
+    font-size: $font-3xl;
+    text-align: center;
+    line-height: 1.2;
+    color: v.$color-text-primary;
+}
+
+.small-heading {
+    font-family: $font-primary;
+    font-weight: $weight-700;
+    font-size: $font-2xl;
+    color: v.$color-text-primary;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.subheading {
+    font-family: $font-primary;
+    font-weight: $weight-700;
+    font-size: $font-md;
+    letter-spacing: 0.2em;
+    line-height: 1.2;
+    color: v.$color-text-secondary;
+    text-align: center;
+}
+
+.paragraph {
+    font-family: $font-secondary;
+    font-size: $font-md;
+    line-height: 1.6;
+    color: v.$text-muted;
+    font-weight: $weight-400;
+    text-align: center;
+}
+
+.review-paragraph {
+    font-family: $font-primary;
+    font-weight: $weight-450;
+    font-size: $font-lg;
+    text-align: center;
+    line-height: 1.6;
 }
