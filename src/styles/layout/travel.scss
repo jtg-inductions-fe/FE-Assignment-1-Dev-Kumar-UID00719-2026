@@ -13,17 +13,17 @@
         display: none;
     }
 
-    &__image {
+    &__image-container {
         width: 100%;
     }
 
-    &__img {
+    &__image {
         width: 100%;
         height: 100%;
         object-fit: cover;
     }
 
-    &__text {
+    &__text-section {
         @include m.flex-layout(space-evenly, center, column);
         gap: rem(20);
         margin-top: rem(30);
@@ -36,7 +36,7 @@
 
     &__grid {
         display: grid;
-        grid-template-columns: 100%;
+        grid-template-columns: 1fr;
         gap: rem(16);
         margin-top: rem(18);
         padding: 0 rem(43);
@@ -73,7 +73,7 @@
         margin-top: 0;
         position: relative;
 
-        &__text {
+        &__text-section {
             margin-top: rem(60);
             gap: rem(22);
         }
@@ -120,7 +120,8 @@
 
 @media screen and (min-width: 1025px) {
     .travel {
-        @include m.flex-layout(start, center, row);
+        display: grid;
+        grid-template-columns: 2fr 1fr;
         margin-top: 0;
         position: relative;
         padding-right: rem(117);
@@ -142,16 +143,16 @@
             right: 0;
         }
 
-        &__image {
-            width: 156%;
+        &__image-container {
             max-width: rem(866);
             margin-top: rem(24);
         }
 
-        &__text {
+        &__text-section {
             align-items: flex-start;
             padding-top: rem(20);
             margin-top: 0;
+            gap: rem(12);
         }
 
         &__heading {
@@ -167,7 +168,7 @@
 
         &__grid {
             grid-template-columns: 1fr 1fr;
-            margin-top: 2.375rem;
+            margin-top: rem(38);
             width: 100%;
             padding: 0 0;
         }

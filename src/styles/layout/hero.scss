@@ -3,11 +3,6 @@
 @use '../abstracts/functions' as *;
 @use '../base/typography' as t;
 
-main {
-    width: 100%;
-    margin-top: 0;
-}
-
 .hero {
     @include m.flex-layout(center, center, column);
     @include m.section-layout(rem(37), rem(16));
