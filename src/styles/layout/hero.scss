@@ -209,6 +209,7 @@
 @media screen and (min-width: 431px) {
     .hero {
         @include m.section-layout(rem(64), rem(64));
+        padding-bottom: rem(44);
 
         &__top {
             gap: rem(32);
@@ -233,6 +234,10 @@
 
         &__upper-layer-overlay {
             font-size: rem(10);
+        }
+
+        &__layer3-overlay {
+            font-size: 0.6rem;
         }
 
         &__top-left {
