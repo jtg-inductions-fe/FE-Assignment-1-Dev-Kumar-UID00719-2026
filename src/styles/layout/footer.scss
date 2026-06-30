@@ -46,7 +46,7 @@
     &__bottom {
         @include m.flex-layout(space-between, flex-start, column);
         width: 100%;
-        gap: rem(80);
+        gap: rem(63);
         margin-top: rem(16);
     }
 
