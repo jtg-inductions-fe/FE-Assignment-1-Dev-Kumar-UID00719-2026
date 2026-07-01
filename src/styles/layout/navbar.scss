@@ -20,7 +20,7 @@
     &__gradient-layer {
         width: rem(272);
         height: rem(348);
-        background-color: v.$color-accent;
+        background-color: v.$color-accent-primary;
         position: absolute;
         opacity: 50%;
         border-radius: 50%;
@@ -46,6 +46,10 @@
     &__links {
         color: v.$text-muted;
         text-align: center;
+    }
+
+    &__logo {
+        z-index: v.$z-index_30;
     }
 
     &__links--active {

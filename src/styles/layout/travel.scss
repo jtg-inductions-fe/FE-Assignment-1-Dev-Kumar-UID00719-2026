@@ -46,14 +46,14 @@
     &__cell {
         @include m.flex-layout(space-evenly, center, column);
         border-radius: rem(32);
-        border: 1px solid rgba(25, 24, 37, 0.1);
+        border: v.$border-primary;
         padding: rem(32);
         height: rem(151);
         gap: rem(10);
     }
 
     &__cell-head {
-        color: v.$color-accent;
+        color: v.$color-accent-primary;
         font-size: rem(35);
         font-family: t.$font-primary;
         font-weight: t.$weight-700;
@@ -79,7 +79,7 @@
         }
 
         &__gradient-layer {
-            background-color: #facd49;
+            background-color: v.$color-accent-secondary;
             width: rem(306);
             height: rem(306);
             opacity: 50%;
