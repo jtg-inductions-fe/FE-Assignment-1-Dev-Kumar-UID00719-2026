@@ -1,11 +1,27 @@
 import '../styles/main.scss';
 import '@splidejs/splide/css';
 import Splide from '@splidejs/splide';
+
 let popupOpen = false;
 
-let hamburger = document.querySelector('#navbar-hamburger');
-let popup = document.querySelector('#navbar-popup');
-const headings = document.querySelectorAll('.footer__dropdown-button');
+const hamburger = document.querySelector('#navbar-hamburger');
+const popup = document.querySelector('#navbar-popup');
+const footerButton = document.querySelectorAll('.footer__dropdown-button');
+
+new Splide('.splide', {
+    type: 'loop',
+    perPage: 1,
+    arrows: true,
+}).mount();
+
+function updateFooterAccessibility() {
+    const isMobile = window.innerWidth <= 430;
+
+    footerButton.forEach((button) => {
+        button.style.pointerEvents = isMobile ? 'auto' : 'none';
+        button.tabIndex = isMobile ? 0 : -1;
+    });
+}
 
 hamburger.addEventListener('click', () => {
     if (popupOpen === false) {
@@ -23,18 +39,15 @@ window.addEventListener('resize', () => {
     }
 });
 
-new Splide('.splide', {
-    type: 'loop',
-    perPage: 1,
-    arrows: true,
-}).mount();
+updateFooterAccessibility();
+window.addEventListener('resize', updateFooterAccessibility);
 
-headings.forEach((heading) => {
-    heading.addEventListener('click', () => {
+footerButton.forEach((button) => {
+    button.addEventListener('click', () => {
         if (window.innerWidth > 430) return;
-        const parent = heading.closest('.footer__section');
+        const parent = button.closest('.footer__section');
         const linkContainer = parent.querySelector('.footer__link-container');
-        const span = heading.querySelector('.footer__dropdown-icon');
+        const span = button.querySelector('.footer__dropdown-icon');
         span.classList.toggle('rotate');
 
         linkContainer.classList.toggle('accordion');
