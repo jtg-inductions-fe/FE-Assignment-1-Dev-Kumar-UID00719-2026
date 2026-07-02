@@ -1,8 +1,16 @@
 {
-    "name": "static-html-base-template",
-    "description": "",
-    "keywords": [],
-    "version": "0.0.0",
+    "name": "travlog-jtg-travels",
+    "description": "A responsive travel landing page built using HML, SCSS, JS and vite",
+    "keywords": [
+        "travel",
+        "landing-page",
+        "vite",
+        "scss",
+        "javascript",
+        "html",
+        "responsive"
+    ],
+    "version": "1.0.0",
     "private": true,
     "type": "module",
     "scripts": {
