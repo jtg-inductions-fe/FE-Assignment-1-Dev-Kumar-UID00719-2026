@@ -34,7 +34,11 @@
                         </a>
                     </li>
                     <li><a class="navbar__links" href="#">Discover</a></li>
-                    <li><a class="navbar__links" href="#">Special Deals</a></li>
+                    <li>
+                        <a class="navbar__links deals-link" href="#"
+                            >Special Deals</a
+                        >
+                    </li>
                     <li><a class="navbar__links" href="#">Contact</a></li>
                 </ul>
 
@@ -56,7 +60,11 @@
                         </a>
                     </li>
                     <li><a class="navbar__links" href="#">Discover</a></li>
-                    <li><a class="navbar__links" href="#">Special Deals</a></li>
+                    <li>
+                        <a class="navbar__links deals-link" href="#"
+                            >Special Deals</a
+                        >
+                    </li>
                     <li><a class="navbar__links" href="#">Contact</a></li>
                 </ul>
 
@@ -462,6 +470,54 @@
                         </button>
                     </div>
                 </section>
+            </section>
+
+            <section class="deals hidden" id="deals">
+                <div class="deals__container">
+                    <button class="deals__close-button" id="deals-close-button">
+                        <img
+                            src="assets/icons/close.svg"
+                            alt="close button icon"
+                        />
+                    </button>
+                    <div class="deals__text-box">
+                        <h3 class="deals-subheading deals__subheading">
+                            <img src="assets/icons/Gift.svg" alt="" />
+                            SPECIAL DEALS
+                        </h3>
+                        <h2 class="deals-heading deals__heading">
+                            Spin & Win!
+                        </h2>
+                        <p class="deals-paragraph deals__para">
+                            Tap the center of the wheel to spin
+                        </p>
+                    </div>
+                    <div class="deals__wheel-container">
+                        <div class="deals__wheel" id="wheel">
+                            <!-- <span class="deals__loading">Loading...</span> -->
+                            <div class="deals__box deals__box1" id="box1">
+                                <span class="deals__offer1">1</span>
+                            </div>
+                            <div class="deals__box deals__box2" id="box1">
+                                <span class="deals__offer2">2</span>
+                            </div>
+                            <div class="deals__box deals__box3" id="box1">
+                                <span class="deals__offer3">3</span>
+                            </div>
+                            <div class="deals__box deals__box4" id="box1">
+                                <span class="deals__offer4">4</span>
+                            </div>
+                        </div>
+                        <img
+                            src="assets/icons/pointer.svg"
+                            class="deals__wheel-pointer"
+                            alt=""
+                        />
+                        <button id="spin-button" class="deals__spin-button">
+                            Spin!
+                        </button>
+                    </div>
+                </div>
             </section>
         </main>
 

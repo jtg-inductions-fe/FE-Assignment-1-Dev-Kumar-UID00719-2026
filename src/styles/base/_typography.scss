@@ -129,4 +129,24 @@ $font-5xl: 4.375rem; //70px
     color: v.$color-text-secondary;
     font-weight: $weight-400;
     text-align: start;
+.deals-subheading {
+    font-family: $font-secondary;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.1;
+    color: #f4436c;
+}
+
+.deals-heading {
+    font-size: 20px;
+    font-family: $font-secondary;
+    font-weight: $weight-700;
+    letter-spacing: 0;
+    color: #111827;
+}
+
+.deals-paragraph {
+    color: v.$text-muted;
+    font-size: 12px;
+    font-family: $font-secondary;
 }

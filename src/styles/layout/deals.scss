@@ -1,0 +1,136 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+@use '../abstracts/functions' as *;
+@use '../base/typography' as t;
+
+.deals {
+    width: 100%;
+    @include m.flex-layout(center, center, row);
+    position: fixed;
+    inset: 0;
+    display: none;
+    z-index: 50;
+    background: rgba(0, 0, 0, 0.5);
+
+    &__container {
+        @include m.flex-layout(center, center, column);
+        gap: 20px;
+        width: 360px;
+        min-height: 375px;
+        background-color: v.$color-light;
+        border-radius: 24px;
+        backdrop-filter: blur(100px);
+        position: relative;
+        padding: 24px 24px;
+    }
+
+    &__text-box {
+        @include m.flex-layout(space-evenly, center, column);
+        gap: 8px;
+    }
+
+    &__close-button {
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        right: 15.5px;
+        top: 15.5px;
+        background: transparent;
+    }
+
+    &__wheel-container {
+        width: 227px;
+        height: 236px;
+        // border: 1px solid red;
+        position: relative;
+    }
+
+    &__wheel {
+        // @include m.flex-layout(center, center, row);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px;
+        width: 227px;
+        height: 227px;
+        // background-color: v.$text-light;
+        background-color: v.$color-light;
+        border-radius: 100%;
+        position: absolute;
+        bottom: 0;
+        overflow: hidden;
+        border: 2px solid v.$color-light;
+        transition: all 5s ease-out;
+
+        &-pointer {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%);
+        }
+    }
+
+    &__box {
+        @include m.flex-layout(center, center, row);
+        color: v.$color-light;
+    }
+
+    &__box1 {
+        background-color: v.$deals-color-accent-1;
+    }
+    &__offer1 {
+        transform: rotate(135deg);
+    }
+
+    &__box2 {
+        background-color: v.$deals-color-accent-2;
+    }
+    &__offer2 {
+        transform: rotate(225deg);
+    }
+
+    &__box3 {
+        background-color: v.$deals-color-accent-3;
+    }
+    &__offer3 {
+        transform: rotate(45deg);
+    }
+
+    &__box4 {
+        background-color: v.$deals-color-accent-4;
+        color: v.$color-dark;
+    }
+    &__offer4 {
+        transform: rotate(315deg);
+    }
+
+    &__loading {
+        font-size: 12px;
+        font-family: t.$font-secondary;
+        color: v.$color-dark;
+        font-weight: 400;
+    }
+
+    &__spin-button {
+        background-color: v.$color-light;
+        width: 43.79px;
+        height: 43.79px;
+        position: absolute;
+        top: 40%;
+        left: 40%;
+        border: 4px solid v.$deals-color-accent-1;
+        border-radius: 100%;
+        font-size: 10px;
+        font-family: t.$font-secondary;
+        font-weight: t.$weight-700;
+        color: v.$deals-color-accent-1;
+    }
+}
+
+.special-deals-open {
+    @include m.flex-layout(flex-end, center, column);
+    position: fixed;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
