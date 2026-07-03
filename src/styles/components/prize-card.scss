@@ -1,0 +1,63 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+@use '../abstracts/functions' as *;
+@use '../base/typography' as t;
+
+.prize {
+    @include m.flex-layout(space-between, center, row);
+    width: 100%;
+    border: 1px solid rgba(244, 67, 108, 0.2);
+    border-radius: 16px;
+    background-image: linear-gradient(
+        to right,
+        rgba(244, 67, 108, 0.1),
+        rgba(124, 58, 237, 0.1)
+    );
+
+    &__left {
+        @include m.flex-layout(space-between, flex-start, column);
+        padding: 16px;
+    }
+
+    &__right {
+        @include m.flex-layout(space-between, center, row);
+        padding: 16px;
+        gap: 8px;
+    }
+
+    &__label {
+        font-family: t.$font-secondary;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    &__expiry {
+        font-family: t.$font-secondary;
+        font-size: 14px;
+        color: v.$deals-color-accent-2;
+    }
+
+    &__code {
+        font-size: 12px;
+        font-weight: t.$weight-700;
+        background-color: v.$color-light;
+        border-radius: 8px;
+        border: 1px solid #e5e7eb;
+        padding: 4px 10px;
+        white-space: nowrap;
+    }
+
+    &__copy-button {
+        background: transparent;
+    }
+}
+
+.show {
+    display: block;
+}
+
+.expired {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-image: none;
+    background-color: v.$text-light;
+}
