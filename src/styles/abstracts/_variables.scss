@@ -14,9 +14,12 @@ $z-index_10: 10;
 $z-index_20: 20;
 $z-index_30: 30;
 
+// border-colors
+$border-color-gray: $text-light;
+
 // shadow variable
 $button-shadow: 0 27px 38px rgba(0, 0, 0, 0.2);
 
 //border variable
 $border-primary: 1px solid rgba(25, 24, 37, 0.1);
-$border-secondary: 1px solid $text-light;
+$border-secondary: 1px solid $border-color-gray;

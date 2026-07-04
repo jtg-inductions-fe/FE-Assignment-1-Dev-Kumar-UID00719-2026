@@ -6,6 +6,7 @@
 .navbar {
     @include m.flex-layout(center, center, column);
     width: 100vw;
+    max-width: 1440px;
     align-items: center;
     position: relative;
     font-family: t.$font-primary;

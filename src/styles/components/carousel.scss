@@ -6,6 +6,11 @@
 .splide {
     width: 100vw;
     position: relative;
+    width: min(100vw, 1440px);
+
+    &__list {
+        transform: translateX(0);
+    }
 
     &__track {
         width: 100%;
@@ -110,7 +115,8 @@
 @media screen and (min-width: 1025px) {
     .splide {
         &__arrows {
-            width: 100%;
+            width: min(100%, 1440px);
+            margin-inline: auto;
             top: rem(206);
         }
 

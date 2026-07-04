@@ -6,7 +6,7 @@
 .hero {
     @include m.flex-layout(center, center, column);
     @include m.section-layout(rem(37), rem(16));
-
+    position: relative;
     &__top {
         @include m.flex-layout();
     }
