@@ -1,7 +1,9 @@
+import BREAKPOINTS from './constants';
+
 const footerButton = document.querySelectorAll('.footer__dropdown-button');
 
 function updateFooterAccessibility() {
-    const isMobile = window.innerWidth <= 430;
+    const isMobile = window.innerWidth <= BREAKPOINTS.MOBILE;
 
     footerButton.forEach((button) => {
         button.style.pointerEvents = isMobile ? 'auto' : 'none';
@@ -14,7 +16,7 @@ window.addEventListener('resize', updateFooterAccessibility);
 
 footerButton.forEach((button) => {
     button.addEventListener('click', () => {
-        if (window.innerWidth > 430) return;
+        if (window.innerWidth > BREAKPOINTS.MOBILE) return;
         const parent = button.closest('.footer__section');
         const linkContainer = parent.querySelector('.footer__link-container');
         const span = button.querySelector('.footer__dropdown-icon');

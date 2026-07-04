@@ -1,3 +1,5 @@
+import BREAKPOINTS from './constants';
+
 let popupOpen = false;
 
 const hamburger = document.querySelector('#navbar-hamburger');
@@ -14,7 +16,7 @@ hamburger.addEventListener('click', () => {
 });
 
 window.addEventListener('resize', () => {
-    if (window.innerWidth > 1024) {
+    if (window.innerWidth > BREAKPOINTS.DESKTOP) {
         popup.classList.remove('active');
     }
 });
