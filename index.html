@@ -474,7 +474,7 @@
 
             <section class="deals hidden" id="deals">
                 <div class="deals__container" id="deal-modal">
-                    <button class="deals__close-button">
+                    <button class="deals__close-button deal-tab" tabindex="2">
                         <img
                             src="assets/icons/close.svg"
                             alt="close button icon"
@@ -502,14 +502,19 @@
                             alt=""
                             id="wheel-pointer"
                         />
-                        <button id="spin-button" class="picker__spin-button">
+                        <button
+                            id="spin-button"
+                            class="picker__spin-button deal-tab"
+                            tabindex="2"
+                        >
                             Spin!
                         </button>
                     </div>
 
                     <button
-                        class="button--secondary button--outlined deals__button"
+                        class="button--secondary button--outlined deals__button deal-tab"
                         id="view-prizes"
+                        tabindex="2"
                     >
                         View All Unlocked Deals
                         <span class="counter" id="counter">0</span>
@@ -517,7 +522,7 @@
                 </div>
 
                 <div class="winnings hide" id="winning-modal">
-                    <button class="deals__close-button">
+                    <button class="deals__close-button deal-tab" tabindex="2">
                         <img
                             src="assets/icons/close.svg"
                             alt="close button icon"
@@ -540,8 +545,9 @@
                     </div>
 
                     <button
-                        class="button--secondary button--outlined deals__button"
+                        class="button--secondary button--outlined deals__button deal-tab"
                         id="back-button"
+                        tabindex="2"
                     >
                         Go Back
                     </button>

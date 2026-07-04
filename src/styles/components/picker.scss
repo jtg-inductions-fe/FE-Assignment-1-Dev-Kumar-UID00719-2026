@@ -4,28 +4,28 @@
 @use '../base/typography' as t;
 
 .picker {
-    width: 227px;
-    height: 236px;
+    width: rem(227);
+    height: rem(236);
     position: relative;
 
     &__wheel {
         @include m.flex-layout(center, center, row);
-        width: 227px;
-        height: 227px;
+        width: rem(227);
+        height: rem(227);
         background-color: v.$text-light;
         border-radius: 100%;
         position: absolute;
         bottom: 0;
         overflow: hidden;
-        border: 4px solid v.$color-light;
-        box-shadow: 0 0 38px rgba(0, 0, 0, 0.2);
+        border: v.$border-wheel-section;
+        box-shadow: v.$shadow-evenly;
     }
 
     &__loading {
-        font-size: 12px;
+        font-size: rem(12);
         font-family: t.$font-secondary;
         color: v.$color-dark;
-        font-weight: 400;
+        font-weight: t.$weight-400;
     }
 
     &__pointer {
@@ -45,9 +45,9 @@
         color: v.$color-light;
         font-family: t.$font-secondary;
         font-weight: t.$weight-700;
-        font-size: 12px;
+        font-size: rem(12);
         text-align: center;
-        width: 84px;
+        width: rem(84);
     }
 
     &__box1 {
@@ -55,21 +55,21 @@
     }
 
     &__offer1 {
-        transform: rotate(135deg);
+        transform: rotate(-45deg);
     }
 
     &__box2 {
         background-color: v.$deals-color-accent-2;
     }
     &__offer2 {
-        transform: rotate(225deg);
+        transform: rotate(45deg);
     }
 
     &__box3 {
         background-color: v.$deals-color-accent-3;
     }
     &__offer3 {
-        transform: rotate(45deg);
+        transform: rotate(-135deg);
     }
 
     &__box4 {
@@ -77,19 +77,19 @@
         color: v.$color-dark;
     }
     &__offer4 {
-        transform: rotate(315deg);
+        transform: rotate(135deg);
     }
 
     &__spin-button {
         background-color: v.$color-light;
-        width: 43.79px;
-        height: 43.79px;
+        width: rem(43.79);
+        height: rem(43.79);
         position: absolute;
-        top: 42%;
-        left: 40%;
-        border: 4px solid v.$deals-color-accent-1;
+        top: rem(99);
+        left: rem(91);
+        border: v.$border-accented;
         border-radius: 100%;
-        font-size: 10px;
+        font-size: rem(10);
         font-family: t.$font-secondary;
         font-weight: t.$weight-700;
         color: v.$deals-color-accent-1;
@@ -99,8 +99,8 @@
 .wheel-ready {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    border: 4px solid v.$color-light;
+    gap: rem(4);
+    border: v.$border-wheel-section;
     transition: all 5s ease-out;
     background-color: v.$color-light;
 }

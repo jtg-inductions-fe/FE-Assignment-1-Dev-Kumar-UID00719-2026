@@ -20,6 +20,8 @@ let deals = [];
 let wheelDeals = [];
 let winnings = JSON.parse(localStorage.getItem('winnings')) || [];
 let availableDeals = [];
+let dealsTabList = [];
+let UnlockedTabList = [];
 
 let current = 0;
 let spinClicked = false;
@@ -30,11 +32,15 @@ viewPrizeButton.addEventListener('click', () => {
     dealModal.classList.add('hide');
     winningModal.classList.remove('hide');
     renderWinnings();
+    UnlockedTabList = winningModal.querySelectorAll('.deal-tab');
+    tabUpdate(UnlockedTabList);
 });
 
 backButton.addEventListener('click', () => {
     winningModal.classList.add('hide');
     dealModal.classList.remove('hide');
+    dealsTabList = dealModal.querySelectorAll('.deal-tab');
+    tabUpdate(dealsTabList);
 });
 
 dealLinks.forEach((deal) => {
@@ -58,6 +64,10 @@ dealsCloseButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
         dealSection.classList.remove('special-deals-open');
         document.body.classList.remove('no-scroll');
+        if (!winningModal.classList.contains('hide')) {
+            winningModal.classList.add('hide');
+            dealModal.classList.remove('hide');
+        }
     });
 });
 
@@ -145,6 +155,7 @@ async function fetchDeals() {
     }
 }
 
+// Other Functions -------------------------------------------------------------------------------------
 function findExpiry(date) {
     const now = new Date();
     const expiry = new Date(date);
@@ -153,6 +164,29 @@ function findExpiry(date) {
 
     const days = Math.floor(diffInMS / (1000 * 60 * 60 * 24));
     return days + 1;
+}
+
+function tabUpdate(tabList) {
+    tabList[0].addEventListener('keydown', (e) => {
+        tabListEventPrev(e, tabList);
+    });
+    tabList[tabList.length - 1].addEventListener('keydown', (e) => {
+        tabListEventNext(e, tabList);
+    });
+}
+
+function tabListEventPrev(e, tabList) {
+    if (e.key === 'Tab' && e.shiftKey) {
+        e.preventDefault();
+        tabList[tabList.length - 1].focus();
+    }
+}
+
+function tabListEventNext(e, tabList) {
+    if (e.key === 'Tab' && !e.shiftKey) {
+        e.preventDefault();
+        tabList[0].focus();
+    }
 }
 
 // UI Rendering-------------------------------------------------------------------------------
@@ -176,6 +210,9 @@ function renderWheel() {
             <span class="picker__box-content picker__offer4">${wheelDeals[3] === -1 ? 'No deals for now' : availableDeals[wheelDeals[3]].label}</span>
         </div>
     `;
+
+    dealsTabList = dealModal.querySelectorAll('.deal-tab');
+    tabUpdate(dealsTabList);
 }
 
 function fetchRandom() {
@@ -217,6 +254,7 @@ function renderPrize() {
                 <button 
                     class="prize__copy-button"
                     onclick = "copy(this)"
+                    tabindex="2"
                 >
                     <img src="assets/icons/Copy.svg" alt="copy icon">
                 </button>
@@ -244,8 +282,9 @@ function renderWinnings() {
             <div class="prize__right">
                 <span class="prize__code">${winnings[winnings.length - 1 - i].code}</span>
                 <button 
-                    class="prize__copy-button"
+                    class="prize__copy-button deal-tab"
                     onclick = "copy(this)"
+                    tabindex="2"
                 >
                     <img src="assets/icons/Copy.svg" alt="copy icon">
                 </button>

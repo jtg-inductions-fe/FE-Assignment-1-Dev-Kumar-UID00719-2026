@@ -4,21 +4,21 @@
 @use '../base/typography' as t;
 
 .deals {
-    width: 100%;
     @include m.flex-layout(center, center, row);
     position: fixed;
     inset: 0;
     display: none;
-    z-index: 50;
-    background: rgba(0, 0, 0, 0.5);
+    z-index: v.$z-index_50;
+    background: v.$color-background-disabled;
 
     &__container {
         @include m.flex-layout(center, center, column);
         gap: rem(20);
-        width: rem(360);
+        width: 84%;
+        max-width: rem(360);
         min-height: rem(375);
         background-color: v.$color-light;
-        border-radius: rem(24);
+        border-radius: rem(24) rem(24) 0 0;
         position: relative;
         padding: rem(24) rem(24);
     }
@@ -51,20 +51,21 @@
     &__button {
         @include m.flex-layout(center, center, row);
         gap: rem(8);
-        padding: rem(10) rem(32);
+        padding: rem(16) rem(32);
         width: 100%;
         border-radius: rem(100);
-        font-size: rem(14);
+        font-size: t.$font-sm;
         font-weight: t.$weight-700;
-        height: rem(49);
+        // height: rem(49);
     }
 }
 
 .winnings {
-    background-color: v.$color-light;
     @include m.flex-layout(center, center, column);
+    background-color: v.$color-light;
     gap: rem(20);
-    width: rem(360);
+    width: 84%;
+    max-width: rem(360);
     min-height: rem(375);
     background-color: v.$color-light;
     border-radius: rem(24);
@@ -78,6 +79,7 @@
 
     &__prizes {
         @include m.flex-layout(space-between, center, column);
+        width: 100%;
         gap: rem(10);
         max-height: rem(300);
         overflow-y: auto;
@@ -108,8 +110,21 @@
     color: v.$text-light;
     display: block;
     text-align: center;
-    border-radius: 10px;
+    border-radius: rem(10);
     width: rem(18);
     height: rem(18);
     padding: rem(2) 0;
+}
+
+@media screen and (min-width: 430px) {
+}
+
+@media screen and (min-width: 1025px) {
+    .deals {
+        justify-content: center;
+
+        &__container {
+            border-radius: rem(24);
+        }
+    }
 }
