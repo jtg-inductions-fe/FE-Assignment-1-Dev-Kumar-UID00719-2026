@@ -23,9 +23,6 @@ $z-index_20: 20;
 $z-index_30: 30;
 $z-index_50: 50;
 
-// semantic token for expired deals
-$color-expired: $text-light;
-
 // border-colors
 $border-color-gray: $text-light;
 
@@ -36,7 +33,6 @@ $shadow-evenly: 0 0 38px rgba(0, 0, 0, 0.2);
 //border variable
 $border-primary: 1px solid rgba(25, 24, 37, 0.1);
 $border-secondary: 1px solid $border-color-gray;
-$border-secondary: 1px solid $color-expired;
 $border-expired: 1px solid rgba(0, 0, 0, 0.2);
 $border-light: 1px solid #e5e7eb;
 $border-prize: 1px solid rgba(244, 67, 108, 0.2);
