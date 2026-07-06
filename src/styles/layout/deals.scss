@@ -56,7 +56,6 @@
         border-radius: rem(100);
         font-size: t.$font-sm;
         font-weight: t.$weight-700;
-        // height: rem(49);
     }
 }
 
@@ -92,17 +91,9 @@
     }
 }
 
-.hide {
-    display: none;
-}
-
 .special-deals-open {
     @include m.flex-layout(flex-end, center, column);
     position: fixed;
-}
-
-.no-scroll {
-    overflow: hidden;
 }
 
 .counter {

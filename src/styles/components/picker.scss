@@ -5,7 +5,7 @@
 
 .picker {
     width: rem(227);
-    height: rem(236);
+    height: rem(227);
     position: relative;
 
     &__wheel {
@@ -30,7 +30,7 @@
 
     &__pointer {
         position: absolute;
-        top: 0;
+        top: rem(-6);
         left: 50%;
         transform: translate(-50%);
         display: none;
@@ -85,8 +85,9 @@
         width: rem(43.79);
         height: rem(43.79);
         position: absolute;
-        top: rem(99);
-        left: rem(91);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         border: v.$border-accented;
         border-radius: 100%;
         font-size: rem(10);

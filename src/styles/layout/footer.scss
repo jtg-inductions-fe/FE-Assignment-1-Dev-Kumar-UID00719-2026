@@ -63,6 +63,10 @@
         font-weight: t.$weight-700;
         width: 100%;
         background: transparent;
+
+        &:hover {
+            transform: translateY(rem(-2));
+        }
     }
 
     &__link-container {
@@ -74,6 +78,11 @@
 
     &__content {
         word-break: break-word;
+    }
+
+    &__link:hover {
+        display: inline-block;
+        transform: translateY(rem(-2));
     }
 
     &__dropdown-icon {

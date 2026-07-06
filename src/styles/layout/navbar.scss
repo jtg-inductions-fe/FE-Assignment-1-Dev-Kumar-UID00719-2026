@@ -42,6 +42,10 @@
         background: transparent;
     }
 
+    &__hamburger:hover {
+        transform: translateY(rem(-2));
+    }
+
     &__link-container {
         justify-content: space-around;
         display: none;
@@ -52,6 +56,11 @@
     &__links {
         color: v.$text-muted;
         text-align: center;
+
+        &:hover {
+            display: inline-block;
+            transform: translateY(rem(-2));
+        }
     }
 
     &__logo {

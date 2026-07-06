@@ -1,10 +1,10 @@
-import { STORAGE_KEYS } from './constants';
+import { STORAGE_KEYS, TIME, COLOR, API_KEY } from './constants';
 
 // Dom Elements-------------------------------------------------------------------------------
 const dealSection = document.querySelector('#deals');
 const dealLinks = document.querySelectorAll('.deals-link');
 const dealsCloseButtons = document.querySelectorAll('.deals__close-button');
-const btn = document.querySelector('#spin-button');
+const spinButton = document.querySelector('#spin-button');
 const wheel = document.querySelector('#wheel');
 const wheelContainer = document.querySelector('#picker');
 const pointer = document.querySelector('#wheel-pointer');
@@ -19,15 +19,249 @@ const counter = document.querySelector('#counter');
 // States-------------------------------------------------------------------------------
 
 let deals = [];
-let wheelDeals = [];
-let winnings = findWinnings();
+let currentShownDeals = [];
 let availableDeals = [];
 
 let currentDegree = 0;
 let spinClicked = false;
-const spinTime = 5000;
-const loadingTime = 2000;
-const expiryColor = '#999999';
+
+// Data-------------------------------------------------------------------------------
+
+/**
+ * Copies the provided promo code to the clipboard.
+ *
+ * @param {string} code - Promo code to copy.
+ */
+const copy = (code) => {
+    navigator.clipboard.writeText(code);
+};
+window.copy = copy;
+
+/**
+ * Fetches Deals data from API
+ */
+const fetchDeals = async () => {
+    try {
+        const data = await fetch(API_KEY);
+        deals = await data.json();
+        setTimeout(() => {
+            fetchRandomDealsForWheel();
+            renderWheel();
+        }, TIME.WHEEL_LOADING_TIME);
+    } catch (error) {
+        wheel.innerHTML = `
+            <p>Failed to load deals</p>
+            <p>${error}</p>
+        `;
+    }
+};
+
+/**
+ * Fetches winnings data from localstorage
+ */
+const fetchWinnings = () => {
+    try {
+        const winnings = JSON.parse(
+            localStorage.getItem(STORAGE_KEYS.WINNINGS),
+        );
+        return winnings ?? [];
+    } catch {
+        localStorage.removeItem(STORAGE_KEYS.WINNINGS);
+        return [];
+    }
+};
+
+let winnings = fetchWinnings();
+
+// Other Functions -------------------------------------------------------------------------------------
+/**
+ * Calculates the remaining days until the deal expires.
+ *
+ * @param {string | Date} date - The expiry date of the deal.
+ * @returns {number} The number of days remaining until expiry.
+ */
+const findExpiry = (date) => {
+    const currentDate = new Date();
+    const expiry = new Date(date);
+
+    const diffInMS = expiry - currentDate;
+
+    const days = Math.floor(diffInMS / TIME.MILI_SECONDS_IN_ONE_DAY);
+    return days + 1;
+};
+
+/**
+ * Updates keyboard tab navigation for the provided tab list.
+ *
+ * @param {NodeList} tabList - The list of focusable tab elements.
+ */
+const tabNavigationUpdate = (tabList) => {
+    tabList[0].addEventListener('keydown', (e) => {
+        tabListEventPrev(e, tabList);
+    });
+    tabList[tabList.length - 1].addEventListener('keydown', (e) => {
+        tabListEventNext(e, tabList);
+    });
+};
+
+/**
+ * Handles reverse tab navigation from the first element.
+ *
+ * @param {KeyboardEvent} e - The keyboard event.
+ * @param {NodeList} tabList - The list of focusable tab elements.
+ */
+const tabListEventPrev = (e, tabList) => {
+    if (e.key === 'Tab' && e.shiftKey) {
+        e.preventDefault();
+        tabList[tabList.length - 1].focus();
+    }
+};
+
+/**
+ * Handles forward tab navigation from the last element.
+ *
+ * @param {KeyboardEvent} e - The keyboard event.
+ * @param {NodeList} tabList - The list of focusable tab elements.
+ */
+const tabListEventNext = (e, tabList) => {
+    if (e.key === 'Tab' && !e.shiftKey) {
+        e.preventDefault();
+        tabList[0].focus();
+    }
+};
+
+// UI Rendering-------------------------------------------------------------------------------
+
+/**
+ * Renders the deals wheel with the currently selected deals.
+ */
+const renderWheel = () => {
+    wheel.innerHTML = '';
+    wheel.classList.add('wheel-ready');
+    pointer.classList.add('show');
+    spinButton.classList.add('show');
+    let html = '';
+
+    currentShownDeals.forEach((deal, index) => {
+        html += `
+            <div class="picker__box${index + 1} picker__box">
+                <span class="picker__box-content picker__offer${index + 1}">
+                    ${deal === -1 ? 'No deals for now' : deal.label}
+                </span>
+            </div>
+        `;
+    });
+
+    wheel.innerHTML = html;
+};
+
+/**
+ * Selects up to four random available deals for the wheel.
+ */
+const fetchRandomDealsForWheel = () => {
+    currentShownDeals = [];
+    availableDeals = deals.filter(
+        (deal) => !winnings.some((win) => win.label === deal.label),
+    );
+
+    for (let i = availableDeals.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [availableDeals[i], availableDeals[j]] = [
+            availableDeals[j],
+            availableDeals[i],
+        ];
+    }
+
+    currentShownDeals = availableDeals.slice(0, 4);
+    while (currentShownDeals.length < 4) {
+        currentShownDeals.push(-1);
+    }
+};
+
+/**
+ * Creates and returns the winning prize element.
+ *
+ * @param {Object} winning - The winning deal.
+ * @returns {HTMLDivElement} The rendered prize element.
+ */
+const renderNewPrize = (winning) => {
+    const { label, code, time } = winning;
+    const prize = document.createElement('div');
+    prize.classList.add('deals__win-box');
+
+    const daysLeft = findExpiry(time);
+    prize.innerHTML = `
+        <span class="deals__win-box-heading">You won!</span>
+        <div class="prize">
+            <div class="prize__left">
+                <span class="prize__label">${label}</span>
+                <span class="prize__expiry">Expires in ${daysLeft}d</span>
+            </div>
+            <div class="prize__right">
+                <span class="prize__code">${code}</span>
+                <button 
+                    class="prize__copy-button"
+                    tabindex="2"
+                    type="button"
+                    onclick = "copy('${code}')"
+                >
+                    <img src="assets/icons/Copy.svg" alt="copy icon">
+                </button>
+            </div>
+            
+        </div>
+    `;
+
+    return prize;
+};
+
+/**
+ * Renders all saved winnings in the winnings container.
+ */
+const renderAllWinnings = () => {
+    if (winnings.length === 0) return;
+    winningsContainer.innerHTML = '';
+
+    const sortedWinnings = [...winnings].sort(
+        (a, b) => new Date(a.time) - new Date(b.time),
+    );
+
+    let html = '';
+
+    sortedWinnings.forEach((winning) => {
+        const { label, code, time } = winning;
+        const daysLeft = findExpiry(time);
+
+        html += `
+            <div class="prize ${daysLeft <= 0 ? 'expired' : ''}">
+                <div class="prize__left">
+                    <span class="prize__label">${label}</span>
+                    <span
+                        class="prize__expiry"
+                        ${daysLeft <= 0 ? `style="color:${COLOR.EXPIRY_COLOR}"` : ''}
+                    >
+                        ${daysLeft <= 0 ? 'Deal Expired' : `Expires in ${daysLeft}d`}
+                    </span>
+                </div>
+                <div class="prize__right">
+                    <span class="prize__code">${code}</span>
+                    <button
+                        class="prize__copy-button deal-tab"
+                        tabindex="2"
+                        type="button"
+                        onclick="copy('${code}')"
+                        ${daysLeft <= 0 ? 'disabled' : ''}
+                    >
+                        <img src="assets/icons/Copy.svg" alt="copy icon">
+                    </button>
+                </div>
+            </div>
+        `;
+    });
+
+    winningsContainer.innerHTML = html;
+};
 
 // Event Listeners -------------------------------------------------------------------------------
 
@@ -40,9 +274,14 @@ dealLinks.forEach((deal) => {
             localStorage.setItem(STORAGE_KEYS.WINNINGS, '[]');
         }
         counter.textContent = winnings.length;
+
+        const dealsTabList = dealModal.querySelectorAll('.deal-tab');
+        dealsTabList[0].focus();
+        tabNavigationUpdate(dealsTabList);
+
         if (deals.length === 0) fetchDeals();
         else {
-            fetchRandom();
+            fetchRandomDealsForWheel();
             renderWheel();
         }
     });
@@ -51,16 +290,16 @@ dealLinks.forEach((deal) => {
 viewPrizeButton.addEventListener('click', () => {
     dealModal.classList.add('hide');
     winningModal.classList.remove('hide');
-    renderWinnings();
-    const UnlockedTabList = winningModal.querySelectorAll('.deal-tab');
-    tabUpdate(UnlockedTabList);
+    renderAllWinnings();
+    const unlockedTabList = winningModal.querySelectorAll('.deal-tab');
+    tabNavigationUpdate(unlockedTabList);
 });
 
 backButton.addEventListener('click', () => {
     winningModal.classList.add('hide');
     dealModal.classList.remove('hide');
     const dealsTabList = dealModal.querySelectorAll('.deal-tab');
-    tabUpdate(dealsTabList);
+    tabNavigationUpdate(dealsTabList);
 });
 
 dealsCloseButtons.forEach((btn) => {
@@ -74,11 +313,11 @@ dealsCloseButtons.forEach((btn) => {
     });
 });
 
-btn.addEventListener('click', () => {
+spinButton.addEventListener('click', () => {
     if (spinClicked) return;
     spinClicked = true;
 
-    fetchRandom();
+    fetchRandomDealsForWheel();
     renderWheel();
 
     const rotations = Math.floor(Math.random() * 6) + 10;
@@ -100,18 +339,21 @@ btn.addEventListener('click', () => {
     }
 
     const currentDate = new Date();
-    currentDate.setDate(currentDate.getDate() + 7);
+    const currentWinning = currentShownDeals[prize];
 
-    if (wheelDeals[prize] === -1) {
+    if (currentWinning === -1) {
         setTimeout(() => {
             spinClicked = false;
-        }, spinTime);
+        }, TIME.SPIN_TIME);
         return;
     }
 
+    const dealValidFor = currentWinning.validFor ?? 7;
+    currentDate.setDate(currentDate.getDate() + dealValidFor);
+
     const newWinning = {
-        label: availableDeals[wheelDeals[prize]].label,
-        code: availableDeals[wheelDeals[prize]].promoCode,
+        label: currentWinning.label,
+        code: currentWinning.promoCode,
         time: currentDate,
     };
 
@@ -122,199 +364,11 @@ btn.addEventListener('click', () => {
     if (oldPrize) oldPrize.remove();
 
     setTimeout(() => {
-        wheelContainer.insertAdjacentElement('afterend', renderPrize());
-        counter.textContent = JSON.parse(
-            localStorage.getItem(STORAGE_KEYS.WINNINGS),
-        ).length;
+        wheelContainer.insertAdjacentElement(
+            'afterend',
+            renderNewPrize(newWinning),
+        );
+        counter.textContent = winnings.length;
         spinClicked = false;
-    }, spinTime);
+    }, TIME.SPIN_TIME);
 });
-
-document.addEventListener('click', (e) => {
-    const copyButton = e.target.closest('.prize__copy-button');
-    if (!copyButton) return;
-    const prize = copyButton.closest('.prize');
-    const code = prize.querySelector('.prize__code').textContent;
-
-    navigator.clipboard.writeText(code);
-});
-
-// Data-------------------------------------------------------------------------------
-
-async function fetchDeals() {
-    try {
-        const data = await fetch(
-            'https://gist.githubusercontent.com/ameer-wajid-ali/1f29ebee4295cede36f8d74b45e576df/raw/122966c9a123861249f173911d8d93a76dc06d7a/',
-        );
-        deals = await data.json();
-        setTimeout(() => {
-            fetchRandom();
-            renderWheel();
-        }, loadingTime);
-    } catch (error) {
-        wheel.innerHTML = `
-            <p>Failed to load deals</p>
-            <p>${error}</p>
-        `;
-    }
-}
-
-function findWinnings() {
-    try {
-        const winnings = JSON.parse(
-            localStorage.getItem(STORAGE_KEYS.WINNINGS),
-        );
-        if (Array.isArray(winnings)) return winnings;
-        return [];
-    } catch {
-        localStorage.removeItem(STORAGE_KEYS.WINNINGS);
-        return [];
-    }
-}
-
-// Other Functions -------------------------------------------------------------------------------------
-function findExpiry(date) {
-    const currentDate = new Date();
-    const expiry = new Date(date);
-
-    const diffInMS = expiry - currentDate;
-
-    const days = Math.floor(diffInMS / (1000 * 60 * 60 * 24));
-    return days + 1;
-}
-
-function tabUpdate(tabList) {
-    tabList[0].addEventListener('keydown', (e) => {
-        tabListEventPrev(e, tabList);
-    });
-    tabList[tabList.length - 1].addEventListener('keydown', (e) => {
-        tabListEventNext(e, tabList);
-    });
-}
-
-function tabListEventPrev(e, tabList) {
-    if (e.key === 'Tab' && e.shiftKey) {
-        e.preventDefault();
-        tabList[tabList.length - 1].focus();
-    }
-}
-
-function tabListEventNext(e, tabList) {
-    if (e.key === 'Tab' && !e.shiftKey) {
-        e.preventDefault();
-        tabList[0].focus();
-    }
-}
-
-// UI Rendering-------------------------------------------------------------------------------
-function renderWheel() {
-    wheel.innerHTML = '';
-    wheel.classList.add('wheel-ready');
-    pointer.classList.add('show');
-    btn.classList.add('show');
-
-    wheel.innerHTML = `
-        <div class="picker__box1 picker__box">
-            <span class="picker__box-content picker__offer1">${wheelDeals[0] === -1 ? 'No deals for now' : availableDeals[wheelDeals[0]].label}</span>
-        </div>
-        <div class="picker__box2 picker__box">
-            <span class="picker__box-content picker__offer2">${wheelDeals[1] === -1 ? 'No deals for now' : availableDeals[wheelDeals[1]].label}</span>
-        </div>
-        <div class="picker__box3 picker__box">
-            <span class="picker__box-content picker__offer3">${wheelDeals[2] === -1 ? 'No deals for now' : availableDeals[wheelDeals[2]].label}</span>
-        </div>
-        <div class="picker__box4 picker__box">
-            <span class="picker__box-content picker__offer4">${wheelDeals[3] === -1 ? 'No deals for now' : availableDeals[wheelDeals[3]].label}</span>
-        </div>
-    `;
-
-    const dealsTabList = dealModal.querySelectorAll('.deal-tab');
-    tabUpdate(dealsTabList);
-}
-
-function fetchRandom() {
-    availableDeals = deals.filter(
-        (deal) => !winnings.some((win) => win.label === deal.label),
-    );
-
-    wheelDeals = [];
-
-    for (let i = 0; i < Math.min(4, availableDeals.length); i++) {
-        let index = -1;
-        while (index === -1 || wheelDeals.includes(index)) {
-            index = Math.floor(Math.random() * availableDeals.length);
-        }
-        wheelDeals.push(index);
-    }
-    while (wheelDeals.length < 4) {
-        wheelDeals.push(-1);
-    }
-}
-
-function renderPrize() {
-    const currentWinnings = findWinnings();
-    const prize = document.createElement('div');
-    prize.classList.add('deals__win-box');
-
-    const newPrize = currentWinnings[currentWinnings.length - 1];
-    const daysLeft = findExpiry(newPrize.time);
-    prize.innerHTML = `
-        <span class="deals__win-box-heading">You won!</span>
-        <div class="prize">
-            <div class="prize__left">
-                <span class="prize__label">${newPrize.label}</span>
-                <span class="prize__expiry">Expires in ${daysLeft}d</span>
-            </div>
-            <div class="prize__right">
-                <span class="prize__code">${newPrize.code}</span>
-                <button 
-                    class="prize__copy-button"
-                    tabindex="2"
-                    type="button"
-                >
-                    <img src="assets/icons/Copy.svg" alt="copy icon">
-                </button>
-            </div>
-            
-        </div>
-    `;
-
-    return prize;
-}
-
-function renderWinnings() {
-    if (winnings.length === 0) return;
-    winningsContainer.innerHTML = '';
-    for (let i = 0; i < winnings.length; i++) {
-        const prize = document.createElement('div');
-        prize.classList.add('prize');
-        const thisPrize = winnings[winnings.length - 1 - i];
-        const daysLeft = findExpiry(thisPrize.time);
-
-        prize.innerHTML = `
-            <div class="prize__left">
-                <span class="prize__label">${thisPrize.label}</span>
-                <span class="prize__expiry">Expires in ${daysLeft}d</span>
-            </div>
-            <div class="prize__right">
-                <span class="prize__code">${thisPrize.code}</span>
-                <button 
-                    class="prize__copy-button deal-tab"
-                    tabindex="2"
-                    type="button"
-                >
-                    <img src="assets/icons/Copy.svg" alt="copy icon">
-                </button>
-            </div>
-        `;
-
-        if (daysLeft <= 0) {
-            const expiry = prize.querySelector('.prize__expiry');
-            expiry.textContent = 'Deal Expired';
-            expiry.style.color = expiryColor;
-            prize.classList.add('expired');
-        }
-
-        winningsContainer.appendChild(prize);
-    }
-}
