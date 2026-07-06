@@ -1,4 +1,4 @@
-import BREAKPOINTS from './constants';
+import { BREAKPOINTS } from './constants';
 
 let popupOpen = false;
 

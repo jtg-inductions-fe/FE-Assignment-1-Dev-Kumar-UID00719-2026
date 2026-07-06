@@ -1,3 +1,5 @@
+import { STORAGE_KEYS } from './constants';
+
 // Dom Elements-------------------------------------------------------------------------------
 const dealSection = document.querySelector('#deals');
 const dealLinks = document.querySelectorAll('.deals-link');
@@ -18,38 +20,24 @@ const counter = document.querySelector('#counter');
 
 let deals = [];
 let wheelDeals = [];
-let winnings = JSON.parse(localStorage.getItem('winnings')) || [];
+let winnings = findWinnings();
 let availableDeals = [];
-let dealsTabList = [];
-let UnlockedTabList = [];
 
-let current = 0;
+let currentDegree = 0;
 let spinClicked = false;
+const spinTime = 5000;
+const loadingTime = 2000;
+const expiryColor = '#999999';
 
 // Event Listeners -------------------------------------------------------------------------------
-
-viewPrizeButton.addEventListener('click', () => {
-    dealModal.classList.add('hide');
-    winningModal.classList.remove('hide');
-    renderWinnings();
-    UnlockedTabList = winningModal.querySelectorAll('.deal-tab');
-    tabUpdate(UnlockedTabList);
-});
-
-backButton.addEventListener('click', () => {
-    winningModal.classList.add('hide');
-    dealModal.classList.remove('hide');
-    dealsTabList = dealModal.querySelectorAll('.deal-tab');
-    tabUpdate(dealsTabList);
-});
 
 dealLinks.forEach((deal) => {
     deal.addEventListener('click', () => {
         dealSection.classList.add('special-deals-open');
         document.body.classList.add('no-scroll');
         navbarPopup.classList.remove('active');
-        if (localStorage.getItem('winnings') === null) {
-            localStorage.setItem('winnings', '[]');
+        if (!localStorage.getItem(STORAGE_KEYS.WINNINGS)) {
+            localStorage.setItem(STORAGE_KEYS.WINNINGS, '[]');
         }
         counter.textContent = winnings.length;
         if (deals.length === 0) fetchDeals();
@@ -58,6 +46,21 @@ dealLinks.forEach((deal) => {
             renderWheel();
         }
     });
+});
+
+viewPrizeButton.addEventListener('click', () => {
+    dealModal.classList.add('hide');
+    winningModal.classList.remove('hide');
+    renderWinnings();
+    const UnlockedTabList = winningModal.querySelectorAll('.deal-tab');
+    tabUpdate(UnlockedTabList);
+});
+
+backButton.addEventListener('click', () => {
+    winningModal.classList.add('hide');
+    dealModal.classList.remove('hide');
+    const dealsTabList = dealModal.querySelectorAll('.deal-tab');
+    tabUpdate(dealsTabList);
 });
 
 dealsCloseButtons.forEach((btn) => {
@@ -72,7 +75,7 @@ dealsCloseButtons.forEach((btn) => {
 });
 
 btn.addEventListener('click', () => {
-    if (spinClicked === true) return;
+    if (spinClicked) return;
     spinClicked = true;
 
     fetchRandom();
@@ -80,9 +83,9 @@ btn.addEventListener('click', () => {
 
     const rotations = Math.floor(Math.random() * 6) + 10;
     const degree = Math.floor(Math.random() * 360);
-    current += rotations * 360 + degree;
-    wheel.style.transform = `rotate(${current}deg)`;
-    const finalAngle = (360 - (current % 360)) % 360;
+    currentDegree += rotations * 360 + degree;
+    wheel.style.transform = `rotate(${currentDegree}deg)`;
+    const finalAngle = (360 - (currentDegree % 360)) % 360;
 
     let prize;
 
@@ -96,24 +99,24 @@ btn.addEventListener('click', () => {
         prize = 0;
     }
 
-    const now = new Date();
-    now.setDate(now.getDate() + 7);
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + 7);
 
     if (wheelDeals[prize] === -1) {
         setTimeout(() => {
             spinClicked = false;
-        }, 5000);
+        }, spinTime);
         return;
     }
 
     const newWinning = {
         label: availableDeals[wheelDeals[prize]].label,
         code: availableDeals[wheelDeals[prize]].promoCode,
-        time: now,
+        time: currentDate,
     };
 
     winnings.push(newWinning);
-    localStorage.setItem('winnings', JSON.stringify(winnings));
+    localStorage.setItem(STORAGE_KEYS.WINNINGS, JSON.stringify(winnings));
 
     const oldPrize = document.querySelector('.deals__win-box');
     if (oldPrize) oldPrize.remove();
@@ -121,19 +124,20 @@ btn.addEventListener('click', () => {
     setTimeout(() => {
         wheelContainer.insertAdjacentElement('afterend', renderPrize());
         counter.textContent = JSON.parse(
-            localStorage.getItem('winnings'),
+            localStorage.getItem(STORAGE_KEYS.WINNINGS),
         ).length;
         spinClicked = false;
-    }, 5000);
+    }, spinTime);
 });
 
-function copy(button) {
-    const code = button
-        .closest('.prize')
-        .querySelector('.prize__code').textContent;
+document.addEventListener('click', (e) => {
+    const copyButton = e.target.closest('.prize__copy-button');
+    if (!copyButton) return;
+    const prize = copyButton.closest('.prize');
+    const code = prize.querySelector('.prize__code').textContent;
+
     navigator.clipboard.writeText(code);
-}
-window.copy = copy;
+});
 
 // Data-------------------------------------------------------------------------------
 
@@ -146,7 +150,7 @@ async function fetchDeals() {
         setTimeout(() => {
             fetchRandom();
             renderWheel();
-        }, 2000);
+        }, loadingTime);
     } catch (error) {
         wheel.innerHTML = `
             <p>Failed to load deals</p>
@@ -155,12 +159,25 @@ async function fetchDeals() {
     }
 }
 
+function findWinnings() {
+    try {
+        const winnings = JSON.parse(
+            localStorage.getItem(STORAGE_KEYS.WINNINGS),
+        );
+        if (Array.isArray(winnings)) return winnings;
+        return [];
+    } catch {
+        localStorage.removeItem(STORAGE_KEYS.WINNINGS);
+        return [];
+    }
+}
+
 // Other Functions -------------------------------------------------------------------------------------
 function findExpiry(date) {
-    const now = new Date();
+    const currentDate = new Date();
     const expiry = new Date(date);
 
-    const diffInMS = expiry - now;
+    const diffInMS = expiry - currentDate;
 
     const days = Math.floor(diffInMS / (1000 * 60 * 60 * 24));
     return days + 1;
@@ -211,7 +228,7 @@ function renderWheel() {
         </div>
     `;
 
-    dealsTabList = dealModal.querySelectorAll('.deal-tab');
+    const dealsTabList = dealModal.querySelectorAll('.deal-tab');
     tabUpdate(dealsTabList);
 }
 
@@ -235,26 +252,25 @@ function fetchRandom() {
 }
 
 function renderPrize() {
-    const currentWinnings = JSON.parse(localStorage.getItem('winnings'));
+    const currentWinnings = findWinnings();
     const prize = document.createElement('div');
     prize.classList.add('deals__win-box');
-    const daysLeft = findExpiry(
-        currentWinnings[currentWinnings.length - 1].time,
-    );
 
+    const newPrize = currentWinnings[currentWinnings.length - 1];
+    const daysLeft = findExpiry(newPrize.time);
     prize.innerHTML = `
         <span class="deals__win-box-heading">You won!</span>
         <div class="prize">
             <div class="prize__left">
-                <span class="prize__label">${currentWinnings[currentWinnings.length - 1].label}</span>
+                <span class="prize__label">${newPrize.label}</span>
                 <span class="prize__expiry">Expires in ${daysLeft}d</span>
             </div>
             <div class="prize__right">
-                <span class="prize__code">${currentWinnings[currentWinnings.length - 1].code}</span>
+                <span class="prize__code">${newPrize.code}</span>
                 <button 
                     class="prize__copy-button"
-                    onclick = "copy(this)"
                     tabindex="2"
+                    type="button"
                 >
                     <img src="assets/icons/Copy.svg" alt="copy icon">
                 </button>
@@ -272,19 +288,20 @@ function renderWinnings() {
     for (let i = 0; i < winnings.length; i++) {
         const prize = document.createElement('div');
         prize.classList.add('prize');
-        const daysLeft = findExpiry(winnings[winnings.length - 1].time);
+        const thisPrize = winnings[winnings.length - 1 - i];
+        const daysLeft = findExpiry(thisPrize.time);
 
         prize.innerHTML = `
             <div class="prize__left">
-                <span class="prize__label">${winnings[winnings.length - 1 - i].label}</span>
+                <span class="prize__label">${thisPrize.label}</span>
                 <span class="prize__expiry">Expires in ${daysLeft}d</span>
             </div>
             <div class="prize__right">
-                <span class="prize__code">${winnings[winnings.length - 1 - i].code}</span>
+                <span class="prize__code">${thisPrize.code}</span>
                 <button 
                     class="prize__copy-button deal-tab"
-                    onclick = "copy(this)"
                     tabindex="2"
+                    type="button"
                 >
                     <img src="assets/icons/Copy.svg" alt="copy icon">
                 </button>
@@ -293,11 +310,9 @@ function renderWinnings() {
 
         if (daysLeft <= 0) {
             const expiry = prize.querySelector('.prize__expiry');
-            const copyBtn = prize.querySelector('.prize__copy-button');
             expiry.textContent = 'Deal Expired';
-            expiry.style.color = '#999999';
+            expiry.style.color = expiryColor;
             prize.classList.add('expired');
-            copyBtn.onclick = null;
         }
 
         winningsContainer.appendChild(prize);

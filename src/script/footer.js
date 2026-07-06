@@ -1,4 +1,4 @@
-import BREAKPOINTS from './constants';
+import { BREAKPOINTS } from './constants';
 
 const footerButton = document.querySelectorAll('.footer__dropdown-button');
 

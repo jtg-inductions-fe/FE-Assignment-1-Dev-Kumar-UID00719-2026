@@ -23,7 +23,6 @@
         @include m.flex-layout(space-between, center, row);
         padding: rem(16);
         gap: rem(8);
-        flex-wrap: wrap;
     }
 
     &__label {
