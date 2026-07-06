@@ -9,7 +9,7 @@ export default defineConfig(() => {
                 minify: true,
             }),
             ViteImageOptimizer({
-                test: /\.(jpg|png)$/i,
+                test: /\.(jpg|png|webp)$/i,
                 includePublic: true,
                 logStats: true,
                 png: {
@@ -29,7 +29,7 @@ export default defineConfig(() => {
                     chunkFileNames: 'js/[name]-[hash].js',
                     entryFileNames: 'js/[name]-[hash].js',
                     assetFileNames: ({ name }) => {
-                        if (/\.(jpg|png)$/.test(name ?? '')) {
+                        if (/\.(jpg|png|webp)$/.test(name ?? '')) {
                             return 'images/[name]-[hash][extname]';
                         }
                         if (/\.css$/.test(name ?? '')) {

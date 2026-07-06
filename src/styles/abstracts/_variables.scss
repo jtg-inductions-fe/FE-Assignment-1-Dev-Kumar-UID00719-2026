@@ -5,7 +5,8 @@ $text-muted: rgba(25, 24, 37, 0.5);
 $color-text-secondary: rgba(25, 24, 37, 0.75);
 $color-text-primary: #222831;
 $text-light: #eeeeee;
-$color-accent: #ff5722;
+$color-accent-primary: #ff5722;
+$color-accent-secondary: #facd49;
 $color-light: white;
 
 // z-indexes
@@ -13,5 +14,12 @@ $z-index_10: 10;
 $z-index_20: 20;
 $z-index_30: 30;
 
+// border-colors
+$border-color-gray: $text-light;
+
 // shadow variable
 $button-shadow: 0 27px 38px rgba(0, 0, 0, 0.2);
+
+//border variable
+$border-primary: 1px solid rgba(25, 24, 37, 0.1);
+$border-secondary: 1px solid $border-color-gray;

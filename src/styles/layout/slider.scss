@@ -1,0 +1,120 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+@use '../abstracts/functions' as *;
+@use '../base/typography' as t;
+
+.slider {
+    @include m.section-layout(rem(32), rem(16));
+    @include m.flex-layout(space-between, center, column);
+    margin-top: rem(100);
+    gap: rem(16);
+    position: relative;
+
+    &__background {
+        position: absolute;
+
+        width: min(100vw, 1440px);
+        display: none;
+    }
+}
+
+.review {
+    @include m.flex-layout(space-between, center, column);
+    gap: rem(64);
+    font-family: t.$font-primary;
+    margin-top: rem(47);
+    margin-bottom: rem(64);
+
+    &__profile-pic {
+        border-radius: 100%;
+        width: rem(128);
+        height: rem(128);
+        overflow: hidden;
+    }
+
+    &__profile-img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__detail {
+        @include m.flex-layout(space-between, center, column);
+        gap: rem(32);
+    }
+
+    &__reviewer-name {
+        color: v.$color-accent-primary;
+        font-size: rem(28);
+        font-weight: t.$weight-700;
+    }
+
+    &__reviewer-interest {
+        color: v.$color-text-secondary;
+        font-weight: t.$weight-700;
+        font-size: rem(23);
+    }
+
+    &__description {
+        text-align: center;
+        font-size: t.$font-lg;
+        font-weight: t.$weight-450;
+        line-height: 1.6;
+        color: v.$color-text-secondary;
+    }
+
+    &__stars {
+        @include m.flex-layout(center, center, row);
+        gap: rem(16);
+    }
+
+    &__star {
+        font-size: t.$font-2xl;
+    }
+}
+
+@media screen and (min-width: 431px) {
+    .slider {
+        margin-top: rem(8);
+        padding-top: rem(16);
+
+        &__background {
+            display: block;
+            top: rem(-116);
+        }
+
+        &__subheading {
+            font-size: t.$font-xl;
+        }
+
+        &__heading {
+            font-size: t.$font-3xl;
+        }
+    }
+
+    .review {
+        width: 60%;
+        gap: rem(58);
+        margin-top: rem(40);
+        margin-bottom: rem(48);
+
+        &__description {
+            font-size: rem(20);
+        }
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .slider {
+        margin-top: rem(100);
+
+        &__heading {
+            font-size: rem(44);
+        }
+
+        &__background {
+            display: block;
+            top: rem(-242);
+        }
+    }
+}

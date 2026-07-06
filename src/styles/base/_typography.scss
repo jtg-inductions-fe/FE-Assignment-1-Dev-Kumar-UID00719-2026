@@ -11,6 +11,8 @@ $weight-500: 500;
 $weight-700: 700;
 
 // font size variables
+$font-2xsm: 0.4375rem; //7px
+$font-xsm: 0.6rem; //10px
 $font-sm: 0.875rem; //14px
 $font-md: 1rem; //16px
 $font-lg: 1.125rem; //18px
@@ -92,7 +94,7 @@ $font-5xl: 4.375rem; //70px
     font-size: $font-md;
     letter-spacing: 0.2em;
     line-height: 1.2;
-    color: v.$color-text-secondary;
+    color: v.$color-secondary;
     text-align: center;
 }
 
