@@ -109,6 +109,10 @@
             width: rem(100);
             height: rem(100);
         }
+
+        .splide__pagination {
+            bottom: rem(-72);
+        }
     }
 }
 
@@ -129,6 +133,10 @@
         .splide__right-arrow {
             position: absolute;
             right: rem(117);
+        }
+
+        .splide__pagination {
+            bottom: -2rem;
         }
     }
 }

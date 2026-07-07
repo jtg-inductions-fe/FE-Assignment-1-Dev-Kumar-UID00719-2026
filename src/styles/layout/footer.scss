@@ -105,7 +105,7 @@
 @media screen and (min-width: v.$tablet-sm) {
     .footer {
         @include m.section-layout(rem(64), rem(64));
-        margin-top: rem(152);
+        margin-top: rem(200);
 
         &__background {
             display: block;
@@ -126,7 +126,7 @@
 
         &__section {
             @include m.flex-layout(flex-start, flex-start, column);
-            gap: rem(32);
+            gap: rem(16);
         }
 
         &__dropdown-heading {
@@ -136,7 +136,7 @@
 
         &__link-container {
             @include m.flex-layout(space-between, flex-start, column);
-            gap: rem(40);
+            gap: rem(24);
             padding-top: 0;
         }
 
@@ -151,7 +151,7 @@
         @include m.section-layout(rem(32), rem(117));
         flex-direction: row;
         gap: rem(16);
-        margin-top: rem(228);
+        margin-top: rem(240);
 
         &__background {
             top: rem(23);
