@@ -12,6 +12,7 @@ export const TIME = {
     SPIN_TIME: 5000,
     WHEEL_LOADING_TIME: 2000,
     MILI_SECONDS_IN_ONE_DAY: 1000 * 60 * 60 * 24,
+    COPY_TRANSITION: 1500,
 };
 
 export const COLOR = {

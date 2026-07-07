@@ -46,12 +46,12 @@
         transform: translateY(rem(-2));
     }
 
-    &__link-container {
+    &__action-container {
         justify-content: space-around;
         display: none;
     }
 
-    &__links {
+    &__action {
         &:hover {
             display: inline-block;
             transform: translateY(rem(-2));
@@ -60,6 +60,10 @@
         &--active {
             color: v.$color-text-primary;
         }
+    }
+
+    &__deals-button {
+        background: transparent;
     }
 
     &__logo {
@@ -86,7 +90,7 @@
         visibility: visible;
     }
 
-    &__popup-link-container {
+    &__popup-action-container {
         @include m.flex-layout(center, center, column);
         list-style: none;
         gap: rem(25);
@@ -126,7 +130,7 @@
             transition: all 0.3s ease;
         }
 
-        &__popup-link-container {
+        &__popup-action-container {
             padding: rem(20);
         }
 
@@ -148,7 +152,7 @@
             top: 19px;
         }
 
-        &__link-container {
+        &__action-container {
             width: 40%;
             display: flex;
             justify-content: space-between;

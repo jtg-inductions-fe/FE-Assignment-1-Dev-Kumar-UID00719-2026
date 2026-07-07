@@ -2,7 +2,7 @@ import { STORAGE_KEYS, TIME, COLOR, API_KEY } from './constants';
 
 // Dom Elements-------------------------------------------------------------------------------
 const dealSection = document.querySelector('#deals');
-const dealLinks = document.querySelectorAll('.deals-link');
+const dealButtons = document.querySelectorAll('.navbar__deals-button');
 const dealsCloseButtons = document.querySelectorAll('.deals__close-button');
 const spinButton = document.querySelector('#spin-button');
 const wheel = document.querySelector('#wheel');
@@ -40,7 +40,7 @@ const copy = (code, button) => {
     setTimeout(() => {
         icon.classList.remove('icon-checkmark');
         icon.classList.add('icon-copy');
-    }, 1500);
+    }, TIME.COPY_TRANSITION);
 };
 window.copy = copy;
 
@@ -103,6 +103,7 @@ const findExpiry = (date) => {
  * @param {NodeList} tabList - The list of focusable tab elements.
  */
 const tabNavigationUpdate = (tabList) => {
+    tabList[0].focus();
     tabList[0].addEventListener('keydown', (e) => {
         tabListEventPrev(e, tabList);
     });
@@ -227,7 +228,10 @@ const renderNewPrize = (winning) => {
  * Renders all saved winnings in the winnings container.
  */
 const renderAllWinnings = () => {
-    if (winnings.length === 0) return;
+    if (winnings.length === 0) {
+        return;
+    }
+
     winningsContainer.innerHTML = '';
     const fragment = document.createDocumentFragment();
 
@@ -239,8 +243,12 @@ const renderAllWinnings = () => {
         const { label, code, time } = winning;
         const daysLeft = findExpiry(time);
         const div = document.createElement('div');
-        if (daysLeft <= 0) div.classList.add('prize--expired');
         div.classList.add('prize');
+
+        if (daysLeft <= 0) {
+            div.classList.add('prize--expired');
+        }
+
         div.innerHTML = `
             <div class="prize__left">
                 <span class="card-label">${label}</span>
@@ -319,7 +327,10 @@ const spinButtonEvent = function () {
     localStorage.setItem(STORAGE_KEYS.WINNINGS, JSON.stringify(winnings));
 
     const oldPrize = document.querySelector('.deals__win-box');
-    if (oldPrize) oldPrize.remove();
+
+    if (oldPrize) {
+        oldPrize.remove();
+    }
 
     setTimeout(() => {
         wheelContainer.insertAdjacentElement(
@@ -334,22 +345,24 @@ const spinButtonEvent = function () {
 
 // Event Listeners -------------------------------------------------------------------------------
 
-dealLinks.forEach((deal) => {
-    deal.addEventListener('click', () => {
+dealButtons.forEach((dealButton) => {
+    dealButton.addEventListener('click', () => {
         dealSection.classList.add('deals--open');
         document.body.classList.add('no-scroll');
         navbarPopup.classList.remove('active');
+
         if (!localStorage.getItem(STORAGE_KEYS.WINNINGS)) {
             localStorage.setItem(STORAGE_KEYS.WINNINGS, '[]');
         }
+
         counter.textContent = winnings.length;
 
         const dealsTabList = dealModal.querySelectorAll('.deal-tab');
-        dealsTabList[0].focus();
         tabNavigationUpdate(dealsTabList);
 
-        if (deals.length === 0) fetchDeals();
-        else {
+        if (deals.length === 0) {
+            fetchDeals();
+        } else {
             fetchRandomDealsForWheel();
             renderWheel();
         }
@@ -359,9 +372,10 @@ dealLinks.forEach((deal) => {
 viewPrizeButton.addEventListener('click', () => {
     dealModal.classList.add('hide');
     winningModal.classList.remove('hide');
+
     renderAllWinnings();
+
     const unlockedTabList = winningModal.querySelectorAll('.deal-tab');
-    unlockedTabList[0].focus();
     tabNavigationUpdate(unlockedTabList);
 });
 
@@ -369,7 +383,6 @@ backButton.addEventListener('click', () => {
     winningModal.classList.add('hide');
     dealModal.classList.remove('hide');
     const dealsTabList = dealModal.querySelectorAll('.deal-tab');
-    dealsTabList[0].focus();
     tabNavigationUpdate(dealsTabList);
 });
 
@@ -377,6 +390,7 @@ dealsCloseButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
         dealSection.classList.remove('deals--open');
         document.body.classList.remove('no-scroll');
+
         if (!winningModal.classList.contains('hide')) {
             winningModal.classList.add('hide');
             dealModal.classList.remove('hide');
