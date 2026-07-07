@@ -11,6 +11,10 @@
     z-index: v.$z-index_50;
     background: v.$color-background-disabled;
 
+    &--open {
+        @include m.flex-layout(flex-end, center, column);
+    }
+
     &__container {
         @include m.flex-layout(center, center, column);
         gap: rem(20);
@@ -41,11 +45,6 @@
         @include m.flex-layout(space-between, center, column);
         width: 100%;
         gap: rem(8);
-        &-heading {
-            font-size: rem(12);
-            font-family: t.$font-secondary;
-            font-weight: t.$weight-700;
-        }
     }
 
     &__button {
@@ -67,7 +66,7 @@
     max-width: rem(360);
     min-height: rem(375);
     background-color: v.$color-light;
-    border-radius: rem(24);
+    border-radius: rem(24) rem(24) 0 0;
     position: relative;
     padding: rem(24) rem(24);
 
@@ -91,26 +90,17 @@
     }
 }
 
-.special-deals-open {
-    @include m.flex-layout(flex-end, center, column);
-    position: fixed;
-}
-
 .counter {
+    @include m.flex-layout(center, center, row);
     background-color: v.$color-primary;
     color: v.$text-light;
-    display: block;
     text-align: center;
     border-radius: rem(10);
     width: rem(18);
     height: rem(18);
-    padding: rem(2) 0;
 }
 
-@media screen and (min-width: 430px) {
-}
-
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: v.$desktop) {
     .deals {
         justify-content: center;
 
@@ -118,12 +108,8 @@
             border-radius: rem(24);
         }
     }
-}
 
-.hide {
-    display: none;
-}
-
-.no-scroll {
-    overflow: hidden;
+    .winnings {
+        border-radius: rem(24);
+    }
 }

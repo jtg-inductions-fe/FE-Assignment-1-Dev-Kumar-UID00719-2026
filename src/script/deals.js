@@ -23,7 +23,6 @@ let currentShownDeals = [];
 let availableDeals = [];
 
 let currentDegree = 0;
-let spinClicked = false;
 
 // Data-------------------------------------------------------------------------------
 
@@ -137,7 +136,7 @@ const tabListEventNext = (e, tabList) => {
  */
 const renderWheel = () => {
     wheel.innerHTML = '';
-    wheel.classList.add('wheel-ready');
+    wheel.classList.add('picker__wheel--ready');
     pointer.classList.add('show');
     spinButton.classList.add('show');
     let html = '';
@@ -195,8 +194,8 @@ const renderNewPrize = (winning) => {
         <span class="deals__win-box-heading">You won!</span>
         <div class="prize">
             <div class="prize__left">
-                <span class="prize__label">${label}</span>
-                <span class="prize__expiry">Expires in ${daysLeft}d</span>
+                <span class="card-label">${label}</span>
+                <span class="card-label card-label--accented">Expires in ${daysLeft}d</span>
             </div>
             <div class="prize__right">
                 <span class="prize__code">${code}</span>
@@ -234,11 +233,11 @@ const renderAllWinnings = () => {
         const daysLeft = findExpiry(time);
 
         html += `
-            <div class="prize ${daysLeft <= 0 ? 'expired' : ''}">
+            <div class="prize ${daysLeft <= 0 ? 'prize--expired' : ''}">
                 <div class="prize__left">
-                    <span class="prize__label">${label}</span>
+                    <span class="card-label">${label}</span>
                     <span
-                        class="prize__expiry"
+                        class="card-label card-label--accented"
                         ${daysLeft <= 0 ? `style="color:${COLOR.EXPIRY_COLOR}"` : ''}
                     >
                         ${daysLeft <= 0 ? 'Deal Expired' : `Expires in ${daysLeft}d`}
@@ -263,11 +262,73 @@ const renderAllWinnings = () => {
     winningsContainer.innerHTML = html;
 };
 
+const spinButtonEvent = function () {
+    this.disabled = true;
+    this.classList.toggle('picker__spin-button--disabled');
+
+    fetchRandomDealsForWheel();
+    renderWheel();
+
+    const rotations = Math.floor(Math.random() * 6) + 10;
+    const degree = Math.floor(Math.random() * 360);
+    currentDegree += rotations * 360 + degree;
+    wheel.style.transform = `rotate(${currentDegree}deg)`;
+    const finalAngle = (360 - (currentDegree % 360)) % 360;
+
+    let prize;
+
+    if (finalAngle >= 0 && finalAngle < 90) {
+        prize = 1;
+    } else if (finalAngle >= 90 && finalAngle < 180) {
+        prize = 3;
+    } else if (finalAngle >= 180 && finalAngle < 270) {
+        prize = 2;
+    } else {
+        prize = 0;
+    }
+
+    const currentDate = new Date();
+    const currentWinning = currentShownDeals[prize];
+
+    if (currentWinning === -1) {
+        setTimeout(() => {
+            this.disabled = false;
+            this.classList.toggle('picker__spin-button--disabled');
+        }, TIME.SPIN_TIME);
+        return;
+    }
+
+    const dealValidFor = currentWinning.validFor ?? 7;
+    currentDate.setDate(currentDate.getDate() + dealValidFor);
+
+    const newWinning = {
+        label: currentWinning.label,
+        code: currentWinning.promoCode,
+        time: currentDate,
+    };
+
+    winnings.push(newWinning);
+    localStorage.setItem(STORAGE_KEYS.WINNINGS, JSON.stringify(winnings));
+
+    const oldPrize = document.querySelector('.deals__win-box');
+    if (oldPrize) oldPrize.remove();
+
+    setTimeout(() => {
+        wheelContainer.insertAdjacentElement(
+            'afterend',
+            renderNewPrize(newWinning),
+        );
+        counter.textContent = winnings.length;
+        this.disabled = false;
+        this.classList.toggle('picker__spin-button--disabled');
+    }, TIME.SPIN_TIME);
+};
+
 // Event Listeners -------------------------------------------------------------------------------
 
 dealLinks.forEach((deal) => {
     deal.addEventListener('click', () => {
-        dealSection.classList.add('special-deals-open');
+        dealSection.classList.add('deals--open');
         document.body.classList.add('no-scroll');
         navbarPopup.classList.remove('active');
         if (!localStorage.getItem(STORAGE_KEYS.WINNINGS)) {
@@ -304,7 +365,7 @@ backButton.addEventListener('click', () => {
 
 dealsCloseButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
-        dealSection.classList.remove('special-deals-open');
+        dealSection.classList.remove('deals--open');
         document.body.classList.remove('no-scroll');
         if (!winningModal.classList.contains('hide')) {
             winningModal.classList.add('hide');
@@ -313,62 +374,4 @@ dealsCloseButtons.forEach((btn) => {
     });
 });
 
-spinButton.addEventListener('click', () => {
-    if (spinClicked) return;
-    spinClicked = true;
-
-    fetchRandomDealsForWheel();
-    renderWheel();
-
-    const rotations = Math.floor(Math.random() * 6) + 10;
-    const degree = Math.floor(Math.random() * 360);
-    currentDegree += rotations * 360 + degree;
-    wheel.style.transform = `rotate(${currentDegree}deg)`;
-    const finalAngle = (360 - (currentDegree % 360)) % 360;
-
-    let prize;
-
-    if (finalAngle >= 0 && finalAngle < 90) {
-        prize = 1;
-    } else if (finalAngle >= 90 && finalAngle < 180) {
-        prize = 3;
-    } else if (finalAngle >= 180 && finalAngle < 270) {
-        prize = 2;
-    } else {
-        prize = 0;
-    }
-
-    const currentDate = new Date();
-    const currentWinning = currentShownDeals[prize];
-
-    if (currentWinning === -1) {
-        setTimeout(() => {
-            spinClicked = false;
-        }, TIME.SPIN_TIME);
-        return;
-    }
-
-    const dealValidFor = currentWinning.validFor ?? 7;
-    currentDate.setDate(currentDate.getDate() + dealValidFor);
-
-    const newWinning = {
-        label: currentWinning.label,
-        code: currentWinning.promoCode,
-        time: currentDate,
-    };
-
-    winnings.push(newWinning);
-    localStorage.setItem(STORAGE_KEYS.WINNINGS, JSON.stringify(winnings));
-
-    const oldPrize = document.querySelector('.deals__win-box');
-    if (oldPrize) oldPrize.remove();
-
-    setTimeout(() => {
-        wheelContainer.insertAdjacentElement(
-            'afterend',
-            renderNewPrize(newWinning),
-        );
-        counter.textContent = winnings.length;
-        spinClicked = false;
-    }, TIME.SPIN_TIME);
-});
+spinButton.addEventListener('click', spinButtonEvent);

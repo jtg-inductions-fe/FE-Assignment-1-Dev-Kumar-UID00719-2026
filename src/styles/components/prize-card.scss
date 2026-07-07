@@ -8,11 +8,13 @@
     width: 100%;
     border: v.$border-prize;
     border-radius: rem(16);
-    background-image: linear-gradient(
-        to right,
-        rgba(244, 67, 108, 0.1),
-        rgba(124, 58, 237, 0.1)
-    );
+    background-image: v.$gradient-primary;
+
+    &--expired {
+        border: v.$border-expired;
+        background-image: none;
+        background-color: v.$color-expired;
+    }
 
     &__left {
         @include m.flex-layout(space-between, flex-start, column);
@@ -25,20 +27,8 @@
         gap: rem(8);
     }
 
-    &__label {
-        font-family: t.$font-secondary;
-        font-weight: t.$weight-600;
-        font-size: t.$font-sm;
-    }
-
-    &__expiry {
-        font-family: t.$font-secondary;
-        font-size: t.$font-sm;
-        color: v.$deals-color-accent-2;
-    }
-
     &__code {
-        font-size: rem(12);
+        font-size: t.$font-xsm;
         font-weight: t.$weight-700;
         background-color: v.$color-light;
         border-radius: rem(8);
@@ -50,10 +40,4 @@
     &__copy-button {
         background: transparent;
     }
-}
-
-.expired {
-    border: v.$border-expired;
-    background-image: none;
-    background-color: v.$color-expired;
 }

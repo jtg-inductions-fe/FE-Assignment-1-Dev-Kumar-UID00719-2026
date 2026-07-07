@@ -89,7 +89,7 @@
     }
 }
 
-@media screen and (min-width: 431px) {
+@media screen and (min-width: v.$tablet-sm) {
     .splide {
         &__arrows {
             width: 100%;
@@ -112,7 +112,7 @@
     }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: v.$desktop) {
     .splide {
         &__arrows {
             width: min(100%, 1440px);

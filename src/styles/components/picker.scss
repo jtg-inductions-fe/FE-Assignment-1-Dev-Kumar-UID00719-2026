@@ -10,8 +10,8 @@
 
     &__wheel {
         @include m.flex-layout(center, center, row);
-        width: rem(227);
-        height: rem(227);
+        width: 100%;
+        height: 100%;
         background-color: v.$text-light;
         border-radius: 100%;
         position: absolute;
@@ -19,13 +19,15 @@
         overflow: hidden;
         border: v.$border-wheel-section;
         box-shadow: v.$shadow-evenly;
-    }
 
-    &__loading {
-        font-size: rem(12);
-        font-family: t.$font-secondary;
-        color: v.$color-dark;
-        font-weight: t.$weight-400;
+        &--ready {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: rem(4);
+            border: v.$border-wheel-section;
+            transition: all 5s ease-out;
+            background-color: v.$color-light;
+        }
     }
 
     &__pointer {
@@ -61,6 +63,7 @@
     &__box2 {
         background-color: v.$deals-color-accent-2;
     }
+
     &__offer2 {
         transform: rotate(45deg);
     }
@@ -68,14 +71,15 @@
     &__box3 {
         background-color: v.$deals-color-accent-3;
     }
+
     &__offer3 {
         transform: rotate(-135deg);
     }
 
     &__box4 {
         background-color: v.$deals-color-accent-4;
-        color: v.$color-dark;
     }
+
     &__offer4 {
         transform: rotate(135deg);
     }
@@ -95,17 +99,11 @@
         font-weight: t.$weight-700;
         color: v.$deals-color-accent-1;
         display: none;
-    }
-}
-.wheel-ready {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: rem(4);
-    border: v.$border-wheel-section;
-    transition: all 5s ease-out;
-    background-color: v.$color-light;
-}
 
-.show {
-    display: block;
+        &--disabled {
+            background-color: v.$color-disabled;
+            border: v.$border-disabled;
+            color: v.$text-light;
+        }
+    }
 }

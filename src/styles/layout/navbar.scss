@@ -106,7 +106,7 @@
     }
 }
 
-@media screen and (max-width: 431px) {
+@media screen and (max-width: v.$tablet-sm) {
     .navbar {
         &__auth {
             display: none;
@@ -114,7 +114,7 @@
     }
 }
 
-@media screen and (min-width: 431px) {
+@media screen and (min-width: v.$tablet-sm) {
     .navbar {
         &__container {
             flex-direction: row;
@@ -145,7 +145,7 @@
     }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: v.$desktop) {
     .navbar {
         &__container {
             @include m.section-layout(rem(65), rem(117));

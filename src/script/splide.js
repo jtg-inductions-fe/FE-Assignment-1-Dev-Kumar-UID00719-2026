@@ -34,6 +34,8 @@ const reviews = [
  * Renders all review cards inside the review container.
  */
 const renderReviews = () => {
+    const fragment = document.createDocumentFragment();
+
     reviews.forEach((review) => {
         const { name, interest, image, rating, description } = review;
         const reviewCard = document.createElement('li');
@@ -67,8 +69,9 @@ const renderReviews = () => {
             </div>
         `;
 
-        reviewContainer.appendChild(reviewCard);
+        fragment.appendChild(reviewCard);
     });
+    reviewContainer.appendChild(fragment);
 };
 
 renderReviews();

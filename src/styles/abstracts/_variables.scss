@@ -11,6 +11,12 @@ $color-light: #ffffff;
 $color-dark: #000000;
 $color-background-disabled: rgba(0, 0, 0, 0.5);
 
+// media query breakpoints
+$mobile: 430px;
+$tablet-sm: 431px;
+$tablet-lg: 600px;
+$desktop: 1025px;
+
 // deals section colors
 $deals-color-accent-1: #f4436c;
 $deals-color-accent-2: #7c3aed;
@@ -18,6 +24,7 @@ $deals-color-accent-3: #06b6d4;
 $deals-color-accent-4: #fbbf24;
 $color-expired: $text-light;
 $deals-section-heading-color: #111827;
+$color-disabled: gray;
 
 // z-indexes
 $z-index_10: 10;
@@ -28,11 +35,11 @@ $z-index_50: 50;
 // border-colors
 $border-color-gray: $text-light;
 
-// shadow variable
+// shadow variables
 $button-shadow: 0 27px 38px rgba(0, 0, 0, 0.2);
 $shadow-evenly: 0 0 38px rgba(0, 0, 0, 0.2);
 
-//border variable
+//border variables
 $border-primary: 1px solid rgba(25, 24, 37, 0.1);
 $border-secondary: 1px solid $border-color-gray;
 $border-expired: 1px solid rgba(0, 0, 0, 0.2);
@@ -40,3 +47,11 @@ $border-light: 1px solid #e5e7eb;
 $border-prize: 1px solid rgba(244, 67, 108, 0.2);
 $border-wheel-section: 4px solid $color-light;
 $border-accented: 4px solid $deals-color-accent-1;
+$border-disabled: 2px solid $color-expired;
+
+//gradient variables
+$gradient-primary: linear-gradient(
+    to right,
+    rgba(244, 67, 108, 0.1),
+    rgba(124, 58, 237, 0.1)
+);
