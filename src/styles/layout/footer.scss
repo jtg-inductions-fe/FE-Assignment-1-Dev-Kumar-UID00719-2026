@@ -55,6 +55,16 @@
         width: 100%;
     }
 
+    &__link {
+        display: inline-block;
+        word-break: break-word;
+
+        &:hover {
+            display: inline-block;
+            transform: translateY(rem(-2));
+        }
+    }
+
     &__dropdown-button {
         @include m.flex-layout(space-between, center, row);
         font-size: t.$font-xl;
@@ -77,11 +87,6 @@
 
     &__content {
         word-break: break-word;
-    }
-
-    &__link:hover {
-        display: inline-block;
-        transform: translateY(rem(-2));
     }
 
     &__dropdown-icon {
