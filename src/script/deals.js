@@ -31,8 +31,16 @@ let currentDegree = 0;
  *
  * @param {string} code - Promo code to copy.
  */
-const copy = (code) => {
+const copy = (code, button) => {
     navigator.clipboard.writeText(code);
+    const icon = button.querySelector('.copy-icon');
+    icon.classList.remove('icon-copy');
+    icon.classList.add('icon-checkmark');
+
+    setTimeout(() => {
+        icon.classList.remove('icon-checkmark');
+        icon.classList.add('icon-copy');
+    }, 1500);
 };
 window.copy = copy;
 
@@ -203,9 +211,9 @@ const renderNewPrize = (winning) => {
                     class="prize__copy-button"
                     tabindex="2"
                     type="button"
-                    onclick = "copy('${code}')"
+                    onclick = "copy('${code}', this)"
                 >
-                    <img src="assets/icons/Copy.svg" alt="copy icon">
+                    <span class="icon-copy copy-icon"></span>
                 </button>
             </div>
             
@@ -221,45 +229,45 @@ const renderNewPrize = (winning) => {
 const renderAllWinnings = () => {
     if (winnings.length === 0) return;
     winningsContainer.innerHTML = '';
+    const fragment = document.createDocumentFragment();
 
     const sortedWinnings = [...winnings].sort(
         (a, b) => new Date(a.time) - new Date(b.time),
     );
 
-    let html = '';
-
     sortedWinnings.forEach((winning) => {
         const { label, code, time } = winning;
         const daysLeft = findExpiry(time);
-
-        html += `
-            <div class="prize ${daysLeft <= 0 ? 'prize--expired' : ''}">
-                <div class="prize__left">
-                    <span class="card-label">${label}</span>
-                    <span
-                        class="card-label card-label--accented"
-                        ${daysLeft <= 0 ? `style="color:${COLOR.EXPIRY_COLOR}"` : ''}
-                    >
-                        ${daysLeft <= 0 ? 'Deal Expired' : `Expires in ${daysLeft}d`}
-                    </span>
-                </div>
-                <div class="prize__right">
-                    <span class="prize__code">${code}</span>
-                    <button
-                        class="prize__copy-button deal-tab"
-                        tabindex="2"
-                        type="button"
-                        onclick="copy('${code}')"
-                        ${daysLeft <= 0 ? 'disabled' : ''}
-                    >
-                        <img src="assets/icons/Copy.svg" alt="copy icon">
-                    </button>
-                </div>
+        const div = document.createElement('div');
+        if (daysLeft <= 0) div.classList.add('prize--expired');
+        div.classList.add('prize');
+        div.innerHTML = `
+            <div class="prize__left">
+                <span class="card-label">${label}</span>
+                <span
+                    class="card-label card-label--accented"
+                    ${daysLeft <= 0 ? `style="color:${COLOR.EXPIRY_COLOR}"` : ''}
+                >
+                    ${daysLeft <= 0 ? 'Deal Expired' : `Expires in ${daysLeft}d`}
+                </span>
+            </div>
+            <div class="prize__right">
+                <span class="prize__code">${code}</span>
+                <button
+                    class="prize__copy-button deal-tab"
+                    tabindex="2"
+                    type="button"
+                    onclick="copy('${code}', this)"
+                    ${daysLeft <= 0 ? 'disabled' : ''}
+                >
+                    <span class="icon-copy copy-icon"></span>
+                </button>
             </div>
         `;
+        fragment.appendChild(div);
     });
 
-    winningsContainer.innerHTML = html;
+    winningsContainer.appendChild(fragment);
 };
 
 const spinButtonEvent = function () {
@@ -353,6 +361,7 @@ viewPrizeButton.addEventListener('click', () => {
     winningModal.classList.remove('hide');
     renderAllWinnings();
     const unlockedTabList = winningModal.querySelectorAll('.deal-tab');
+    unlockedTabList[0].focus();
     tabNavigationUpdate(unlockedTabList);
 });
 
@@ -360,6 +369,7 @@ backButton.addEventListener('click', () => {
     winningModal.classList.add('hide');
     dealModal.classList.remove('hide');
     const dealsTabList = dealModal.querySelectorAll('.deal-tab');
+    dealsTabList[0].focus();
     tabNavigationUpdate(dealsTabList);
 });
 
