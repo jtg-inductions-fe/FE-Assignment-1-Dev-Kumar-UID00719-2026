@@ -139,6 +139,13 @@ $font-5xl: 4.375rem; //70px
     text-align: start;
 }
 
+.link-sm {
+    font-size: $font-sm;
+    font-weight: $weight-700;
+    color: v.$text-muted;
+    text-align: center;
+}
+
 .card-label {
     font-family: $font-secondary;
     font-weight: $weight-600;

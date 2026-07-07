@@ -49,26 +49,21 @@
     &__link-container {
         justify-content: space-around;
         display: none;
-        font-size: t.$font-sm;
-        font-weight: t.$weight-700;
     }
 
     &__links {
-        color: v.$text-muted;
-        text-align: center;
-
         &:hover {
             display: inline-block;
             transform: translateY(rem(-2));
+        }
+
+        &--active {
+            color: v.$color-text-primary;
         }
     }
 
     &__logo {
         z-index: v.$z-index_30;
-    }
-
-    &__links--active {
-        color: v.$color-text-primary;
     }
 
     &__popup {
@@ -95,9 +90,6 @@
         @include m.flex-layout(center, center, column);
         list-style: none;
         gap: rem(25);
-
-        font-size: t.$font-lg;
-        font-weight: t.$weight-700;
         background-color: white;
     }
 
