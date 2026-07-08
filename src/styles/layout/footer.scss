@@ -55,6 +55,16 @@
         width: 100%;
     }
 
+    &__link {
+        display: inline-block;
+        word-break: break-word;
+
+        &:hover {
+            display: inline-block;
+            transform: translateY(rem(-2));
+        }
+    }
+
     &__dropdown-button {
         @include m.flex-layout(space-between, center, row);
         font-size: t.$font-xl;
@@ -62,6 +72,10 @@
         font-weight: t.$weight-700;
         width: 100%;
         background: transparent;
+
+        &:hover {
+            transform: translateY(rem(-2));
+        }
     }
 
     &__link-container {
@@ -88,10 +102,10 @@
     transform: rotate(180deg);
 }
 
-@media screen and (min-width: 431px) {
+@media screen and (min-width: v.$tablet-sm) {
     .footer {
         @include m.section-layout(rem(64), rem(64));
-        margin-top: rem(152);
+        margin-top: rem(200);
 
         &__background {
             display: block;
@@ -112,7 +126,7 @@
 
         &__section {
             @include m.flex-layout(flex-start, flex-start, column);
-            gap: rem(32);
+            gap: rem(16);
         }
 
         &__dropdown-heading {
@@ -122,7 +136,7 @@
 
         &__link-container {
             @include m.flex-layout(space-between, flex-start, column);
-            gap: rem(40);
+            gap: rem(24);
             padding-top: 0;
         }
 
@@ -132,12 +146,12 @@
     }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: v.$desktop) {
     .footer {
         @include m.section-layout(rem(32), rem(117));
         flex-direction: row;
         gap: rem(16);
-        margin-top: rem(228);
+        margin-top: rem(240);
 
         &__background {
             top: rem(23);

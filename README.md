@@ -1,4 +1,8 @@
-## Getting Started
+# ASSIGNMENT 1 - Travlog | JTG Travels
+
+## Description
+
+Travel landing page assignment made using HTML, SCSS and Javascript
 
 ### Prerequisites
 
@@ -62,6 +66,94 @@ To set up the project on your local environment, follow these steps:
     This command will generate the optimized files in the dist directory.
 
 6. **Lint the Code**
+
     ```bash
     npm run lint
     ```
+
+7. **Folder Structure**
+
+.
+├── assets
+│ ├── backgrounds
+│ │ ├── city-street.webp
+│ │ ├── coastal-street.webp
+│ │ ├── Earth Background.webp
+│ │ ├── Frame 50.svg
+│ │ ├── mountain-traveller.webp
+│ │ ├── OBJECTS.png
+│ │ ├── OBJECTS.svg
+│ │ ├── Slider-Background.webp
+│ │ └── Travel-Image.webp
+│ ├── data
+│ ├── fonts
+│ │ ├── CircularStd-Bold.woff2
+│ │ ├── CircularStd-Book.woff2
+│ │ ├── CircularStd-Medium.woff2
+│ │ ├── Inter_18pt-Regular.ttf
+│ │ ├── Inter-Bold.woff2
+│ │ ├── Inter-Medium.woff2
+│ │ └── Inter-Regular.woff2
+│ ├── icomoon
+│ │ ├── fonts
+│ │ │ ├── icomoon.eot
+│ │ │ ├── icomoon.svg
+│ │ │ ├── icomoon.ttf
+│ │ │ └── icomoon.woff
+│ │ ├── selection.json
+│ │ └── style.css
+│ ├── icons
+│ │ ├── check-mark-svgrepo-com.svg
+│ │ ├── close.svg
+│ │ ├── Copy.svg
+│ │ ├── gift.svg
+│ │ ├── Gift.svg
+│ │ └── pointer.svg
+│ ├── logos
+│ │ ├── Frame 16.svg
+│ │ ├── Frame 17.svg
+│ │ ├── Group 2 copy.svg
+│ │ ├── Group 3.svg
+│ │ ├── Group 9235.svg
+│ │ ├── Group copy.svg
+│ │ ├── Group.svg
+│ │ └── mainlogo.png
+│ └── profile-pic
+│ └── user-profile.webp
+├── eslint.config.js
+├── index.html
+├── package.json
+├── package-lock.json
+├── prettier.config.js
+├── README.md
+├── src
+│ ├── script
+│ │ ├── constants.js
+│ │ ├── deals.js
+│ │ ├── footer.js
+│ │ ├── index.js
+│ │ ├── navbar.js
+│ │ └── splide.js
+│ └── styles
+│ ├── abstracts
+│ │ ├── \_functions.scss
+│ │ ├── \_mixins.scss
+│ │ └── \_variables.scss
+│ ├── base
+│ │ ├── \_reset.scss
+│ │ ├── \_typography.scss
+│ │ └── \_utilities.scss
+│ ├── components
+│ │ ├── buttons.scss
+│ │ ├── carousel.scss
+│ │ ├── picker.scss
+│ │ └── prize-card.scss
+│ ├── layout
+│ │ ├── deals.scss
+│ │ ├── footer.scss
+│ │ ├── hero.scss
+│ │ ├── navbar.scss
+│ │ ├── slider.scss
+│ │ └── travel.scss
+│ └── main.scss
+└── vite.config.js

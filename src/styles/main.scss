@@ -7,9 +7,14 @@
 
 @use './components/buttons';
 @use './components/carousel';
+@use './components/picker.scss';
+@use './components/prize-card';
 
 @use './layout/navbar';
 @use './layout/hero';
 @use './layout/travel';
 @use './layout/slider';
 @use './layout/footer';
+@use './layout/deals';
+
+@use './base/utilities';

@@ -1,0 +1,109 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+@use '../abstracts/functions' as *;
+@use '../base/typography' as t;
+
+.picker {
+    width: rem(227);
+    height: rem(227);
+    position: relative;
+
+    &__wheel {
+        @include m.flex-layout(center, center, row);
+        width: 100%;
+        height: 100%;
+        background-color: v.$text-light;
+        border-radius: 100%;
+        position: absolute;
+        bottom: 0;
+        overflow: hidden;
+        border: v.$border-wheel-section;
+        box-shadow: v.$shadow-evenly;
+
+        &--ready {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: rem(4);
+            border: v.$border-wheel-section;
+            transition: all 5s ease-out;
+            background-color: v.$color-light;
+        }
+    }
+
+    &__pointer {
+        position: absolute;
+        top: rem(-6);
+        left: 50%;
+        transform: translate(-50%);
+        display: none;
+    }
+
+    &__box {
+        @include m.flex-layout(center, center, row);
+        height: 100%;
+    }
+
+    &__box-content {
+        color: v.$color-light;
+        font-family: t.$font-secondary;
+        font-weight: t.$weight-700;
+        font-size: rem(12);
+        text-align: center;
+        width: rem(84);
+    }
+
+    &__box1 {
+        background-color: v.$deals-color-accent-1;
+    }
+
+    &__offer1 {
+        transform: rotate(-45deg);
+    }
+
+    &__box2 {
+        background-color: v.$deals-color-accent-2;
+    }
+
+    &__offer2 {
+        transform: rotate(45deg);
+    }
+
+    &__box3 {
+        background-color: v.$deals-color-accent-3;
+    }
+
+    &__offer3 {
+        transform: rotate(-135deg);
+    }
+
+    &__box4 {
+        background-color: v.$deals-color-accent-4;
+    }
+
+    &__offer4 {
+        transform: rotate(135deg);
+    }
+
+    &__spin-button {
+        background-color: v.$color-light;
+        width: rem(43.79);
+        height: rem(43.79);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: v.$border-accented;
+        border-radius: 100%;
+        font-size: rem(10);
+        font-family: t.$font-secondary;
+        font-weight: t.$weight-700;
+        color: v.$deals-color-accent-1;
+        display: none;
+
+        &--disabled {
+            background-color: v.$color-disabled;
+            border: v.$border-disabled;
+            color: v.$text-light;
+        }
+    }
+}

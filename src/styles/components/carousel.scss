@@ -89,7 +89,7 @@
     }
 }
 
-@media screen and (min-width: 431px) {
+@media screen and (min-width: v.$tablet-sm) {
     .splide {
         &__arrows {
             width: 100%;
@@ -109,10 +109,14 @@
             width: rem(100);
             height: rem(100);
         }
+
+        .splide__pagination {
+            bottom: rem(-72);
+        }
     }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: v.$desktop) {
     .splide {
         &__arrows {
             width: min(100%, 1440px);
@@ -129,6 +133,10 @@
         .splide__right-arrow {
             position: absolute;
             right: rem(117);
+        }
+
+        .splide__pagination {
+            bottom: -2rem;
         }
     }
 }

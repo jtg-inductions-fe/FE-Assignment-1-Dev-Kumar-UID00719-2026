@@ -3,9 +3,13 @@
     <head>
         <title>JTG Travels | Assignment 1</title>
         <meta charset="UTF-8" />
+        <meta
+            name="description"
+            content="Explore amazing travel destinations, exclusive deals, and vacation packages with JTG Travels"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="src/styles/main.scss" />
-
+        <link rel="icon" href="assets/logos/mainlogo.png" type="image/png" />
         <link rel="stylesheet" href="assets/icomoon/style.css" />
     </head>
 
@@ -27,15 +31,29 @@
                     <img src="assets/logos/mainlogo.png" alt="Travlog logo" />
                 </a>
 
-                <ul class="navbar__link-container">
+                <ul class="navbar__action-container">
                     <li>
-                        <a class="navbar__links navbar__links--active" href="#">
+                        <a
+                            class="action navbar__action navbar__action--active"
+                            href="#"
+                        >
                             Home
                         </a>
                     </li>
-                    <li><a class="navbar__links" href="#">Discover</a></li>
-                    <li><a class="navbar__links" href="#">Special Deals</a></li>
-                    <li><a class="navbar__links" href="#">Contact</a></li>
+                    <li>
+                        <a class="action navbar__action" href="#">Discover</a>
+                    </li>
+                    <li>
+                        <button
+                            class="action navbar__action navbar__deals-button"
+                            type="button"
+                        >
+                            Special Deals
+                        </button>
+                    </li>
+                    <li>
+                        <a class="action navbar__action" href="#">Contact</a>
+                    </li>
                 </ul>
 
                 <div class="navbar__auth">
@@ -49,15 +67,29 @@
             </div>
 
             <div class="navbar__popup" id="navbar-popup">
-                <ul class="navbar__popup-link-container">
+                <ul class="navbar__popup-action-container">
                     <li>
-                        <a class="navbar__links navbar__links--active" href="#">
+                        <a
+                            class="action navbar__action navbar__links--active"
+                            href="#"
+                        >
                             Home
                         </a>
                     </li>
-                    <li><a class="navbar__links" href="#">Discover</a></li>
-                    <li><a class="navbar__links" href="#">Special Deals</a></li>
-                    <li><a class="navbar__links" href="#">Contact</a></li>
+                    <li>
+                        <a class="action navbar__action" href="#">Discover</a>
+                    </li>
+                    <li>
+                        <button
+                            class="action navbar__action navbar__deals-button"
+                            type="button"
+                        >
+                            Special Deals
+                        </button>
+                    </li>
+                    <li>
+                        <a class="action navbar__action" href="#">Contact</a>
+                    </li>
                 </ul>
 
                 <div class="navbar__popup-auth">
@@ -107,7 +139,7 @@
                                     <img
                                         class="hero__collage-img"
                                         src="assets/backgrounds/mountain-traveller.webp"
-                                        alt="Traveller on mountain"
+                                        alt="Traveler on mountain"
                                     />
                                 </div>
                             </div>
@@ -118,7 +150,7 @@
                                 <img
                                     class="hero__collage-img"
                                     src="assets/backgrounds/city-street.webp"
-                                    alt="Traveller taking picture on city streets"
+                                    alt="Traveler taking picture on city streets"
                                 />
                             </div>
                         </div>
@@ -128,7 +160,7 @@
                                 <img
                                     class="hero__icon-img"
                                     src="assets/logos/Frame 16.svg"
-                                    alt="send icon"
+                                    alt="Send icon"
                                 />
                             </div>
 
@@ -183,8 +215,8 @@
                             >
                                 <span
                                     class="icon-Vector-4 hero__play-icon"
-                                ></span
-                                >Watch Demo
+                                ></span>
+                                Watch Demo
                             </button>
                         </div>
                     </div>
@@ -240,7 +272,7 @@
                     <img
                         class="travel__image"
                         src="assets/backgrounds/Travel-Image.webp"
-                        alt="Travel image"
+                        alt="Woman sitting on a suitcase planning for her next trip"
                     />
                 </div>
 
@@ -262,9 +294,9 @@
                     <div class="travel__grid">
                         <div class="travel__cell">
                             <span class="travel__cell-head">500+</span>
-                            <span class="travel__cell-text"
-                                >Holiday Package</span
-                            >
+                            <span class="travel__cell-text">
+                                Holiday Package
+                            </span>
                         </div>
                         <div class="travel__cell">
                             <span class="travel__cell-head">100</span>
@@ -272,15 +304,15 @@
                         </div>
                         <div class="travel__cell">
                             <span class="travel__cell-head">7</span>
-                            <span class="travel__cell-text"
-                                >Premium Airlines</span
-                            >
+                            <span class="travel__cell-text">
+                                Premium Airlines
+                            </span>
                         </div>
                         <div class="travel__cell">
                             <span class="travel__cell-head">2k+</span>
-                            <span class="travel__cell-text"
-                                >Happy Customers</span
-                            >
+                            <span class="travel__cell-text">
+                                Happy Customers
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -303,148 +335,7 @@
                     aria-label="Beautiful Images"
                 >
                     <div class="splide__track">
-                        <ul class="splide__list">
-                            <li class="splide__slide">
-                                <div class="review">
-                                    <div class="review__profile-pic">
-                                        <img
-                                            class="review__profile-img"
-                                            src="assets/profile-pic/user-profile.webp"
-                                            alt="reviewer profile picture"
-                                        />
-                                    </div>
-                                    <div class="review__detail">
-                                        <div class="review__reviewer-info">
-                                            <span class="review__reviewer-name">
-                                                Mark Smith
-                                            </span>
-                                            <span
-                                                class="review__reviewer-interest"
-                                            >
-                                                / Travel Enthusiast
-                                            </span>
-                                        </div>
-                                        <div class="review__stars">
-                                            <span
-                                                class="icon-star-5 review__star"
-                                            ></span>
-                                            <span
-                                                class="icon-star-5 review__star"
-                                            ></span>
-                                            <span
-                                                class="icon-star-5 review__star"
-                                            ></span>
-                                            <span
-                                                class="icon-star-5 review__star"
-                                            ></span>
-                                            <span
-                                                class="icon-star-5 review__star"
-                                            ></span>
-                                        </div>
-                                    </div>
-                                    <p class="review__description">
-                                        Contrary to popular belief, Lorem Ipsum
-                                        is not simply random text. It has roots
-                                        in a piece of classical Latin literature
-                                        from 45 BC.
-                                    </p>
-                                </div>
-                            </li>
-
-                            <li class="splide__slide">
-                                <div class="review">
-                                    <div class="review__profile-pic">
-                                        <img
-                                            class="review__profile-img"
-                                            src="assets/profile-pic/user-profile.webp"
-                                            alt="reviewer profile picture"
-                                        />
-                                    </div>
-                                    <div class="review__detail">
-                                        <div class="review__reviewer-info">
-                                            <span class="review__reviewer-name">
-                                                Mark Smith
-                                            </span>
-                                            <span
-                                                class="review__reviewer-interest"
-                                            >
-                                                / Travel Enthusiast
-                                            </span>
-                                        </div>
-                                        <div class="review__stars">
-                                            <span
-                                                class="icon-star-5 review__star"
-                                            ></span>
-                                            <span
-                                                class="icon-star-5 review__star"
-                                            ></span>
-                                            <span
-                                                class="icon-star-5 review__star"
-                                            ></span>
-                                            <span
-                                                class="icon-star-5 review__star"
-                                            ></span>
-                                            <span
-                                                class="icon-star-5 review__star"
-                                            ></span>
-                                        </div>
-                                    </div>
-                                    <p class="review__description">
-                                        Contrary to popular belief, Lorem Ipsum
-                                        is not simply random text. It has roots
-                                        in a piece of classical Latin literature
-                                        from 45 BC.
-                                    </p>
-                                </div>
-                            </li>
-
-                            <li class="splide__slide">
-                                <div class="review">
-                                    <div class="review__profile-pic">
-                                        <img
-                                            class="review__profile-img"
-                                            src="assets/profile-pic/user-profile.webp"
-                                            alt="reviewer profile picture"
-                                        />
-                                    </div>
-                                    <div class="review__detail">
-                                        <div class="review__reviewer-info">
-                                            <span class="review__reviewer-name">
-                                                Mark Smith
-                                            </span>
-                                            <span
-                                                class="review__reviewer-interest"
-                                            >
-                                                / Travel Enthusiast
-                                            </span>
-                                        </div>
-                                        <div class="review__stars">
-                                            <span
-                                                class="icon-star-5 review__star"
-                                            ></span>
-                                            <span
-                                                class="icon-star-5 review__star"
-                                            ></span>
-                                            <span
-                                                class="icon-star-5 review__star"
-                                            ></span>
-                                            <span
-                                                class="icon-star-5 review__star"
-                                            ></span>
-                                            <span
-                                                class="icon-star-5 review__star"
-                                            ></span>
-                                        </div>
-                                    </div>
-                                    <p class="review__description">
-                                        Contrary to popular belief, Lorem Ipsum
-                                        is not simply random text. It has roots
-                                        in a piece of classical Latin literature
-                                        from 45 BC.
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
+                        <ul class="splide__list"></ul>
                     </div>
 
                     <div class="splide__arrows">
@@ -463,9 +354,98 @@
                     </div>
                 </section>
             </section>
+
+            <section class="deals hidden" id="deals">
+                <div class="deals__container" id="deal-modal">
+                    <button
+                        class="deals__close-button deal-tab"
+                        tabindex="2"
+                        type="button"
+                    >
+                        <img
+                            src="assets/icons/close.svg"
+                            alt="close button icon"
+                        />
+                    </button>
+                    <div class="deals__text-box">
+                        <h3 class="modal-subheading">
+                            <span class="icon-gift"></span>
+                            SPECIAL DEALS
+                        </h3>
+                        <h2 class="modal-heading">Spin & Win!</h2>
+                        <p class="modal-paragraph">
+                            Tap the center of the wheel to spin
+                        </p>
+                    </div>
+                    <div class="picker" id="picker">
+                        <div class="picker__wheel" id="wheel">
+                            <span class="caption">Loading...</span>
+                        </div>
+                        <img
+                            src="assets/icons/pointer.svg"
+                            class="picker__pointer"
+                            alt="Spin wheel pointer arrow"
+                            id="wheel-pointer"
+                        />
+                        <button
+                            id="spin-button"
+                            class="picker__spin-button deal-tab"
+                            tabindex="2"
+                            type="button"
+                        >
+                            Spin!
+                        </button>
+                    </div>
+
+                    <button
+                        class="button--secondary button--outlined deals__button deal-tab"
+                        id="view-prizes"
+                        tabindex="2"
+                        type="button"
+                    >
+                        View All Unlocked Deals
+                        <span class="counter" id="counter">0</span>
+                    </button>
+                </div>
+
+                <div class="winnings hide" id="winning-modal">
+                    <button
+                        class="deals__close-button deal-tab"
+                        tabindex="2"
+                        type="button"
+                    >
+                        <img
+                            src="assets/icons/close.svg"
+                            alt="close button icon"
+                        />
+                    </button>
+                    <div class="winnings__text-box">
+                        <h3 class="modal-subheading">
+                            <span class="icon-gift"></span>
+                            SPECIAL DEALS
+                        </h3>
+                        <h2 class="modal-heading">Unlocked Deals</h2>
+                        <p class="modal-paragraph">
+                            All the deals you’ve unlocked yet!
+                        </p>
+                    </div>
+                    <div class="winnings__prizes" id="winnings-container">
+                        <p class="winnings__empty">No Winnings yet!</p>
+                    </div>
+
+                    <button
+                        class="button--secondary button--outlined deals__button deal-tab"
+                        id="back-button"
+                        tabindex="2"
+                        type="button"
+                    >
+                        Go Back
+                    </button>
+                </div>
+            </section>
         </main>
 
-        <footer class="footer">
+        <footer class="footer container">
             <img
                 class="footer__background"
                 src="assets/backgrounds/OBJECTS.png"
@@ -486,6 +466,7 @@
                         href="https://www.facebook.com/"
                         target="_blank"
                         rel="noopener noreferrer"
+                        class="footer__link"
                     >
                         <span class="icon-Group"></span>
                     </a>
@@ -493,6 +474,7 @@
                         href="https://x.com/"
                         target="_blank"
                         rel="noopener noreferrer"
+                        class="footer__link"
                     >
                         <span class="icon-Group-1">
                             <span class="path1"></span
@@ -503,6 +485,7 @@
                         href="https://www.instagram.com/"
                         target="_blank"
                         rel="noopener noreferrer"
+                        class="footer__link"
                     >
                         <span class="icon-Group-8">
                             <span class="path1"></span
@@ -521,17 +504,15 @@
                     </button>
                     <ul class="footer__link-container company-links">
                         <li>
-                            <a class="footer-link footer__content" href="#">
-                                About
-                            </a>
+                            <a class="link-lg footer__link" href="#"> About </a>
                         </li>
                         <li>
-                            <a class="footer-link footer__content" href="#">
+                            <a class="link-lg footer__link" href="#">
                                 Career
                             </a>
                         </li>
                         <li>
-                            <a class="footer-link footer__content" href="#">
+                            <a class="link-lg footer__link" href="#">
                                 Mobile
                             </a>
                         </li>
@@ -547,24 +528,20 @@
                     </button>
                     <ul class="footer__link-container contact-links">
                         <li>
-                            <a class="footer-link footer__content" href="#">
+                            <a class="link-lg footer__link" href="#">
                                 Why Travlog?
                             </a>
                         </li>
                         <li>
-                            <a class="footer-link footer__content" href="#">
+                            <a class="link-lg footer__link" href="#">
                                 Partner with us
                             </a>
                         </li>
                         <li>
-                            <a class="footer-link footer__content" href="#">
-                                FAQ's
-                            </a>
+                            <a class="link-lg footer__link" href="#"> FAQ's </a>
                         </li>
                         <li>
-                            <a class="footer-link footer__content" href="#">
-                                Blog
-                            </a>
+                            <a class="link-lg footer__link" href="#"> Blog </a>
                         </li>
                     </ul>
                 </div>
@@ -578,19 +555,25 @@
                     </button>
                     <ul class="footer__link-container">
                         <li>
-                            <p class="footer-contact-info footer__content">
+                            <a
+                                class="link-lg footer__link"
+                                href="tel:+00 92 1234 56789"
+                            >
                                 +00 92 1234 56789
-                            </p>
+                            </a>
                         </li>
                         <li>
-                            <p class="footer-contact-info footer__content">
+                            <a
+                                class="link-lg footer__link"
+                                href="mailto:info@travlog.com"
+                            >
                                 info@travlog.com
-                            </p>
+                            </a>
                         </li>
                         <li>
-                            <p class="footer-contact-info footer__content">
+                            <a class="link-lg footer__link" href="#">
                                 205. R Street, New York BD23200
-                            </p>
+                            </a>
                         </li>
                     </ul>
                 </div>

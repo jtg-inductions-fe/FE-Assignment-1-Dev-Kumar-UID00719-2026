@@ -9,6 +9,10 @@
     font-weight: 500;
     font-family: t.$font-primary;
     white-space: nowrap;
+
+    &:hover {
+        transform: translateY(rem(-2));
+    }
 }
 
 .button--shadowed {

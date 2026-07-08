@@ -14,6 +14,7 @@
     &__container {
         @include m.flex-layout(space-between, center, row-reverse);
         @include m.section-layout(rem(32), rem(16));
+        width: 100%;
         flex-direction: row-reverse;
         align-items: center;
     }
@@ -41,24 +42,32 @@
         background: transparent;
     }
 
-    &__link-container {
-        justify-content: space-around;
-        display: none;
-        font-size: t.$font-sm;
-        font-weight: t.$weight-700;
+    &__hamburger:hover {
+        transform: translateY(rem(-2));
     }
 
-    &__links {
-        color: v.$text-muted;
-        text-align: center;
+    &__action-container {
+        justify-content: space-around;
+        display: none;
+    }
+
+    &__action {
+        &:hover {
+            display: inline-block;
+            transform: translateY(rem(-2));
+        }
+
+        &--active {
+            color: v.$color-text-primary;
+        }
+    }
+
+    &__deals-button {
+        background: transparent;
     }
 
     &__logo {
         z-index: v.$z-index_30;
-    }
-
-    &__links--active {
-        color: v.$color-text-primary;
     }
 
     &__popup {
@@ -74,20 +83,17 @@
         transition: all 0.3s ease;
         visibility: hidden;
         background-color: white;
+
+        &--active {
+            top: 110px;
+            visibility: visible;
+        }
     }
 
-    .active {
-        top: 110px;
-        visibility: visible;
-    }
-
-    &__popup-link-container {
+    &__popup-action-container {
         @include m.flex-layout(center, center, column);
         list-style: none;
         gap: rem(25);
-
-        font-size: t.$font-lg;
-        font-weight: t.$weight-700;
         background-color: white;
     }
 
@@ -96,7 +102,7 @@
     }
 }
 
-@media screen and (max-width: 431px) {
+@media screen and (max-width: v.$tablet-sm) {
     .navbar {
         &__auth {
             display: none;
@@ -104,7 +110,7 @@
     }
 }
 
-@media screen and (min-width: 431px) {
+@media screen and (min-width: v.$tablet-sm) {
     .navbar {
         &__container {
             flex-direction: row;
@@ -122,20 +128,20 @@
             top: 100px;
             justify-content: center;
             transition: all 0.3s ease;
+
+            &--active {
+                top: 100px;
+                left: 0px;
+            }
         }
 
-        &__popup-link-container {
+        &__popup-action-container {
             padding: rem(20);
-        }
-
-        .active {
-            top: 100px;
-            left: 0px;
         }
     }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: v.$desktop) {
     .navbar {
         &__container {
             @include m.section-layout(rem(65), rem(117));
@@ -146,7 +152,7 @@
             top: 19px;
         }
 
-        &__link-container {
+        &__action-container {
             width: 40%;
             display: flex;
             justify-content: space-between;

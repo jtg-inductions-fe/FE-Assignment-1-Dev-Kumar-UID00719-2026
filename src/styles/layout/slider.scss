@@ -13,7 +13,7 @@
     &__background {
         position: absolute;
 
-        width: min(100vw, 1440px);
+        width: min(100vw, 1500px);
         display: none;
     }
 }
@@ -73,7 +73,7 @@
     }
 }
 
-@media screen and (min-width: 431px) {
+@media screen and (min-width: v.$tablet-sm) {
     .slider {
         margin-top: rem(8);
         padding-top: rem(16);
@@ -104,7 +104,7 @@
     }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: v.$desktop) {
     .slider {
         margin-top: rem(100);
 

@@ -8,11 +8,13 @@ $font-secondary: 'Inter', Helvetica, Arial, sans-serif;
 $weight-400: 400;
 $weight-450: 450;
 $weight-500: 500;
+$weight-600: 600;
 $weight-700: 700;
 
 // font size variables
-$font-2xsm: 0.4375rem; //7px
-$font-xsm: 0.6rem; //10px
+$font-3xsm: 0.4375rem; //7px
+$font-2xsm: 0.6rem; //10px
+$font-xsm: 0.75rem; //12px
 $font-sm: 0.875rem; //14px
 $font-md: 1rem; //16px
 $font-lg: 1.125rem; //18px
@@ -107,26 +109,57 @@ $font-5xl: 4.375rem; //70px
     text-align: center;
 }
 
-.review-paragraph {
-    font-family: $font-primary;
-    font-weight: $weight-450;
+.modal-heading {
+    font-size: $font-xsm;
+    font-family: $font-secondary;
+    font-weight: $weight-700;
+}
+
+.modal-subheading {
+    font-family: $font-secondary;
+    font-weight: 600;
+    font-size: $font-xsm;
+    letter-spacing: 0.1;
+    line-height: 1;
+    color: v.$deals-color-accent-1;
+}
+
+.modal-paragraph {
+    font-family: $font-secondary;
+    color: v.$text-muted;
+    font-size: $font-xsm;
+    line-height: 1;
+}
+
+.link-lg {
     font-size: $font-lg;
+    font-family: $font-secondary;
+    color: v.$color-text-secondary;
+    font-weight: $weight-400;
+    text-align: start;
+}
+
+.action {
+    font-size: $font-sm;
+    font-weight: $weight-700;
+    color: v.$text-muted;
     text-align: center;
-    line-height: 1.6;
 }
 
-.footer-link {
-    font-size: $font-lg;
+.card-label {
     font-family: $font-secondary;
-    color: v.$color-text-secondary;
-    font-weight: $weight-400;
-    text-align: start;
+    font-weight: $weight-600;
+    font-size: $font-sm;
+    &--accented {
+        font-size: $font-xsm;
+        color: v.$deals-color-accent-2;
+        font-weight: $weight-400;
+    }
 }
 
-.footer-contact-info {
-    font-size: $font-lg;
+.caption {
+    font-size: $font-xsm;
     font-family: $font-secondary;
-    color: v.$color-text-secondary;
+    color: v.$color-dark;
     font-weight: $weight-400;
-    text-align: start;
 }

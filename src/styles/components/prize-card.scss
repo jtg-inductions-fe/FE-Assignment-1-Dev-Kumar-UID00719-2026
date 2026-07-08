@@ -1,0 +1,46 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+@use '../abstracts/functions' as *;
+@use '../base/typography' as t;
+
+.prize {
+    @include m.flex-layout(space-between, center, row);
+    width: 100%;
+    border: v.$border-prize;
+    border-radius: rem(16);
+    padding: rem(16);
+    background-image: v.$gradient-primary;
+
+    &--expired {
+        border: v.$border-expired;
+        background-image: none;
+        background-color: v.$color-expired;
+    }
+
+    &__left {
+        @include m.flex-layout(space-between, flex-start, column);
+        word-break: break-all;
+        width: 50%;
+    }
+
+    &__right {
+        @include m.flex-layout(flex-end, center, row);
+        gap: rem(8);
+        width: 50%;
+    }
+
+    &__code {
+        font-size: t.$font-xsm;
+        font-weight: t.$weight-700;
+        background-color: v.$color-light;
+        border-radius: rem(8);
+        border: v.$border-light;
+        padding: rem(4) rem(10);
+        word-break: break-all;
+    }
+
+    &__copy-button {
+        background: transparent;
+        color: v.$deals-color-accent-1;
+    }
+}

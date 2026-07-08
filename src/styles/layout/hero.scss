@@ -7,6 +7,7 @@
     @include m.flex-layout(center, center, column);
     @include m.section-layout(rem(37), rem(16));
     position: relative;
+
     &__top {
         @include m.flex-layout();
     }
@@ -206,7 +207,7 @@
     }
 }
 
-@media screen and (min-width: 431px) {
+@media screen and (min-width: v.$tablet-sm) {
     .hero {
         @include m.section-layout(rem(64), rem(64));
         padding-bottom: rem(44);
@@ -233,7 +234,7 @@
         }
 
         &__upper-layer-overlay {
-            font-size: t.$font-xsm;
+            font-size: t.$font-2xsm;
         }
 
         &__top-left {
@@ -271,7 +272,7 @@
     }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: v.$tablet-lg) {
     .hero {
         &__top-heading {
             width: 70%;
@@ -289,7 +290,7 @@
     }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: v.$desktop) {
     .hero {
         @include m.section-layout(rem(27), rem(117));
 
