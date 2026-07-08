@@ -7,16 +7,16 @@ const popup = document.querySelector('#navbar-popup');
 
 hamburger.addEventListener('click', () => {
     if (popupOpen === false) {
-        popup.classList.add('active');
+        popup.classList.add('navbar__popup--active');
         popupOpen = true;
     } else {
-        popup.classList.remove('active');
+        popup.classList.remove('navbar__popup--active');
         popupOpen = false;
     }
 });
 
 window.addEventListener('resize', () => {
     if (window.innerWidth > BREAKPOINTS.DESKTOP) {
-        popup.classList.remove('active');
+        popup.classList.remove('navbar__popup--active');
     }
 });

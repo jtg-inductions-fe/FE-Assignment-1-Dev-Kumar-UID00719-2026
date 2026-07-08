@@ -83,11 +83,11 @@
         transition: all 0.3s ease;
         visibility: hidden;
         background-color: white;
-    }
 
-    .active {
-        top: 110px;
-        visibility: visible;
+        &--active {
+            top: 110px;
+            visibility: visible;
+        }
     }
 
     &__popup-action-container {
@@ -128,15 +128,15 @@
             top: 100px;
             justify-content: center;
             transition: all 0.3s ease;
+
+            &--active {
+                top: 100px;
+                left: 0px;
+            }
         }
 
         &__popup-action-container {
             padding: rem(20);
-        }
-
-        .active {
-            top: 100px;
-            left: 0px;
         }
     }
 }
