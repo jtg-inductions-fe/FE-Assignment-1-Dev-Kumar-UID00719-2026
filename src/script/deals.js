@@ -1,4 +1,4 @@
-import { STORAGE_KEYS, TIME, COLOR, API_KEY } from './constants';
+import { STORAGE_KEYS, TIME, COLOR, DEALS_API } from './constants';
 
 // Dom Elements-------------------------------------------------------------------------------
 const dealSection = document.querySelector('#deals');
@@ -49,7 +49,7 @@ window.copy = copy;
  */
 const fetchDeals = async () => {
     try {
-        const data = await fetch(API_KEY);
+        const data = await fetch(DEALS_API);
         deals = await data.json();
         setTimeout(() => {
             fetchRandomDealsForWheel();
