@@ -331,10 +331,15 @@
         }
 
         &__bottom {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
             width: 100%;
             margin-top: rem(40);
             gap: rem(3) rem(90);
-            flex-wrap: nowrap;
+        }
+
+        &__logo {
+            width: 100%;
         }
     }
 }

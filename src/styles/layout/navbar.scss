@@ -73,7 +73,7 @@
     &__popup {
         @include m.flex-layout(space-evenly, center, column);
         width: 100%;
-        height: rem(400);
+        height: 100vh;
         position: absolute;
         top: -500px;
         left: 0;
