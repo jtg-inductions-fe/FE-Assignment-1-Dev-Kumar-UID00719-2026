@@ -1,5 +1,6 @@
 import '@splidejs/splide/css';
 import Splide from '@splidejs/splide';
+import profilePic from '../../assets/profile-pic/user-profile.webp';
 
 const reviewContainer = document.querySelector('.splide__list');
 
@@ -7,7 +8,7 @@ const reviews = [
     {
         name: 'Will Smith',
         interest: 'Travel Enthusiast',
-        image: 'assets/profile-pic/user-profile.webp',
+        image: profilePic,
         rating: 5,
         description:
             'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.',
@@ -15,7 +16,7 @@ const reviews = [
     {
         name: 'Vladmir Putin',
         interest: 'Politics',
-        image: 'assets/profile-pic/user-profile.webp',
+        image: profilePic,
         rating: 3,
         description:
             'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.',
@@ -23,7 +24,7 @@ const reviews = [
     {
         name: 'Nicolas Cage',
         interest: 'Movies',
-        image: 'assets/profile-pic/user-profile.webp',
+        image: profilePic,
         rating: 4,
         description:
             'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.',
